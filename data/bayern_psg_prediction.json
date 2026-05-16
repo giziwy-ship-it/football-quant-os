@@ -1,0 +1,46 @@
+{
+  "match": "Bayern Munich vs PSG",
+  "datetime": "2026-05-07T03:00:00",
+  "1x2": {
+    "home_win": {
+      "prob": 55.0,
+      "confidence": "MEDIUM",
+      "recommendation": "SUPPORT"
+    },
+    "draw": {
+      "prob": 20.0,
+      "confidence": "LOW",
+      "recommendation": "AVOID"
+    },
+    "away_win": {
+      "prob": 25.0,
+      "confidence": "LOW",
+      "recommendation": "HEDGE"
+    }
+  },
+  "specials": {
+    "over_2_5": {
+      "prob": 70.0,
+      "recommendation": "STRONG_SUPPORT",
+      "note": "拜仁5/5大球，PSG 3/5"
+    },
+    "btts_yes": {
+      "prob": 65.0,
+      "recommendation": "SUPPORT",
+      "note": "拜仁5/5 BTTS"
+    },
+    "handicap": {
+      "note": "Bayern -1.0 (risky due to first leg 4-5)"
+    }
+  },
+  "risk_flags": [
+    "首回合1-5惨败，拜仁需赢2球以上",
+    "用户情绪过热(80%)，可能存在价值陷阱",
+    "PSG状态火热(5场不败)"
+  ],
+  "position_sizing": {
+    "home_win": "1.5% of bankroll (conservative)",
+    "over_2_5": "2.0% of bankroll (strong edge)",
+    "btts_yes": "1.0% of bankroll"
+  }
+}

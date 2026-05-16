@@ -1,0 +1,22 @@
+[
+  {"match_id": 1, "prob": 0.60, "odds": 2.10, "result": "win"},
+  {"match_id": 2, "prob": 0.55, "odds": 1.90, "result": "lose"},
+  {"match_id": 3, "prob": 0.62, "odds": 2.30, "result": "win"},
+  {"match_id": 4, "prob": 0.58, "odds": 2.05, "result": "win"},
+  {"match_id": 5, "prob": 0.48, "odds": 2.20, "result": "lose"},
+  {"match_id": 6, "prob": 0.65, "odds": 1.85, "result": "win"},
+  {"match_id": 7, "prob": 0.52, "odds": 2.15, "result": "lose"},
+  {"match_id": 8, "prob": 0.70, "odds": 1.75, "result": "win"},
+  {"match_id": 9, "prob": 0.45, "odds": 2.40, "result": "lose"},
+  {"match_id": 10, "prob": 0.68, "odds": 1.90, "result": "win"},
+  {"match_id": 11, "prob": 0.56, "odds": 2.00, "result": "win"},
+  {"match_id": 12, "prob": 0.50, "odds": 2.25, "result": "lose"},
+  {"match_id": 13, "prob": 0.64, "odds": 2.00, "result": "win"},
+  {"match_id": 14, "prob": 0.42, "odds": 2.50, "result": "lose"},
+  {"match_id": 15, "prob": 0.72, "odds": 1.80, "result": "win"},
+  {"match_id": 16, "prob": 0.54, "odds": 1.95, "result": "win"},
+  {"match_id": 17, "prob": 0.47, "odds": 2.30, "result": "lose"},
+  {"match_id": 18, "prob": 0.66, "odds": 1.88, "result": "win"},
+  {"match_id": 19, "prob": 0.51, "odds": 2.10, "result": "lose"},
+  {"match_id": 20, "prob": 0.60, "odds": 2.05, "result": "win"}
+]

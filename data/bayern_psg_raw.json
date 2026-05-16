@@ -1,0 +1,55 @@
+{
+  "match": {
+    "home": "Bayern Munich",
+    "away": "PSG",
+    "datetime": "2026-05-07T03:00:00",
+    "competition": "Champions League",
+    "first_leg": "PSG 5-4 Bayern (Bayern home)"
+  },
+  "odds_1x2": {
+    "sources": {
+      "bet365": {"home": "-167", "draw": "+450", "away": "+309", "payout": "95.2%"},
+      "betmgm": {"home": "-172", "draw": "+425", "away": "+333", "payout": "94.8%"},
+      "draftkings": {"home": "-167", "draw": "+425", "away": "+330", "payout": "95.4%"},
+      "fanduel": {"home": "-164", "draw": "+440", "away": "+320", "payout": "95.7%"}
+    },
+    "best_home": {"bookmaker": "fanduel", "odd": "-164"},
+    "best_draw": {"bookmaker": "fanduel", "odd": "+440"},
+    "best_away": {"bookmaker": "bet365", "odd": "+309"},
+    "highest_payout": {"bookmaker": "fanduel", "payout": "95.7%"}
+  },
+  "user_predictions": {"home_win": "80%", "draw": "8%", "away_win": "12%"},
+  "form_home_last5": [
+    {"date": "02/May", "opponent": "Heidenheim", "venue": "H", "score": "3-3", "result": "D", "competition": "Bundesliga"},
+    {"date": "29/Apr", "opponent": "PSG", "venue": "H", "score": "4-5", "result": "L", "competition": "Champions League"},
+    {"date": "25/Apr", "opponent": "Mainz", "venue": "A", "score": "3-4", "result": "W", "competition": "Bundesliga"},
+    {"date": "23/Apr", "opponent": "Bayer Leverkusen", "venue": "A", "score": "0-2", "result": "W", "competition": "DFB Pokal"},
+    {"date": "19/Apr", "opponent": "Stuttgart", "venue": "H", "score": "4-2", "result": "W", "competition": "Bundesliga"}
+  ],
+  "form_away_last5": [
+    {"date": "02/May", "opponent": "Lorient", "venue": "H", "score": "2-2", "result": "D", "competition": "Ligue 1"},
+    {"date": "29/Apr", "opponent": "Bayern Munich", "venue": "A", "score": "5-4", "result": "W", "competition": "Champions League"},
+    {"date": "26/Apr", "opponent": "Angers", "venue": "A", "score": "0-3", "result": "W", "competition": "Ligue 1"},
+    {"date": "23/Apr", "opponent": "Nantes", "venue": "H", "score": "3-0", "result": "W", "competition": "Ligue 1"},
+    {"date": "20/Apr", "opponent": "Lyon", "venue": "H", "score": "1-2", "result": "L", "competition": "Ligue 1"}
+  ],
+  "h2h_last5": [
+    {"date": "29/Apr 2026", "home": "PSG", "away": "Bayern Munich", "score": "5-4", "winner": "PSG", "competition": "Champions League"},
+    {"date": "05/Nov", "home": "PSG", "away": "Bayern Munich", "score": "1-2", "winner": "Bayern Munich", "competition": "Champions League"},
+    {"date": "06/Jul", "home": "PSG", "away": "Bayern Munich", "score": "2-0", "winner": "PSG", "competition": "FIFA Club World Cup"},
+    {"date": "27/Nov 2024/25", "home": "Bayern Munich", "away": "PSG", "score": "1-0", "winner": "Bayern Munich", "competition": "Champions League"},
+    {"date": "09/Mar 2022/23", "home": "Bayern Munich", "away": "PSG", "score": "2-0", "winner": "Bayern Munich", "competition": "Champions League"}
+  ],
+  "match_facts": {
+    "psg_to_win": true,
+    "bayern_last5": "Won 4/5",
+    "psg_last5": "Won 5/5",
+    "over_2_5": {"bayern": "5/5", "psg": "3/5"},
+    "btts_yes": {"bayern": "5/5", "psg": "2/5"},
+    "btts_yes_highest_odds": "-303",
+    "over_2_5_highest_odds": "-417"
+  },
+  "source": "OddsPortal",
+  "scraped_at": "2026-05-07T02:34:00",
+  "notes": "Bayern home advantage but PSG won first leg 5-4. PSG form: 4W-1D-0L in last 5. Bayern form: 3W-1D-1L in last 5 (only loss to PSG)."
+}
