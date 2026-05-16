@@ -1,9 +1,13 @@
-# Football Quant OS — 体育量化分析 Skill
+---
+name: football-quant-os
+description: 基于九智能体架构的足球赛事量化分析与投注决策系统，支持实时赔率抓取、Kelly最优注码、回测引擎与自进化
+slug: football-quant-os
+version: 1.0.0
+author: "@giziwy-ship-it"
+license: MIT
+---
 
-**slug**: `football-quant-os`  
-**version**: `1.0.0`  
-**author**: @giziwy-ship-it  
-**license**: MIT
+# Football Quant OS — 体育量化分析 Skill
 
 ---
 
