@@ -78,8 +78,39 @@ class GeneProfile:
 class TeamEvaluator:
     """球队实力评定器"""
     
+    name = "TeamEvaluator"
+    
     def __init__(self):
         self.teams: Dict[str, TeamStrength] = {}
+    
+    def run(self, match_data: Dict[str, Any]) -> Dict[str, Any]:
+        """兼容 AsyncScheduler 的 run 方法"""
+        home = match_data.get('home_team', '')
+        away = match_data.get('away_team', '')
+        league = match_data.get('league', 'Unknown')
+        home_rank = match_data.get('home_team_rank', 8)
+        away_rank = match_data.get('away_team_rank', 8)
+        home_form = match_data.get('home_recent_5', ['W', 'W', 'D', 'L', 'W'])
+        away_form = match_data.get('away_recent_5', ['D', 'W', 'L', 'D', 'W'])
+        
+        # Evaluate teams
+        home_strength = self.evaluate(home, league, home_rank, home_form)
+        away_strength = self.evaluate(away, league, away_rank, away_form)
+        
+        # Matchup analysis
+        matchup = self.matchup(home, away)
+        
+        return {
+            "agent": self.name,
+            "home_team": home_strength.to_dict(),
+            "away_team": away_strength.to_dict(),
+            "matchup": matchup,
+            "prediction": {
+                "home_win": 50 if matchup.get('advantage_team') == home else 30,
+                "draw": 25,
+                "away_win": 50 if matchup.get('advantage_team') == away else 30
+            }
+        }
     
     def evaluate(self, team_name: str, league: str, league_rank: int,
                  recent_5: Optional[List[str]] = None,
@@ -175,6 +206,8 @@ class TeamEvaluator:
 class GeneEngine:
     """球队基因引擎"""
     
+    name = "GeneEngine"
+    
     GENE_DESC = {
         TeamGene.COMEBACK: "落后时爆发力强，擅长下半场逆转",
         TeamGene.EQUALIZER: "先丢球后心态稳定，追平能力强",
@@ -186,6 +219,33 @@ class GeneEngine:
     
     def __init__(self):
         self.profiles: Dict[str, GeneProfile] = {}
+    
+    def run(self, match_data: Dict[str, Any]) -> Dict[str, Any]:
+        """兼容 AsyncScheduler 的 run 方法"""
+        home = match_data.get('home_team', '')
+        away = match_data.get('away_team', '')
+        
+        # Evaluate genes with default scores
+        home_profile = self.evaluate(home, manual_scores={
+            "逆转基因": 0.5, "追平基因": 0.4, "守住基因": 0.6,
+            "痛失好局基因": 0.3, "被追平基因": 0.3, "平局大师基因": 0.2
+        })
+        away_profile = self.evaluate(away, manual_scores={
+            "逆转基因": 0.4, "追平基因": 0.5, "守住基因": 0.4,
+            "痛失好局基因": 0.4, "被追平基因": 0.3, "平局大师基因": 0.3
+        })
+        
+        matchup = self.analyze_matchup(home, away)
+        
+        return {
+            "agent": self.name,
+            "home_team": home_profile.to_dict(),
+            "away_team": away_profile.to_dict(),
+            "matchup": matchup,
+            "prediction": {
+                "home_win": 45, "draw": 25, "away_win": 30
+            }
+        }
     
     def evaluate(self, team_name: str, match_history: List[Dict] = None,
                  manual_scores: Dict[str, float] = None) -> GeneProfile:

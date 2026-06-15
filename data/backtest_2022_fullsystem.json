@@ -1,0 +1,1378 @@
+{
+  "elo_only": {
+    "total": 48,
+    "correct": 0,
+    "bets": 28,
+    "wins": 15,
+    "losses": 13,
+    "profit": 1110.0,
+    "bankroll": [
+      10400.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10360.0,
+      10360.0,
+      10160.0,
+      10160.0,
+      10160.0,
+      10250.0,
+      10420.0,
+      10220.0,
+      10300.0,
+      10300.0,
+      10100.0,
+      10600.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10200.0,
+      10320.0,
+      10120.0,
+      10120.0,
+      10120.0,
+      10120.0,
+      10120.0,
+      10120.0,
+      10480.0,
+      10620.0,
+      11120.0,
+      10920.0,
+      10720.0,
+      10850.0,
+      11050.0,
+      10850.0,
+      11210.0,
+      11010.0,
+      11010.0,
+      10810.0,
+      10950.0,
+      10750.0,
+      11110.0
+    ]
+  },
+  "full_system": {
+    "total": 48,
+    "correct": 0,
+    "bets": 5,
+    "wins": 3,
+    "losses": 2,
+    "profit": 260.0,
+    "bankroll": [
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10400.0,
+      10200.0,
+      10200.0,
+      10200.0,
+      10290.0,
+      10460.0,
+      10460.0,
+      10460.0,
+      10460.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0,
+      10260.0
+    ],
+    "traps_detected": 0,
+    "traps_correct": 0
+  },
+  "kelly": {
+    "total": 0,
+    "bets": 0,
+    "wins": 0,
+    "losses": 0,
+    "profit": 0,
+    "bankroll": []
+  },
+  "matches": [
+    {
+      "match_id": "A1",
+      "match": "QAT 0-2 ECU",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.42495528375974956,
+        "market_prob": 0.3082293209223609
+      },
+      "full": {
+        "action": "EXECUTE",
+        "direction": "away",
+        "amount": 200.0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.11672596283738867,
+        "model_prob": {
+          "home": 0.37874179531576885,
+          "draw": 0.19630292092448154,
+          "away": 0.42495528375974956,
+          "home_elo": 1550,
+          "away_elo": 1570,
+          "elo_diff": -20
+        }
+      }
+    },
+    {
+      "match_id": "A2",
+      "match": "SEN 0-2 NED",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.5704432206004035,
+        "market_prob": 0.514018691588785
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.10562467927205696,
+        "model_prob": {
+          "home": 0.25480762689595254,
+          "draw": 0.17474915250364395,
+          "away": 0.5704432206004035,
+          "home_elo": 1730,
+          "away_elo": 1870,
+          "elo_diff": -140
+        }
+      }
+    },
+    {
+      "match_id": "B1",
+      "match": "ENG 6-2 IRN",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6341526120388238,
+        "market_prob": 0.762188444522318
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.12803583248349426,
+        "model_prob": {
+          "home": 0.6341526120388238,
+          "draw": 0.16531072414239648,
+          "away": 0.20053666381877977,
+          "home_elo": 1900,
+          "away_elo": 1700,
+          "elo_diff": 200
+        }
+      }
+    },
+    {
+      "match_id": "B2",
+      "match": "USA 1-1 WAL",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.42495528375974956,
+        "market_prob": 0.4811372334609076
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1441873940035764,
+        "model_prob": {
+          "home": 0.42495528375974956,
+          "draw": 0.19630292092448154,
+          "away": 0.37874179531576885,
+          "home_elo": 1740,
+          "away_elo": 1720,
+          "elo_diff": 20
+        }
+      }
+    },
+    {
+      "match_id": "C1",
+      "match": "ARG 1-2 KSA",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7733956518211259,
+        "market_prob": 0.8018641628401069
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": null,
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.029355571847670917,
+        "model_prob": {
+          "home": 0.7733956518211259,
+          "draw": 0.1446821256561295,
+          "away": 0.08192222252274459,
+          "home_elo": 1950,
+          "away_elo": 1560,
+          "elo_diff": 390
+        }
+      }
+    },
+    {
+      "match_id": "D1",
+      "match": "DEN 0-0 TUN",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.5926120196446937,
+        "market_prob": 0.6151930261519302
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09395547295706619,
+        "model_prob": {
+          "home": 0.5926120196446937,
+          "draw": 0.17146488597856388,
+          "away": 0.2359230943767424,
+          "home_elo": 1790,
+          "away_elo": 1630,
+          "elo_diff": 160
+        }
+      }
+    },
+    {
+      "match_id": "C2",
+      "match": "MEX 0-0 POL",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.523790351110311,
+        "market_prob": 0.4689603590127151
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.10255771067724717,
+        "model_prob": {
+          "home": 0.523790351110311,
+          "draw": 0.18166068872439833,
+          "away": 0.29454896016529053,
+          "home_elo": 1760,
+          "away_elo": 1660,
+          "elo_diff": 100
+        }
+      }
+    },
+    {
+      "match_id": "D2",
+      "match": "FRA 4-1 AUS",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7264070917430598,
+        "market_prob": 0.7170172084130019
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": null,
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.039561195094290874,
+        "model_prob": {
+          "home": 0.7264070917430598,
+          "draw": 0.15164339381584296,
+          "away": 0.12194951444109713,
+          "home_elo": 1930,
+          "away_elo": 1620,
+          "elo_diff": 310
+        }
+      }
+    },
+    {
+      "match_id": "F1",
+      "match": "MAR 0-0 CRO",
+      "outcome": "draw",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.5474644071190577,
+        "market_prob": 0.4247787610619469
+      },
+      "full": {
+        "action": "EXECUTE",
+        "direction": "away",
+        "amount": 200.0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.12268564605711085,
+        "model_prob": {
+          "home": 0.2743821717133953,
+          "draw": 0.178153421167547,
+          "away": 0.5474644071190577,
+          "home_elo": 1680,
+          "away_elo": 1800,
+          "elo_diff": -120
+        }
+      }
+    },
+    {
+      "match_id": "E1",
+      "match": "GER 1-2 JPN",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6033617521990364,
+        "market_prob": 0.70298769771529
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1125304139146788,
+        "model_prob": {
+          "home": 0.6033617521990364,
+          "draw": 0.16987233300755017,
+          "away": 0.22676591479341343,
+          "home_elo": 1840,
+          "away_elo": 1670,
+          "elo_diff": 170
+        }
+      }
+    },
+    {
+      "match_id": "E2",
+      "match": "ESP 7-0 CRC",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7518653440798068,
+        "market_prob": 0.8089563019140484
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.057090957834241673,
+        "model_prob": {
+          "home": 0.7518653440798068,
+          "draw": 0.14787180087706567,
+          "away": 0.10026285504312753,
+          "home_elo": 1880,
+          "away_elo": 1530,
+          "elo_diff": 350
+        }
+      }
+    },
+    {
+      "match_id": "F2",
+      "match": "BEL 1-0 CAN",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7576016247398227,
+        "market_prob": 0.6427423674343867
+      },
+      "full": {
+        "action": "EXECUTE",
+        "direction": "home",
+        "amount": 200.0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.114859257305436,
+        "model_prob": {
+          "home": 0.7576016247398227,
+          "draw": 0.1470219815200263,
+          "away": 0.09537639374015111,
+          "home_elo": 1960,
+          "away_elo": 1600,
+          "elo_diff": 360
+        }
+      }
+    },
+    {
+      "match_id": "G1",
+      "match": "SUI 1-0 CMR",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6033617521990364,
+        "market_prob": 0.5038814396612561
+      },
+      "full": {
+        "action": "EXECUTE",
+        "direction": "home",
+        "amount": 200.0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.10429845033754515,
+        "model_prob": {
+          "home": 0.6033617521990364,
+          "draw": 0.16987233300755017,
+          "away": 0.22676591479341343,
+          "home_elo": 1750,
+          "away_elo": 1580,
+          "elo_diff": 170
+        }
+      }
+    },
+    {
+      "match_id": "H1",
+      "match": "URU 0-0 KOR",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6033617521990364,
+        "market_prob": 0.5321160743397456
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.10401094054967192,
+        "model_prob": {
+          "home": 0.6033617521990364,
+          "draw": 0.16987233300755017,
+          "away": 0.22676591479341343,
+          "home_elo": 1820,
+          "away_elo": 1650,
+          "elo_diff": 170
+        }
+      }
+    },
+    {
+      "match_id": "H2",
+      "match": "POR 3-2 GHA",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7331590178946772,
+        "market_prob": 0.6629834254143647
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.07035136667807368,
+        "model_prob": {
+          "home": 0.7331590178946772,
+          "draw": 0.15064310846004786,
+          "away": 0.11619787364527505,
+          "home_elo": 1860,
+          "away_elo": 1540,
+          "elo_diff": 320
+        }
+      }
+    },
+    {
+      "match_id": "G2",
+      "match": "BRA 2-0 SRB",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.712102293151349,
+        "market_prob": 0.7065750736015701
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": null,
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.03760145919692143,
+        "model_prob": {
+          "home": 0.712102293151349,
+          "draw": 0.15376262323683718,
+          "away": 0.13413508361181378,
+          "home_elo": 1980,
+          "away_elo": 1690,
+          "elo_diff": 290
+        }
+      }
+    },
+    {
+      "match_id": "B3",
+      "match": "WAL 0-2 IRN",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.42495528375974956,
+        "market_prob": 0.3107769423558897
+      },
+      "full": {
+        "action": "EXECUTE",
+        "direction": "home",
+        "amount": 200.0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.11417834140385985,
+        "model_prob": {
+          "home": 0.42495528375974956,
+          "draw": 0.19630292092448154,
+          "away": 0.37874179531576885,
+          "home_elo": 1720,
+          "away_elo": 1700,
+          "elo_diff": 20
+        }
+      }
+    },
+    {
+      "match_id": "A3",
+      "match": "QAT 1-3 SEN",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6138742672942372,
+        "market_prob": 0.33
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.2838742672942372,
+        "model_prob": {
+          "home": 0.21781080934194616,
+          "draw": 0.16831492336381673,
+          "away": 0.6138742672942372,
+          "home_elo": 1550,
+          "away_elo": 1730,
+          "elo_diff": -180
+        }
+      }
+    },
+    {
+      "match_id": "A4",
+      "match": "NED 1-1 ECU",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.719389412009678,
+        "market_prob": 0.5591798695246971
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.16020954248498087,
+        "model_prob": {
+          "home": 0.719389412009678,
+          "draw": 0.1526830500726403,
+          "away": 0.12792753791768174,
+          "home_elo": 1870,
+          "away_elo": 1570,
+          "elo_diff": 300
+        }
+      }
+    },
+    {
+      "match_id": "B4",
+      "match": "ENG 0-0 USA",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.5926120196446937,
+        "market_prob": 0.5434782608695653
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.10027424445621877,
+        "model_prob": {
+          "home": 0.5926120196446937,
+          "draw": 0.17146488597856388,
+          "away": 0.2359230943767424,
+          "home_elo": 1900,
+          "away_elo": 1740,
+          "elo_diff": 160
+        }
+      }
+    },
+    {
+      "match_id": "D3",
+      "match": "TUN 0-1 AUS",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.41245920758567844,
+        "market_prob": 0.371002132196162
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.11101425202801332,
+        "model_prob": {
+          "home": 0.41245920758567844,
+          "draw": 0.19815419146878835,
+          "away": 0.3893866009455331,
+          "home_elo": 1630,
+          "away_elo": 1620,
+          "elo_diff": 10
+        }
+      }
+    },
+    {
+      "match_id": "C3",
+      "match": "POL 2-0 KSA",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.523790351110311,
+        "market_prob": 0.5687203791469194
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.12393284642121472,
+        "model_prob": {
+          "home": 0.523790351110311,
+          "draw": 0.18166068872439833,
+          "away": 0.29454896016529053,
+          "home_elo": 1660,
+          "away_elo": 1560,
+          "elo_diff": 100
+        }
+      }
+    },
+    {
+      "match_id": "D4",
+      "match": "FRA 2-1 DEN",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.5704432206004035,
+        "market_prob": 0.5435134260757037
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.08924308301884068,
+        "model_prob": {
+          "home": 0.5704432206004035,
+          "draw": 0.17474915250364395,
+          "away": 0.25480762689595254,
+          "home_elo": 1930,
+          "away_elo": 1790,
+          "elo_diff": 140
+        }
+      }
+    },
+    {
+      "match_id": "C4",
+      "match": "ARG 2-0 MEX",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6241405027985047,
+        "market_prob": 0.6370875995449374
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.07709735199606574,
+        "model_prob": {
+          "home": 0.6241405027985047,
+          "draw": 0.1667939995854067,
+          "away": 0.20906549761608847,
+          "home_elo": 1950,
+          "away_elo": 1760,
+          "elo_diff": 190
+        }
+      }
+    },
+    {
+      "match_id": "E3",
+      "match": "JPN 0-1 CRC",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.5704432206004035,
+        "market_prob": 0.5321160743397456
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09913412105357813,
+        "model_prob": {
+          "home": 0.5704432206004035,
+          "draw": 0.17474915250364395,
+          "away": 0.25480762689595254,
+          "home_elo": 1670,
+          "away_elo": 1530,
+          "elo_diff": 140
+        }
+      }
+    },
+    {
+      "match_id": "F3",
+      "match": "BEL 0-2 MAR",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7045426878040015,
+        "market_prob": 0.5613836121349589
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.14315907566904262,
+        "model_prob": {
+          "home": 0.7045426878040015,
+          "draw": 0.15488256476977755,
+          "away": 0.14057474742622086,
+          "home_elo": 1960,
+          "away_elo": 1680,
+          "elo_diff": 280
+        }
+      }
+    },
+    {
+      "match_id": "F4",
+      "match": "CRO 4-1 CAN",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6341526120388238,
+        "market_prob": 0.5762514551804424
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09080103371557793,
+        "model_prob": {
+          "home": 0.6341526120388238,
+          "draw": 0.16531072414239648,
+          "away": 0.20053666381877977,
+          "home_elo": 1800,
+          "away_elo": 1600,
+          "elo_diff": 200
+        }
+      }
+    },
+    {
+      "match_id": "E4",
+      "match": "ESP 1-1 GER",
+      "outcome": "draw",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.44997552016401615,
+        "market_prob": 0.37264742785445426
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.08971243823053504,
+        "model_prob": {
+          "home": 0.44997552016401615,
+          "draw": 0.19259621923496056,
+          "away": 0.35742826060102323,
+          "home_elo": 1880,
+          "away_elo": 1840,
+          "elo_diff": 40
+        }
+      }
+    },
+    {
+      "match_id": "G3",
+      "match": "CMR 3-3 SRB",
+      "outcome": "draw",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.5357064415240914,
+        "market_prob": 0.48571428571428565
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09153322943214051,
+        "model_prob": {
+          "home": 0.2843982164794777,
+          "draw": 0.1798953419964309,
+          "away": 0.5357064415240914,
+          "home_elo": 1580,
+          "away_elo": 1690,
+          "elo_diff": -110
+        }
+      }
+    },
+    {
+      "match_id": "H3",
+      "match": "KOR 2-3 GHA",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.5357064415240914,
+        "market_prob": 0.5321160743397456
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09398793156079119,
+        "model_prob": {
+          "home": 0.5357064415240914,
+          "draw": 0.1798953419964309,
+          "away": 0.28439821647947766,
+          "home_elo": 1650,
+          "away_elo": 1540,
+          "elo_diff": 110
+        }
+      }
+    },
+    {
+      "match_id": "G4",
+      "match": "BRA 1-0 SUI",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.6626036328409933,
+        "market_prob": 0.6151930261519302
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.08174359433076286,
+        "model_prob": {
+          "home": 0.6626036328409933,
+          "draw": 0.16109575809763063,
+          "away": 0.17630060906137607,
+          "home_elo": 1980,
+          "away_elo": 1750,
+          "elo_diff": 230
+        }
+      }
+    },
+    {
+      "match_id": "H4",
+      "match": "POR 2-0 URU",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.44997552016401615,
+        "market_prob": 0.4592445328031809
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09500281328491988,
+        "model_prob": {
+          "home": 0.44997552016401615,
+          "draw": 0.19259621923496056,
+          "away": 0.35742826060102323,
+          "home_elo": 1860,
+          "away_elo": 1820,
+          "elo_diff": 40
+        }
+      }
+    },
+    {
+      "match_id": "A5",
+      "match": "NED 2-0 QAT",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "home",
+        "model_prob": 0.7331590178946772,
+        "market_prob": 0.8089563019140484
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "home",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.07579728401937125,
+        "model_prob": {
+          "home": 0.7331590178946772,
+          "draw": 0.15064310846004786,
+          "away": 0.11619787364527505,
+          "home_elo": 1870,
+          "away_elo": 1550,
+          "elo_diff": 320
+        }
+      }
+    },
+    {
+      "match_id": "A6",
+      "match": "ECU 1-2 SEN",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.5926120196446936,
+        "market_prob": 0.3287671232876712
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.26384489635702235,
+        "model_prob": {
+          "home": 0.23592309437674247,
+          "draw": 0.1714648859785639,
+          "away": 0.5926120196446936,
+          "home_elo": 1570,
+          "away_elo": 1730,
+          "elo_diff": -160
+        }
+      }
+    },
+    {
+      "match_id": "B5",
+      "match": "WAL 0-3 ENG",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6138742672942372,
+        "market_prob": 0.5435134260757036
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09567731215866784,
+        "model_prob": {
+          "home": 0.21781080934194616,
+          "draw": 0.16831492336381673,
+          "away": 0.6138742672942372,
+          "home_elo": 1720,
+          "away_elo": 1900,
+          "elo_diff": -180
+        }
+      }
+    },
+    {
+      "match_id": "B6",
+      "match": "IRN 0-1 USA",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.44997552016401615,
+        "market_prob": 0.33
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.13740378076503945,
+        "model_prob": {
+          "home": 0.35742826060102323,
+          "draw": 0.19259621923496056,
+          "away": 0.44997552016401615,
+          "home_elo": 1700,
+          "away_elo": 1740,
+          "elo_diff": -40
+        }
+      }
+    },
+    {
+      "match_id": "D5",
+      "match": "TUN 1-0 FRA",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.719389412009678,
+        "market_prob": 0.6227544910179641
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.09663492099171389,
+        "model_prob": {
+          "home": 0.12792753791768174,
+          "draw": 0.1526830500726403,
+          "away": 0.719389412009678,
+          "home_elo": 1630,
+          "away_elo": 1930,
+          "elo_diff": -300
+        }
+      }
+    },
+    {
+      "match_id": "D6",
+      "match": "AUS 1-0 DEN",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6033617521990365,
+        "market_prob": 0.5435134260757036
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.0941199025149344,
+        "model_prob": {
+          "home": 0.22676591479341335,
+          "draw": 0.16987233300755017,
+          "away": 0.6033617521990365,
+          "home_elo": 1620,
+          "away_elo": 1790,
+          "elo_diff": -170
+        }
+      }
+    },
+    {
+      "match_id": "C5",
+      "match": "POL 0-2 ARG",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.712102293151349,
+        "market_prob": 0.5591798695246971
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.15292242362665187,
+        "model_prob": {
+          "home": 0.13413508361181375,
+          "draw": 0.15376262323683718,
+          "away": 0.712102293151349,
+          "home_elo": 1660,
+          "away_elo": 1950,
+          "elo_diff": -290
+        }
+      }
+    },
+    {
+      "match_id": "C6",
+      "match": "KSA 1-2 MEX",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6341526120388239,
+        "market_prob": 0.4626168224299065
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1715357896089174,
+        "model_prob": {
+          "home": 0.20053666381877971,
+          "draw": 0.16531072414239648,
+          "away": 0.6341526120388239,
+          "home_elo": 1560,
+          "away_elo": 1760,
+          "elo_diff": -200
+        }
+      }
+    },
+    {
+      "match_id": "F5",
+      "match": "CRO 0-0 BEL",
+      "outcome": "draw",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.5926120196446936,
+        "market_prob": 0.358695652173913
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.23391636747078054,
+        "model_prob": {
+          "home": 0.23592309437674247,
+          "draw": 0.1714648859785639,
+          "away": 0.5926120196446936,
+          "home_elo": 1800,
+          "away_elo": 1960,
+          "elo_diff": -160
+        }
+      }
+    },
+    {
+      "match_id": "F6",
+      "match": "CAN 1-2 MAR",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.4995522974723087,
+        "market_prob": 0.3287671232876712
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1707851741846375,
+        "model_prob": {
+          "home": 0.31519619104210744,
+          "draw": 0.18525151148558391,
+          "away": 0.4995522974723087,
+          "home_elo": 1600,
+          "away_elo": 1680,
+          "elo_diff": -80
+        }
+      }
+    },
+    {
+      "match_id": "E5",
+      "match": "JPN 2-1 ESP",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6439039521386282,
+        "market_prob": 0.4998173182316404
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.14408663390698778,
+        "model_prob": {
+          "home": 0.19222996669672424,
+          "draw": 0.1638660811646477,
+          "away": 0.6439039521386282,
+          "home_elo": 1670,
+          "away_elo": 1880,
+          "elo_diff": -210
+        }
+      }
+    },
+    {
+      "match_id": "E6",
+      "match": "CRC 2-4 GER",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.7264070917430597,
+        "market_prob": 0.7813282580386658
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.05492116629560606,
+        "model_prob": {
+          "home": 0.1219495144410972,
+          "draw": 0.15164339381584296,
+          "away": 0.7264070917430597,
+          "home_elo": 1530,
+          "away_elo": 1840,
+          "elo_diff": -310
+        }
+      }
+    },
+    {
+      "match_id": "H5",
+      "match": "KOR 2-1 POR",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.6439039521386282,
+        "market_prob": 0.4689165186500889
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1749874334885393,
+        "model_prob": {
+          "home": 0.19222996669672424,
+          "draw": 0.1638660811646477,
+          "away": 0.6439039521386282,
+          "home_elo": 1650,
+          "away_elo": 1860,
+          "elo_diff": -210
+        }
+      }
+    },
+    {
+      "match_id": "H6",
+      "match": "GHA 0-2 URU",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.7045426878040015,
+        "market_prob": 0.5435134260757036
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.1610292617282979,
+        "model_prob": {
+          "home": 0.1405747474262209,
+          "draw": 0.15488256476977755,
+          "away": 0.7045426878040015,
+          "home_elo": 1540,
+          "away_elo": 1820,
+          "elo_diff": -280
+        }
+      }
+    },
+    {
+      "match_id": "G5",
+      "match": "CMR 1-0 BRA",
+      "outcome": "home_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.7782101167315174,
+        "market_prob": 0.7194244604316546
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.058785656299862765,
+        "model_prob": {
+          "home": 0.07782101167315175,
+          "draw": 0.14396887159533073,
+          "away": 0.7782101167315174,
+          "home_elo": 1580,
+          "away_elo": 1980,
+          "elo_diff": -400
+        }
+      }
+    },
+    {
+      "match_id": "G6",
+      "match": "SRB 2-3 SUI",
+      "outcome": "away_win",
+      "elo": {
+        "direction": "away",
+        "model_prob": 0.47489541177165256,
+        "market_prob": 0.333889816360601
+      },
+      "full": {
+        "action": "ABANDON",
+        "direction": "away",
+        "amount": 0,
+        "is_trap": false,
+        "trap_reason": "",
+        "pd": 0.14100559541105157,
+        "model_prob": {
+          "home": 0.33620020478711077,
+          "draw": 0.18890438344123664,
+          "away": 0.47489541177165256,
+          "home_elo": 1690,
+          "away_elo": 1750,
+          "elo_diff": -60
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+# Football Quant OS - 生产级配置 v4.2
+# Redis + 并发优化配置
+
+# Redis 配置
+redis:
+  enabled: true
+  host: localhost
+  port: 6379
+  db: 0
+  password: null
+  
+  # 缓存 TTL 策略
+  cache_ttl:
+    odds: 300        # 赔率: 5分钟
+    fixtures: 3600   # 赛程: 1小时
+    predictions: 86400  # 预测: 24小时
+    team_info: 604800   # 球队: 7天
+    
+  # 连接池
+  connection_pool:
+    max_connections: 50
+    socket_timeout: 2
+    socket_connect_timeout: 2
+    retry_on_timeout: true
+
+# 并发调度配置
+scheduler:
+  # 异步模式
+  async_mode: true
+  
+  # 并发限制
+  max_concurrent_agents: 9
+  
+  # 超时配置
+  timeouts:
+    agent_default: 30      # 单个 Agent 超时
+    phase1: 60             # 第一阶段超时
+    phase2: 30             # 第二阶段超时
+    phase3: 30             # 第三阶段超时
+    total_pipeline: 120     # 总流水线超时
+  
+  # 重试策略
+  retry:
+    max_retries: 3
+    backoff_factor: 2
+    retry_on:
+      - ConnectionError
+      - TimeoutError
+      - asyncio.TimeoutError
+
+# 数据源配置
+data_sources:
+  primary: "500.com"
+  secondary: "OddsPortal"
+  official: "The Odds API"
+  
+  # 自动获取配置
+  auto_fetch:
+    enabled: true
+    fallback_to_manual: true
+    cache_before_fetch: true
+    
+  # 数据融合策略
+  fusion:
+    method: "weighted_average"
+    weights:
+      500.com: 0.4
+      OddsPortal: 0.3
+      TheOddsAPI: 0.3
+
+# 9 Agent 配置
+agents:
+  # 并行分组
+  phase1:
+    - DataScout
+    - GeneEngine
+    - Analyst
+  
+  phase2:
+    - Committee
+  
+  phase3:
+    - RiskControl
+    - Execution
+  
+  # 各 Agent 超时
+  timeouts:
+    DataScout: 30
+    GeneEngine: 20
+    Analyst: 25
+    Committee: 20
+    RiskControl: 15
+    Execution: 15
+
+# 日志和监控
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/football_quant_os.log"
+  max_size: 10MB
+  backup_count: 5
+
+# 性能监控
+monitoring:
+  enabled: true
+  metrics:
+    - prediction_latency
+    - agent_execution_time
+    - cache_hit_rate
+    - redis_connection_status
+    - error_rate

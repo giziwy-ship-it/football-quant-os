@@ -1,0 +1,198 @@
+{
+  "model_name": "ModelEnsemble",
+  "version": "1.0",
+  "markets": {
+    "1x2": {
+      "market": "1X2",
+      "implied": {
+        "home": 0.446,
+        "draw": 0.252,
+        "away": 0.196
+      },
+      "model": {
+        "home": 0.31200000643730164,
+        "draw": 0.46399998664855957,
+        "away": 0.2240000069141388
+      },
+      "edge": {
+        "home": -0.1340000033378601,
+        "draw": 0.21199999749660492,
+        "away": 0.02800000086426735
+      },
+      "recommendations": [
+        "平局 (+21.2%)",
+        "客胜 (+2.8%)"
+      ],
+      "fusion_method": "weighted_average"
+    },
+    "total_goals": {
+      "prediction": 1,
+      "most_likely": 1
+    },
+    "over_under": {
+      "market": "Over/Under",
+      "line": 2.5,
+      "lambda": 2.53,
+      "over_prob": 0.371,
+      "under_prob": 0.629,
+      "expected_goals": 2.53,
+      "recommendation": "No Edge",
+      "edge": 0.0,
+      "fusion_method": "weighted_average + voting"
+    },
+    "upset_score": 14,
+    "asian_handicap": {
+      "prediction": "away_win",
+      "confidence": 0.691
+    },
+    "over_under_15": {
+      "over_1_5": 0.061000000685453415,
+      "under_1_5": 0.9390000104904175,
+      "prediction": "Under 1.5",
+      "confidence": 0.8790000081062317,
+      "line": 1.5
+    },
+    "correct_score": {
+      "prediction": "4",
+      "confidence": 0.858
+    }
+  },
+  "confidence": 0.684,
+  "metadata": {
+    "models_used": [
+      "HeuristicModel",
+      "PoissonModel",
+      "XGBoostPredictor"
+    ],
+    "weights": [
+      0.513,
+      0.256,
+      0.231
+    ],
+    "individual_predictions": [
+      {
+        "model_name": "HeuristicModel",
+        "version": "5.1",
+        "markets": {
+          "1x2": {
+            "market": "1X2",
+            "implied": {
+              "home": 0.446,
+              "draw": 0.252,
+              "away": 0.196
+            },
+            "model": {
+              "home": 0.44,
+              "draw": 0.302,
+              "away": 0.258
+            },
+            "edge": {
+              "home": -0.006,
+              "draw": 0.05,
+              "away": 0.062
+            },
+            "recommendations": [
+              "平局 (+5.0%)",
+              "客胜 (+6.2%)"
+            ],
+            "format_2026": true
+          },
+          "over_under": {
+            "market": "Over/Under",
+            "line": 2.5,
+            "over_prob": 0.45,
+            "under_prob": 0.55,
+            "recommendation": "No Edge",
+            "edge": 0.0,
+            "format_2026": true
+          },
+          "upset_score": 14
+        },
+        "confidence": 0.65,
+        "metadata": {
+          "calibration": {
+            "group_adjustment": 0.95,
+            "knockout_adjustment": 1.2,
+            "group_upset_rate": 0.342,
+            "knockout_upset_rate": 0.373,
+            "worldcup_2026_format": true,
+            "third_place_qualify": true,
+            "group_stage_conservative": 0.92
+          },
+          "stage": "group"
+        }
+      },
+      {
+        "model_name": "PoissonModel",
+        "version": "2.2",
+        "markets": {
+          "over_under": {
+            "market": "Over/Under",
+            "line": 2.5,
+            "lambda": 2.61,
+            "over_prob": 0.485,
+            "under_prob": 0.515,
+            "expected_goals": 2.61,
+            "most_likely": 2,
+            "recommendation": "No Edge",
+            "edge": 0.0,
+            "factors_applied": {
+              "stage": "group",
+              "first_match": false,
+              "motivation": "must_win",
+              "home_region": "europe",
+              "away_region": "africa",
+              "home_experience": "experienced",
+              "away_experience": "experienced"
+            }
+          }
+        },
+        "confidence": 0.75,
+        "metadata": {
+          "lambda": 2.61,
+          "factors": 5
+        }
+      },
+      {
+        "model_name": "XGBoostPredictor",
+        "version": "2.0",
+        "markets": {
+          "1x2": {
+            "home": 0.027000000700354576,
+            "draw": 0.8230000138282776,
+            "away": 0.15000000596046448,
+            "prediction": "draw",
+            "confidence": 0.823
+          },
+          "over_under": {
+            "over_prob": 0.07000000029802322,
+            "under_prob": 0.9300000071525574,
+            "recommendation": "Under 2.5",
+            "confidence": 0.8610000014305115,
+            "line": 2.5
+          },
+          "over_under_15": {
+            "over_1_5": 0.061000000685453415,
+            "under_1_5": 0.9390000104904175,
+            "prediction": "Under 1.5",
+            "confidence": 0.8790000081062317,
+            "line": 1.5
+          },
+          "asian_handicap": {
+            "prediction": "away_win",
+            "confidence": 0.691
+          },
+          "total_goals": {
+            "prediction": 1,
+            "most_likely": 1
+          },
+          "correct_score": {
+            "prediction": "4",
+            "confidence": 0.858
+          }
+        },
+        "confidence": 0.685
+      }
+    ]
+  }
+}

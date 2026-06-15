@@ -26,6 +26,14 @@ from models.matrix_108 import ProbabilityMatrix108
 from models.kelly import Kelly
 from models.historical_odds import HistoricalOddsFactor
 
+# 世界杯 Agent（可选）
+try:
+    from agents.worldcup_analyst import WorldCupAnalyst
+    _WORLD_CUP_AGENT_AVAILABLE = True
+except ImportError:
+    _WORLD_CUP_AGENT_AVAILABLE = False
+    WorldCupAnalyst = None
+
 
 # 资金信号映射（中文 → 英文）
 SIGNAL_MAP = {
@@ -42,18 +50,25 @@ async def run_match_task(match: Dict[str, Any]) -> Dict[str, Any]:
     """
     执行完整比赛分析任务
     
-    三阶段流水线：
-    Phase 1: DataScout + Analyst (并行)
+    支持两种模式:
+    - 普通模式: 108矩阵 + 9 Agent 流水线
+    - 世界杯模式: 9 Agent + WorldCupAnalyst 六维预测
+    
+    三阶段流水线:
+    Phase 1: DataScout + GeneEngine + Analyst + WorldCupAnalyst(世界杯) (并行)
     Phase 2: Committee (综合)
     Phase 3: RiskControl (风控)
     """
     
+    # ===== 模式检测 =====
+    league = match.get('league', 'Unknown')
+    is_worldcup = league.lower() in ['world cup', 'worldcup', 'fifa world cup', '2026 world cup']
+    
     bankroll = match.get('bankroll', config.DEFAULT_BANKROLL)
     home_team = match.get('home_team', '')
     away_team = match.get('away_team', '')
-    league = match.get('league', 'Unknown')
     
-    # ===== 预处理：新系统 =====
+    # ===== 预处理：实力评定 + 108矩阵 + 基因 + 历史赔率（两种模式共用）=====
     
     # 1. 实力评定
     evaluator = TeamEvaluator()
@@ -92,20 +107,19 @@ async def run_match_task(match: Dict[str, Any]) -> Dict[str, Any]:
         "money_flow_signal": "neutral"
     })
     
-    # 将矩阵概率注入 match_data 作为基础概率
+    # 将矩阵概率注入 match_data
     if 'probabilities' in matrix_result:
         probs = matrix_result['probabilities']
         match['home_win'] = probs.get('home_win', 40)
         match['draw'] = probs.get('draw', 30)
         match['away_win'] = probs.get('away_win', 30)
     
-    # ===== 优先级1: 真实赔率概率（最高优先级）=====
+    # ===== 优先级: 真实赔率概率 =====
     market_odds = match.get('market_odds', {})
-    if market_odds and all(k in market_odds for k in ['home_win', 'draw', 'away_win']):
-        # 赔率转概率
-        home_odds = market_odds['home_win']
+    if market_odds and all(k in market_odds for k in ['home', 'draw', 'away']):
+        home_odds = market_odds['home']
         draw_odds = market_odds['draw']
-        away_odds = market_odds['away_win']
+        away_odds = market_odds['away']
         
         home_prob = (1 / home_odds) * 100
         draw_prob = (1 / draw_odds) * 100
@@ -118,7 +132,6 @@ async def run_match_task(match: Dict[str, Any]) -> Dict[str, Any]:
         
         print(f"[Tasks] 优先级1 - 真实赔率概率: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
     
-    # ===== 优先级2: 历史赔率调整（次优先级，不覆盖真实赔率）=====
     elif historical_result.get('probability_adjustment', {}).get('adjusted'):
         adj_probs = historical_result['probability_adjustment']['adjusted_probs']
         match['home_win'] = adj_probs.get('home_win', match.get('home_win', 40))
@@ -126,26 +139,54 @@ async def run_match_task(match: Dict[str, Any]) -> Dict[str, Any]:
         match['away_win'] = adj_probs.get('away_win', match.get('away_win', 30))
         print(f"[Tasks] 优先级2 - 历史赔率调整: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
     
-    # ===== 优先级3: 108矩阵概率（默认）=====
     else:
         print(f"[Tasks] 优先级3 - 108矩阵概率: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
     
     # ===== Phase 1: Agent 并行分析 =====
     scheduler = PipelineScheduler()
-    scheduler.add_phase1([
-        DataScout(),
-        Analyst()
-    ])
+    
+    # 基础 Agent（两种模式都有）
+    phase1_agents = [DataScout(), Analyst()]
+    
+    # 世界杯模式额外加入 WorldCupAnalyst
+    if is_worldcup and _WORLD_CUP_AGENT_AVAILABLE and WorldCupAnalyst:
+        print(f"[Tasks] 世界杯模式: 加入 WorldCupAnalyst")
+        phase1_agents.append(WorldCupAnalyst())
+    
+    scheduler.add_phase1(phase1_agents)
     scheduler.add_phase2(Committee())
     scheduler.add_phase3([RiskControl()])
     
-    # 确保 match 中包含真实赔率概率（传递给 Agents）
+    print(f"[Tasks] Phase 1 Agents: {[getattr(a, 'name', a.__class__.__name__) for a in phase1_agents]}")
     print(f"[Tasks] 传入 Agents 的概率: 主{match.get('home_win', 40)}% 平{match.get('draw', 30)}% 客{match.get('away_win', 30)}%")
     
     pipeline_result = await scheduler.run(match)
     
-    # 提取资金信号传递给Committee（修复：使用正确的变量名和信号映射）
+    # ===== 后续处理（与普通模式一致）=====
     phase1_results = pipeline_result.get('phase1', {})
+    datascout_result = phase1_results.get('DataScout', {})
+    
+    if datascout_result and 'market_odds' in datascout_result:
+        # DataScout 自动获取到了真实赔率
+        ds_odds = datascout_result['market_odds']
+        if ds_odds and all(k in ds_odds for k in ['home_win', 'draw', 'away_win']):
+            home_odds = ds_odds['home_win']
+            draw_odds = ds_odds['draw']
+            away_odds = ds_odds['away_win']
+            
+            home_prob = (1 / home_odds) * 100
+            draw_prob = (1 / draw_odds) * 100
+            away_prob = (1 / away_odds) * 100
+            
+            total = home_prob + draw_prob + away_prob
+            match['home_win'] = round(home_prob / total * 100, 2)
+            match['draw'] = round(draw_prob / total * 100, 2)
+            match['away_win'] = round(away_prob / total * 100, 2)
+            
+            print(f"[Tasks] 优先级0 - DataScout 自动获取: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
+            print(f"[Tasks] 来源: {datascout_result.get('key_factors', [''])[-1] if datascout_result.get('key_factors') else 'auto'}")
+    
+    # 提取资金信号传递给Committee（修复：使用正确的变量名和信号映射）
     analyst_result = phase1_results.get('Analyst', {})
     
     # 收集所有Agent观点（修复：使用正确的变量名 gene_matchup）

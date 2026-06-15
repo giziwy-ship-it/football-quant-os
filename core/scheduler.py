@@ -7,9 +7,17 @@
 """
 
 import asyncio
-from typing import Dict, List, Any
+from typing import Dict, List, Any, Optional
 
 
+# 默认超时配置 (秒)
+DEFAULT_TIMEOUTS = {
+    'agent': 30,      # 单个 Agent 超时
+    'phase1': 60,     # 第一阶段超时
+    'phase2': 30,     # 第二阶段超时
+    'phase3': 30,     # 第三阶段超时
+    'total': 120,     # 总流水线超时
+}
 class AsyncScheduler:
     """
     异步并发调度器
@@ -24,24 +32,31 @@ class AsyncScheduler:
     def __init__(self, agents: List[Any]):
         self.agents = agents
     
-    async def run(self, match_data: Dict[str, Any]) -> Dict[str, Any]:
+    async def run(self, match_data: Dict[str, Any], timeout: int = None) -> Dict[str, Any]:
         """
-        并发执行所有 Agent
+        并发执行所有 Agent（带超时控制）
         
         Args:
             match_data: 比赛数据
+            timeout: 单个 Agent 超时（秒），默认 30s
             
         Returns:
             合并后的 Agent 结果字典
         """
-        tasks = [self._run_agent(agent, match_data) for agent in self.agents]
+        timeout = timeout or DEFAULT_TIMEOUTS['agent']
+        tasks = [self._run_agent_with_timeout(agent, match_data, timeout) for agent in self.agents]
         results = await asyncio.gather(*tasks, return_exceptions=True)
         
         merged = {}
         for agent, result in zip(self.agents, results):
             agent_name = getattr(agent, 'name', agent.__class__.__name__)
             
-            if isinstance(result, Exception):
+            if isinstance(result, asyncio.TimeoutError):
+                merged[agent_name] = {
+                    "error": f"Agent timeout ({timeout}s)",
+                    "status": "timeout"
+                }
+            elif isinstance(result, Exception):
                 merged[agent_name] = {
                     "error": str(result),
                     "status": "failed"
@@ -51,16 +66,20 @@ class AsyncScheduler:
         
         return merged
     
-    async def _run_agent(self, agent: Any, match_data: Dict[str, Any]) -> Any:
-        """包装单个 Agent 的执行"""
+    async def _run_agent_with_timeout(self, agent: Any, match_data: Dict[str, Any], 
+                                       timeout: int) -> Any:
+        """带超时的 Agent 执行"""
         run_method = getattr(agent, 'run', None) or getattr(agent, 'analyze', None)
         
         if asyncio.iscoroutinefunction(run_method):
-            return await run_method(match_data)
+            return await asyncio.wait_for(run_method(match_data), timeout=timeout)
         else:
             # 同步方法放入线程池执行，避免阻塞事件循环
             loop = asyncio.get_event_loop()
-            return await loop.run_in_executor(None, run_method, match_data)
+            return await asyncio.wait_for(
+                loop.run_in_executor(None, run_method, match_data),
+                timeout=timeout
+            )
 
 
 class PipelineScheduler:
@@ -90,17 +109,31 @@ class PipelineScheduler:
         """添加第三阶段 Agent（依赖第二阶段结果）"""
         self.phase3_agents.extend(agents)
     
-    async def run(self, match_data: Dict[str, Any]) -> Dict[str, Any]:
-        """执行三阶段流水线"""
+    async def run(self, match_data: Dict[str, Any], total_timeout: int = None) -> Dict[str, Any]:
+        """执行三阶段流水线（带总超时控制）"""
+        total_timeout = total_timeout or DEFAULT_TIMEOUTS['total']
+        
+        try:
+            return await asyncio.wait_for(self._run_pipeline(match_data), timeout=total_timeout)
+        except asyncio.TimeoutError:
+            print(f"[Pipeline] 总流水线超时 ({total_timeout}s)")
+            return {
+                'phase1': {},
+                'phase2': {'Committee': {'error': 'Pipeline timeout', 'status': 'timeout'}},
+                'phase3': {'RiskControl': {'error': 'Pipeline timeout', 'status': 'timeout'}}
+            }
+    
+    async def _run_pipeline(self, match_data: Dict[str, Any]) -> Dict[str, Any]:
+        """实际流水线执行（内部方法）"""
         
         # 打印传入的 match_data 中的概率（调试用）
         print(f"[Pipeline] 传入概率: 主{match_data.get('home_win', 40)}% 平{match_data.get('draw', 30)}% 客{match_data.get('away_win', 30)}%")
         
-        # Phase 1: 并行独立分析
+        # Phase 1: 并行独立分析（带超时）
         scheduler = AsyncScheduler(self.phase1_agents)
-        phase1_results = await scheduler.run(match_data)
+        phase1_results = await scheduler.run(match_data, timeout=DEFAULT_TIMEOUTS['phase1'])
         
-        # Phase 2: 综合决策
+        # Phase 2: 综合决策（带超时）
         phase2_results = {}
         for agent in self.phase2_agents:
             agent_name = getattr(agent, 'name', agent.__class__.__name__)
@@ -111,18 +144,26 @@ class PipelineScheduler:
                 agent.receive_other_opinions(opinions)
             
             run_method = getattr(agent, 'run', None) or getattr(agent, 'analyze', None)
-            if asyncio.iscoroutinefunction(run_method):
-                phase2_results[agent_name] = await run_method(match_data)
-            else:
-                loop = asyncio.get_event_loop()
-                phase2_results[agent_name] = await loop.run_in_executor(None, run_method, match_data)
-            
-            # 打印 Committee 的输出概率
-            if agent_name == 'Committee' and 'prediction' in phase2_results[agent_name]:
-                pred = phase2_results[agent_name]['prediction']
-                print(f"[Pipeline] Committee 输出: 主{pred.get('home_win', 0)}% 平{pred.get('draw', 0)}% 客{pred.get('away_win', 0)}%")
+            try:
+                if asyncio.iscoroutinefunction(run_method):
+                    result = await asyncio.wait_for(run_method(match_data), timeout=DEFAULT_TIMEOUTS['phase2'])
+                else:
+                    loop = asyncio.get_event_loop()
+                    result = await asyncio.wait_for(
+                        loop.run_in_executor(None, run_method, match_data),
+                        timeout=DEFAULT_TIMEOUTS['phase2']
+                    )
+                phase2_results[agent_name] = result
+                
+                # 打印 Committee 的输出概率
+                if agent_name == 'Committee' and 'prediction' in phase2_results[agent_name]:
+                    pred = phase2_results[agent_name]['prediction']
+                    print(f"[Pipeline] Committee 输出: 主{pred.get('home_win', 0)}% 平{pred.get('draw', 0)}% 客{pred.get('away_win', 0)}%")
+            except asyncio.TimeoutError:
+                phase2_results[agent_name] = {'error': 'Agent timeout', 'status': 'timeout'}
+                print(f"[Pipeline] {agent_name} 超时")
         
-        # Phase 3: 风险控制和执行
+        # Phase 3: 风险控制和执行（带超时）
         # 将前两阶段结果合并到 match_data
         enriched_data = match_data.copy()
         enriched_data['_phase1_results'] = phase1_results
@@ -136,7 +177,7 @@ class PipelineScheduler:
                 print(f"[Pipeline] Phase 3 资金数据传递: 已提取 money_flow_analysis")
         
         scheduler3 = AsyncScheduler(self.phase3_agents)
-        phase3_results = await scheduler3.run(enriched_data)
+        phase3_results = await scheduler3.run(enriched_data, timeout=DEFAULT_TIMEOUTS['phase3'])
         
         return {
             'phase1': phase1_results,

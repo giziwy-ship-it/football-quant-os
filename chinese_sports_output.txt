@@ -1,0 +1,74 @@
+============================================================
+Chinese Sports News Fetcher v2.0 - Test Output
+============================================================
+
+[TEST 1] 新浪体育国际足球
+Fetched 15 items
+
+1. [form] {{value.title}}
+   URL: https://sports.sina.com.cn{{value.url}}
+
+2. [form] {{value.comment_count_show}}
+   URL: https://sports.sina.com.cn{{value.commentUrl}}
+
+3. [form] 世界杯开门红 韩国赢得让人心服口服
+   URL: https://sports.sina.com.cn/china/2026-06-12/doc-iniccspn5035462.shtml
+
+4. [form] 不只看球，预判巅峰！美加墨世界杯最全攻略
+   URL: https://sports.sina.com.cn/l/2026-05-28/doc-inhzmihu0220777.shtml
+
+5. [form] 16年轮回！世界杯揭幕战墨西哥或1-0小胜南非
+   URL: https://sports.sina.com.cn/l/2026-06-11/doc-iniaysmc0937302.shtml
+
+6. [form] 穆里尼奥回归皇马获官宣！1.5亿神秘新援浮现
+   URL: https://sports.sina.com.cn/china/2026-06-10/doc-iniawttw2720557.shtml
+
+7. [form] 世界杯鱼腩球队大盘点 4支新军搅局者盼奇迹
+   URL: https://sports.sina.com.cn/l/2026-06-10/doc-iniavshm4919454.shtml
+
+8. [form] 世界杯球星盘点:梅罗内最后一舞 00后全面接班
+   URL: https://sports.sina.com.cn/l/2026-06-09/doc-iniauefa3398030.shtml
+
+9. [form] 盘点近3届世界杯大冷门 巴西1-7德国比分500倍
+   URL: https://sports.sina.com.cn/l/2026-06-05/doc-iniaicva8713259.shtml
+
+10. [market] 近3届世界杯赢指情况盘点：强队输盘成常态？
+   URL: https://sports.sina.com.cn/l/2026-06-05/doc-iniaicva8712852.shtml
+
+11. [market] 世界杯夺冠赔率：西法并列第1 葡萄牙压阿根廷
+   URL: https://sports.sina.com.cn/l/2026-06-04/doc-iniaeuqa0586719.shtml
+
+12. [market] 世界杯金靴赔率：姆巴佩领衔 梅西第3&amp;C罗第7
+   URL: https://sports.sina.com.cn/l/2026-06-04/doc-iniaeuqa0587866.shtml
+
+13. [form] 世界杯冠军&amp;冠亚军开售 西法英葡力压卫冕冠军
+   URL: https://sports.sina.com.cn/l/2026-06-02/doc-inhzysxp7849362.shtml
+
+14. [form] 世界杯L组巡礼:英格兰黄金一代 格子老将谢幕礼
+   URL: https://sports.sina.com.cn/l/2026-06-03/doc-iniaarqw2595009.shtml
+
+15. [form] 世界杯K组巡礼：葡萄牙一骑绝尘 中超旧将聚首
+   URL: https://sports.sina.com.cn/l/2026-06-03/doc-iniaarqw2594924.shtml
+
+
+[TEST 2] 关键词过滤: 美国
+Fetched 5 items with keyword
+
+1. [form] 世界杯球场巡礼：揭幕战高原打响 8强开始均在美国
+   URL: https://sports.sina.com.cn/l/2026-05-27/doc-inhzhttv1745746.shtml
+
+2. [form] 世界杯伊朗碰美国 实现这一世纪之战要过几关
+   URL: https://sports.sina.com.cn/china/2026-06-03/doc-iniaavwu2572105.shtml
+
+3. [form] 美国特使提议：用意大利取代伊朗参加世界杯
+   URL: https://sports.sina.com.cn/china/2026-04-23/doc-inhvmvzn5607489.shtml
+
+4. [form] 官方：美国私募买下维罗纳100%股权 俱乐部已易主
+   URL: https://sports.sina.com.cn/g/seriea/2025-01-16/doc-inefcmaf7070618.shtml
+
+5. [form] 马卡：安帅给维尼修斯多放几天假 他去美国看NFL
+   URL: https://sports.sina.com.cn/g/2024-12-23/doc-ineankcp3644160.shtml
+
+============================================================
+Test complete.
+============================================================

@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "model": "Poisson Over/Under v1.0",
+    "total_matches": 192,
+    "years": [
+      2014,
+      2018,
+      2022
+    ]
+  },
+  "overall": {
+    "mae": 1.061,
+    "rmse": 1.432,
+    "mean_actual": 2.67,
+    "mean_predicted": 2.26,
+    "accuracy": 0.75,
+    "f1_score": 0.707,
+    "roi_percent": 68.89,
+    "total_bets": 54,
+    "wins": 48,
+    "losses": 6
+  },
+  "by_stage": {
+    "group": {
+      "mae": 1.028,
+      "rmse": 1.341,
+      "mean_actual": 2.62,
+      "mean_predicted": 2.32,
+      "accuracy": 0.757,
+      "f1_score": 0.724,
+      "roi_percent": 69.35,
+      "total_bets": 46,
+      "wins": 41,
+      "losses": 5
+    },
+    "knockout": {
+      "mae": 1.161,
+      "rmse": 1.676,
+      "mean_actual": 2.79,
+      "mean_predicted": 2.09,
+      "accuracy": 0.729,
+      "f1_score": 0.649,
+      "roi_percent": 66.25,
+      "total_bets": 8,
+      "wins": 7,
+      "losses": 1
+    }
+  },
+  "by_year": {
+    "2022": {
+      "mae": 1.207,
+      "rmse": 1.565,
+      "mean_actual": 2.69,
+      "mean_predicted": 2.26,
+      "accuracy": 0.656,
+      "f1_score": 0.56,
+      "roi_percent": 30.63,
+      "total_bets": 16,
+      "wins": 11,
+      "losses": 5
+    },
+    "2018": {
+      "mae": 0.877,
+      "rmse": 1.26,
+      "mean_actual": 2.64,
+      "mean_predicted": 2.24,
+      "accuracy": 0.797,
+      "f1_score": 0.755,
+      "roi_percent": 80.0,
+      "total_bets": 19,
+      "wins": 18,
+      "losses": 1
+    },
+    "2014": {
+      "mae": 1.1,
+      "rmse": 1.455,
+      "mean_actual": 2.67,
+      "mean_predicted": 2.28,
+      "accuracy": 0.797,
+      "f1_score": 0.787,
+      "roi_percent": 90.0,
+      "total_bets": 19,
+      "wins": 19,
+      "losses": 0
+    }
+  }
+}

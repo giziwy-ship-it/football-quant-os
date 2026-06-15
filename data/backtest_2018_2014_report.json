@@ -1,0 +1,394 @@
+{
+  "metadata": {
+    "source": "Kaggle FIFA World Cup (1930-2018)",
+    "calibration": {
+      "group_adjustment": 0.95,
+      "knockout_adjustment": 1.2,
+      "group_upset_rate": 0.342,
+      "knockout_upset_rate": 0.373
+    },
+    "model_version": "4.3.3_data_driven"
+  },
+  "summary": {
+    "2018": {
+      "total_matches": 64,
+      "correct_predictions": 27,
+      "accuracy": 42.2,
+      "group_accuracy": 33.3,
+      "knockout_accuracy": 66.7
+    },
+    "2014": {
+      "total_matches": 64,
+      "correct_predictions": 32,
+      "accuracy": 50.0,
+      "group_accuracy": 41.7,
+      "knockout_accuracy": 80.0
+    },
+    "average": {
+      "accuracy": 46.1,
+      "group_accuracy": 37.5,
+      "knockout_accuracy": 73.3
+    }
+  },
+  "famous_upsets": {
+    "2018": [
+      {
+        "match": "Argentina 1-1 Iceland",
+        "stage": "Group D",
+        "predicted": "home",
+        "actual": "D",
+        "confidence": 0.43
+      },
+      {
+        "match": "Germany 0-1 Mexico",
+        "stage": "Group F",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.43
+      },
+      {
+        "match": "Brazil 1-2 Belgium",
+        "stage": "Quarterfinals",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.519
+      }
+    ],
+    "2014": [
+      {
+        "match": "Spain 1-5 Netherlands",
+        "stage": "Group B",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.43
+      },
+      {
+        "match": "England 1-2 Italy",
+        "stage": "Group D",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.43
+      },
+      {
+        "match": "Uruguay 1-3 Costa Rica",
+        "stage": "Group D",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.43
+      },
+      {
+        "match": "Brazil 1-7 Germany",
+        "stage": "Semifinals",
+        "predicted": "home",
+        "actual": "A",
+        "confidence": 0.519
+      }
+    ]
+  },
+  "detailed_results": {
+    "2018": [
+      {
+        "date": "2018-06-14",
+        "home": "Russia",
+        "away": "Saudi Arabia",
+        "score": "5-0",
+        "stage": "Group A",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-15",
+        "home": "Egypt",
+        "away": "Uruguay",
+        "score": "0-1",
+        "stage": "Group A",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-15",
+        "home": "Morocco",
+        "away": "Iran",
+        "score": "0-1",
+        "stage": "Group B",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-15",
+        "home": "Portugal",
+        "away": "Spain",
+        "score": "3-3",
+        "stage": "Group B",
+        "stage_type": "group",
+        "outcome": "D",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-16",
+        "home": "France",
+        "away": "Australia",
+        "score": "2-1",
+        "stage": "Group C",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-16",
+        "home": "Argentina",
+        "away": "Iceland",
+        "score": "1-1",
+        "stage": "Group D",
+        "stage_type": "group",
+        "outcome": "D",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-16",
+        "home": "Peru",
+        "away": "Denmark",
+        "score": "0-1",
+        "stage": "Group C",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-16",
+        "home": "Croatia",
+        "away": "Nigeria",
+        "score": "2-0",
+        "stage": "Group D",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-17",
+        "home": "Costa Rica",
+        "away": "Serbia",
+        "score": "0-1",
+        "stage": "Group E",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2018-06-17",
+        "home": "Germany",
+        "away": "Mexico",
+        "score": "0-1",
+        "stage": "Group F",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      }
+    ],
+    "2014": [
+      {
+        "date": "2014-06-12",
+        "home": "Brazil",
+        "away": "Croatia",
+        "score": "3-1",
+        "stage": "Group A",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-13",
+        "home": "Chile",
+        "away": "Australia",
+        "score": "3-1",
+        "stage": "Group B",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-13",
+        "home": "Mexico",
+        "away": "Cameroon",
+        "score": "1-0",
+        "stage": "Group A",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-13",
+        "home": "Spain",
+        "away": "Netherlands",
+        "score": "1-5",
+        "stage": "Group B",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-14",
+        "home": "Colombia",
+        "away": "Greece",
+        "score": "3-0",
+        "stage": "Group C",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-14",
+        "home": "England",
+        "away": "Italy",
+        "score": "1-2",
+        "stage": "Group D",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-14",
+        "home": "Ivory Coast",
+        "away": "Japan",
+        "score": "2-1",
+        "stage": "Group C",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-14",
+        "home": "Uruguay",
+        "away": "Costa Rica",
+        "score": "1-3",
+        "stage": "Group D",
+        "stage_type": "group",
+        "outcome": "A",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": false,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-15",
+        "home": "Argentina",
+        "away": "Bosnia and Herzegovina",
+        "score": "2-1",
+        "stage": "Group F",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      },
+      {
+        "date": "2014-06-15",
+        "home": "France",
+        "away": "Honduras",
+        "score": "3-0",
+        "stage": "Group E",
+        "stage_type": "group",
+        "outcome": "H",
+        "prediction": "home",
+        "confidence": 0.43,
+        "correct": true,
+        "home_prob": 0.43,
+        "draw_prob": 0.252,
+        "away_prob": 0.318
+      }
+    ]
+  }
+}

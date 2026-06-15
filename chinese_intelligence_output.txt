@@ -1,0 +1,97 @@
+============================================================
+Chinese Sports News - Intelligence Conversion Test
+============================================================
+
+Total converted: 30 items
+
+1. [sina_sports | form]
+   世界杯开门红 韩国赢得让人心服口服
+
+2. [sina_sports | form]
+   不只看球，预判巅峰！美加墨世界杯最全攻略
+
+3. [sina_sports | form]
+   16年轮回！世界杯揭幕战墨西哥或1-0小胜南非
+
+4. [sina_sports | form]
+   穆里尼奥回归皇马获官宣！1.5亿神秘新援浮现
+
+5. [sina_sports | form]
+   世界杯鱼腩球队大盘点 4支新军搅局者盼奇迹
+
+6. [sina_sports | form]
+   世界杯球星盘点:梅罗内最后一舞 00后全面接班
+
+7. [sina_sports | form]
+   盘点近3届世界杯大冷门 巴西1-7德国比分500倍
+
+8. [sina_sports | market]
+   近3届世界杯赢指情况盘点：强队输盘成常态？
+
+9. [sina_sports | market]
+   世界杯夺冠赔率：西法并列第1 葡萄牙压阿根廷
+
+10. [sina_sports | market]
+   世界杯金靴赔率：姆巴佩领衔 梅西第3&amp;C罗第7
+
+11. [sina_sports | form]
+   世界杯冠军&amp;冠亚军开售 西法英葡力压卫冕冠军
+
+12. [sina_sports | form]
+   世界杯L组巡礼:英格兰黄金一代 格子老将谢幕礼
+
+13. [sina_sports | form]
+   世界杯K组巡礼：葡萄牙一骑绝尘 中超旧将聚首
+
+14. [sina_sports | form]
+   世界杯J组巡礼：卫冕冠军领衔 奥地利终进正赛
+
+15. [sina_sports | form]
+   世界杯I组巡礼:姆巴佩大战哈兰德 伊拉克盼奇迹
+
+16. [netease_sports | form]
+   " target="_blank">前瞻
+
+17. [netease_sports | form]
+   " target="_blank">统计
+
+18. [netease_sports | form]
+   " target="_blank">战报
+
+19. [netease_sports | form]
+   韩国2-1逆转捷克 亚洲球队世界杯开门红
+
+20. [netease_sports | form]
+   英格兰3-0哥斯达黎加 戈登传射
+
+21. [netease_sports | form]
+   水晶宫1-0夺欧协联冠军 首踢欧战即夺冠
+
+22. [netease_sports | form]
+   曼城为瓜帅办盛大仪式告别 后者数度哽咽
+
+23. [netease_sports | form]
+   阿斯：德泽尔比强调希望留波罗，球员将成为热刺顶薪球员之一
+
+24. [netease_sports | form]
+   DO：纽卡重燃对特拉福德的兴趣，球员希望世界杯后决定未来
+
+25. [netease_sports | form]
+   莫雷托：赖因德斯不在曼城计划核心内，曼城已和马竞有过接触
+
+26. [netease_sports | form]
+   马卡：巴萨仍想签阿尔瓦雷斯，马竞不愿放人
+
+27. [netease_sports | transfer]
+   库库雷利亚：世界杯期间不谈转会，巴萨回归之路不好走
+
+28. [netease_sports | form]
+   截胡巴萨！皇马免签B席达成协议，穆帅钦点强援将重聚姆巴佩
+
+29. [netease_sports | form]
+   队报：姆巴佩代表法国国脚与足协谈奖金等事宜
+
+30. [netease_sports | form]
+   官方：施蒂尔出任欧塞尔新帅，他曾执教兰斯、圣徒等俱乐部
+
+============================================================

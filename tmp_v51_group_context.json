@@ -1,0 +1,159 @@
+{
+  "match": "Sweden vs Tunisia",
+  "timestamp": "2026-06-15T10:43:25.314739",
+  "version": "5.1.0",
+  "stage": "group",
+  "models": [
+    "HeuristicModel",
+    "PoissonModel",
+    "XGBoostPredictor"
+  ],
+  "weights": [
+    0.513,
+    0.256,
+    0.231
+  ],
+  "confidence": 0.684,
+  "markets": {
+    "1x2": {
+      "market": "1X2",
+      "implied": {
+        "home": 0.446,
+        "draw": 0.252,
+        "away": 0.196
+      },
+      "model": {
+        "home": "0.312",
+        "draw": "0.464",
+        "away": "0.224",
+        "adjusted": true,
+        "adjustments": {
+          "motivation_diff": 0.0,
+          "rotation_home": 0.0,
+          "rotation_away": 0.0,
+          "match_importance": 0.5
+        },
+        "context_adjusted": true
+      },
+      "edge": {
+        "home": "-0.134",
+        "draw": "0.212",
+        "away": "0.028"
+      },
+      "recommendations": [
+        "平局 (+21.2%)",
+        "客胜 (+2.8%)"
+      ],
+      "fusion_method": "weighted_average",
+      "group_context": {
+        "home_points": 0,
+        "away_points": 0,
+        "home_played": 0,
+        "away_played": 0,
+        "home_goal_diff": 0,
+        "away_goal_diff": 0,
+        "home_goals_for": 0,
+        "away_goals_for": 0,
+        "home_status": "unknown",
+        "away_status": "unknown",
+        "home_must_win": false,
+        "away_must_win": false,
+        "home_must_not_lose": false,
+        "away_must_not_lose": false,
+        "home_rotation_risk": 0.0,
+        "away_rotation_risk": 0.0,
+        "home_motivation": 0.5,
+        "away_motivation": 0.5,
+        "match_importance": 0.5
+      }
+    },
+    "over_under_15": {
+      "over_1_5": "0.061",
+      "under_1_5": "0.939",
+      "prediction": "Under 1.5",
+      "confidence": "0.879",
+      "line": 1.5
+    },
+    "correct_score": {
+      "prediction": "4",
+      "confidence": 0.858
+    },
+    "upset_score": 14,
+    "over_under": {
+      "market": "Over/Under",
+      "line": 2.5,
+      "lambda": 2.53,
+      "over_prob": 0.371,
+      "under_prob": 0.629,
+      "expected_goals": 2.53,
+      "recommendation": "No Edge",
+      "edge": 0.0,
+      "fusion_method": "weighted_average + voting"
+    },
+    "total_goals": {
+      "prediction": 1,
+      "most_likely": 1
+    },
+    "asian_handicap": {
+      "prediction": "away_win",
+      "confidence": 0.691
+    }
+  },
+  "group_context": {
+    "home_points": 0,
+    "away_points": 0,
+    "home_played": 0,
+    "away_played": 0,
+    "home_goal_diff": 0,
+    "away_goal_diff": 0,
+    "home_goals_for": 0,
+    "away_goals_for": 0,
+    "home_status": "unknown",
+    "away_status": "unknown",
+    "home_must_win": false,
+    "away_must_win": false,
+    "home_must_not_lose": false,
+    "away_must_not_lose": false,
+    "home_rotation_risk": 0.0,
+    "away_rotation_risk": 0.0,
+    "home_motivation": 0.5,
+    "away_motivation": 0.5,
+    "match_importance": 0.5
+  },
+  "group_context_display": "主队: 积分=0, 场次=0, 净胜球=0, 状态=unknown, 战意=0.5\n客队: 积分=0, 场次=0, 净胜球=0, 状态=unknown, 战意=0.5\n比赛重要性: 0.5",
+  "recommendations": [
+    "平局 (+21.2%)",
+    "客胜 (+2.8%)"
+  ],
+  "upset_score": 14,
+  "kelly": {
+    "bankroll": 100000,
+    "fraction": 0.25,
+    "recommendations": [
+      {
+        "opportunity": "BettingOpportunity(match='Sweden vs Tunisia', market='1x2', selection='draw', odds=3.9682539682539684, model_probability=np.float32(0.464), model_confidence=np.float64(0.684), edge=np.float32(0.212))",
+        "stake": {
+          "action": "bet",
+          "stake": 4846.52,
+          "kelly_pct": "28.34",
+          "fraction": 0.0485,
+          "expected_value": "84.13",
+          "confidence": 0.684,
+          "edge": "0.212"
+        }
+      },
+      {
+        "opportunity": "BettingOpportunity(match='Sweden vs Tunisia', market='1x2', selection='away', odds=5.1020408163265305, model_probability=np.float32(0.224), model_confidence=np.float64(0.684), edge=np.float32(0.028))",
+        "stake": {
+          "action": "bet",
+          "stake": 595.52,
+          "kelly_pct": "3.48",
+          "fraction": 0.006,
+          "expected_value": "14.29",
+          "confidence": 0.684,
+          "edge": "0.028"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "total_matches": 8,
+  "group_stage": {
+    "count": 5,
+    "avg_upset_score": 12.0,
+    "avg_edge_on_upset": 0.0038
+  },
+  "knockout_stage": {
+    "count": 3,
+    "avg_upset_score": 14.0,
+    "avg_edge_on_upset": 0.017
+  },
+  "upsets_detected": 8,
+  "details": [
+    {
+      "year": "2022",
+      "match": "沙特阿拉伯 vs 阿根廷",
+      "stage": "group",
+      "is_upset": true,
+      "upset_score": 12,
+      "edge_home": 0.004
+    },
+    {
+      "year": "2022",
+      "match": "日本 vs 德国",
+      "stage": "group",
+      "is_upset": true,
+      "upset_score": 12,
+      "edge_home": 0.015
+    },
+    {
+      "year": "2022",
+      "match": "摩洛哥 vs 西班牙",
+      "stage": "knockout",
+      "is_upset": true,
+      "upset_score": 14,
+      "edge_home": 0.022
+    },
+    {
+      "year": "2018",
+      "match": "德国 vs 墨西哥",
+      "stage": "group",
+      "is_upset": true,
+      "upset_score": 12,
+      "edge_home": 0.0
+    },
+    {
+      "year": "2018",
+      "match": "德国 vs 韩国",
+      "stage": "group",
+      "is_upset": true,
+      "upset_score": 12,
+      "edge_home": 0.0
+    },
+    {
+      "year": "2018",
+      "match": "比利时 vs 日本",
+      "stage": "knockout",
+      "is_upset": true,
+      "upset_score": 14,
+      "edge_home": 0.0
+    },
+    {
+      "year": "2014",
+      "match": "西班牙 vs 荷兰",
+      "stage": "group",
+      "is_upset": true,
+      "upset_score": 12,
+      "edge_home": 0.0
+    },
+    {
+      "year": "2014",
+      "match": "哥斯达黎加 vs 希腊",
+      "stage": "knockout",
+      "is_upset": true,
+      "upset_score": 14,
+      "edge_home": 0.029
+    }
+  ]
+}

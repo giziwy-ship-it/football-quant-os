@@ -1,0 +1,89 @@
+{
+  "match": "Sweden vs Tunisia",
+  "1x2": {
+    "companies": [
+      {
+        "company": "竞*官*竞*官*(中国)",
+        "home": 1.67,
+        "draw": 3.35,
+        "away": 4.3
+      },
+      {
+        "company": "威**尔威**尔(英国)",
+        "home": 1.85,
+        "draw": 3.25,
+        "away": 4.2
+      },
+      {
+        "company": "*门*门(中国澳门)",
+        "home": 1.88,
+        "draw": 3.0,
+        "away": 4.1
+      },
+      {
+        "company": "立*立*(英国)",
+        "home": 1.91,
+        "draw": 3.3,
+        "away": 4.2
+      },
+      {
+        "company": "**t3*5**t3*5(英国)",
+        "home": 1.91,
+        "draw": 3.4,
+        "away": 4.2
+      }
+    ],
+    "average": {
+      "home": 1.897,
+      "draw": 3.355,
+      "away": 4.311
+    }
+  },
+  "ah": {
+    "companies": [
+      {
+        "company": "竞*官*竞*官*(中国)",
+        "handicap": "1.84",
+        "home": 3.32,
+        "away": 3.17
+      },
+      {
+        "company": "立*立*(英国)",
+        "handicap": "1.91",
+        "home": 3.4,
+        "away": 3.5
+      },
+      {
+        "company": "伟*伟*(直布罗陀)",
+        "handicap": "1.83",
+        "home": 3.6,
+        "away": 3.4
+      },
+      {
+        "company": "B**nB**n(奥地利)",
+        "handicap": "1.87",
+        "home": 3.4,
+        "away": 3.5
+      },
+      {
+        "company": "Pi****le平*Pi****le平*(荷兰)",
+        "handicap": "1.88",
+        "home": 3.7,
+        "away": 3.88
+      }
+    ],
+    "average": {
+      "home": 3.52,
+      "away": 3.502
+    },
+    "handicap": "1.84"
+  },
+  "ou": {
+    "companies": [],
+    "average": {
+      "over": 0,
+      "under": 0
+    },
+    "line": ""
+  }
+}

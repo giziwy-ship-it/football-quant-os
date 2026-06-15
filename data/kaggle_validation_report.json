@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "total_matches": 900,
+    "years_covered": [
+      1930,
+      1934,
+      1938,
+      1950,
+      1954,
+      1958,
+      1962,
+      1966,
+      1970,
+      1974,
+      1978,
+      1982,
+      1986,
+      1990,
+      1994,
+      1998,
+      2002,
+      2006,
+      2010,
+      2014,
+      2018
+    ],
+    "source": "Kaggle - FIFA World Cup (Evan Gower)"
+  },
+  "upset_rates": {
+    "2018": {
+      "group": {
+        "total": 48,
+        "upsets": 23,
+        "rate": 47.9
+      },
+      "knockout": {
+        "total": 15,
+        "upsets": 5,
+        "rate": 33.3
+      }
+    },
+    "2014": {
+      "group": {
+        "total": 48,
+        "upsets": 19,
+        "rate": 39.6
+      },
+      "knockout": {
+        "total": 15,
+        "upsets": 3,
+        "rate": 20.0
+      }
+    },
+    "2010": {
+      "group": {
+        "total": 48,
+        "upsets": 17,
+        "rate": 35.4
+      },
+      "knockout": {
+        "total": 15,
+        "upsets": 6,
+        "rate": 40.0
+      }
+    },
+    "2006": {
+      "group": {
+        "total": 48,
+        "upsets": 12,
+        "rate": 25.0
+      },
+      "knockout": {
+        "total": 15,
+        "upsets": 6,
+        "rate": 40.0
+      }
+    },
+    "2002": {
+      "group": {
+        "total": 48,
+        "upsets": 11,
+        "rate": 22.9
+      },
+      "knockout": {
+        "total": 15,
+        "upsets": 8,
+        "rate": 53.3
+      }
+    },
+    "average": {
+      "group": 34.2,
+      "knockout": 37.3
+    }
+  },
+  "stage_distribution": {},
+  "recommendations": [
+    "小组赛平均爆冷率: 34.2%",
+    "淘汰赛平均爆冷率: 37.3%",
+    "淘汰赛爆冷率比小组赛高: 3.2个百分点",
+    "建议：小组赛模型概率下调15-20%，淘汰赛上调30-40%"
+  ]
+}

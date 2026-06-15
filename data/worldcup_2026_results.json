@@ -1,0 +1,58 @@
+{
+  "fetch_time": "2026-06-15T11:42:00+08:00",
+  "source": "OddsPortal + 500.com + Browser",
+  "tournament": "2026 FIFA World Cup",
+  "status": "进行中 (Day 4)",
+  "matches": [
+    {"group": "A", "date": "2026-06-12", "time": "12:00", "home": "Mexico", "away": "South Africa", "home_score": 2, "away_score": 0, "status": "finished", "winner": "home"},
+    {"group": "A", "date": "2026-06-12", "time": "15:00", "home": "South Korea", "away": "Czechia", "home_score": 2, "away_score": 1, "status": "finished", "winner": "home"},
+    {"group": "B", "date": "2026-06-13", "time": "12:00", "home": "Canada", "away": "Bosnia", "home_score": 1, "away_score": 1, "status": "finished", "winner": "draw"},
+    {"group": "B", "date": "2026-06-13", "time": "15:00", "home": "Qatar", "away": "Switzerland", "home_score": 1, "away_score": 1, "status": "finished", "winner": "draw"},
+    {"group": "C", "date": "2026-06-14", "time": "09:00", "home": "Brazil", "away": "Morocco", "home_score": 1, "away_score": 1, "status": "finished", "winner": "draw"},
+    {"group": "C", "date": "2026-06-14", "time": "15:00", "home": "Haiti", "away": "Scotland", "home_score": 0, "away_score": 1, "status": "finished", "winner": "away"},
+    {"group": "D", "date": "2026-06-14", "time": "18:00", "home": "Australia", "away": "Turkey", "home_score": 2, "away_score": 0, "status": "finished", "winner": "home"},
+    {"group": "D", "date": "2026-06-13", "time": "09:00", "home": "United States", "away": "Paraguay", "home_score": 4, "away_score": 1, "status": "finished", "winner": "home"},
+    {"group": "E", "date": "2026-06-15", "time": "01:00", "home": "Germany", "away": "Curacao", "home_score": 7, "away_score": 1, "status": "finished", "winner": "home"},
+    {"group": "F", "date": "2026-06-15", "time": "04:00", "home": "Netherlands", "away": "Japan", "home_score": 2, "away_score": 2, "status": "finished", "winner": "draw"},
+    {"group": "E", "date": "2026-06-15", "time": "07:00", "home": "Ivory Coast", "away": "Ecuador", "home_score": 1, "away_score": 0, "status": "finished", "winner": "home"},
+    {"group": "F", "date": "2026-06-15", "time": "10:00", "home": "Sweden", "away": "Tunisia", "home_score": 3, "away_score": 1, "status": "finished", "winner": "home"}
+  ],
+  "groups_standings": {
+    "A": [
+      {"team": "Mexico", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 2, "goal_against": 0, "goal_diff": 2},
+      {"team": "South Korea", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 2, "goal_against": 1, "goal_diff": 1},
+      {"team": "Czechia", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 1, "goal_against": 2, "goal_diff": -1},
+      {"team": "South Africa", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 0, "goal_against": 2, "goal_diff": -2}
+    ],
+    "B": [
+      {"team": "Canada", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0},
+      {"team": "Switzerland", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0},
+      {"team": "Qatar", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0},
+      {"team": "Bosnia", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0}
+    ],
+    "C": [
+      {"team": "Scotland", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 1, "goal_against": 0, "goal_diff": 1},
+      {"team": "Morocco", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0},
+      {"team": "Brazil", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 1, "goal_against": 1, "goal_diff": 0},
+      {"team": "Haiti", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 0, "goal_against": 1, "goal_diff": -1}
+    ],
+    "D": [
+      {"team": "United States", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 4, "goal_against": 1, "goal_diff": 3},
+      {"team": "Australia", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 2, "goal_against": 0, "goal_diff": 2},
+      {"team": "Turkey", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 0, "goal_against": 2, "goal_diff": -2},
+      {"team": "Paraguay", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 1, "goal_against": 4, "goal_diff": -3}
+    ],
+    "E": [
+      {"team": "Germany", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 7, "goal_against": 1, "goal_diff": 6},
+      {"team": "Ivory Coast", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 1, "goal_against": 0, "goal_diff": 1},
+      {"team": "Ecuador", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 0, "goal_against": 1, "goal_diff": -1},
+      {"team": "Curacao", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 1, "goal_against": 7, "goal_diff": -6}
+    ],
+    "F": [
+      {"team": "Sweden", "points": 3, "played": 1, "won": 1, "drawn": 0, "lost": 0, "goal_for": 3, "goal_against": 1, "goal_diff": 2},
+      {"team": "Netherlands", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 2, "goal_against": 2, "goal_diff": 0},
+      {"team": "Japan", "points": 1, "played": 1, "won": 0, "drawn": 1, "lost": 0, "goal_for": 2, "goal_against": 2, "goal_diff": 0},
+      {"team": "Tunisia", "points": 0, "played": 1, "won": 0, "drawn": 0, "lost": 1, "goal_for": 1, "goal_against": 3, "goal_diff": -2}
+    ]
+  }
+}

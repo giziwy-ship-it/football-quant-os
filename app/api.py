@@ -1,45 +1,62 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-API路由 - Football Quant OS
+API路由 - Football Quant OS (P0 安全修复版)
+轻量认证：开发模式 localhost 免认证，生产模式强制认证
 """
 
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-from fastapi import APIRouter
-from pydantic import BaseModel
+from fastapi import APIRouter, Request, Depends
+from pydantic import BaseModel, Field
 from typing import Dict, Any, Optional, List
 from datetime import date
+
+from app.auth import require_auth, validator
+from core.config import config
 from app.tasks import run_match_task
 
 router = APIRouter()
 
 
 class MatchRequest(BaseModel):
-    home_team: str
-    away_team: str
-    league: str
-    home_team_rank: Optional[int] = 8
-    away_team_rank: Optional[int] = 8
+    home_team: str = Field(..., min_length=1, max_length=50)
+    away_team: str = Field(..., min_length=1, max_length=50)
+    league: str = Field(..., min_length=1, max_length=50)
+    home_team_rank: Optional[int] = Field(8, ge=1, le=100)
+    away_team_rank: Optional[int] = Field(8, ge=1, le=100)
     home_recent_5: Optional[List[str]] = None
     away_recent_5: Optional[List[str]] = None
     home_team_genes: Optional[Dict[str, float]] = None
     away_team_genes: Optional[Dict[str, float]] = None
     market_odds: Dict[str, float]
-    bankroll: Optional[float] = 10000
+    bankroll: Optional[float] = Field(10000, ge=100)
 
 
 class BacktestRequest(BaseModel):
-    dataset_path: Optional[str] = "data/backtest_dataset.json"
-    bankroll: Optional[float] = 1000
-    strategy: Optional[str] = "kelly_compressed"
+    dataset_path: Optional[str] = Field("data/backtest_dataset.json", max_length=200)
+    bankroll: Optional[float] = Field(1000, ge=100)
+    strategy: Optional[str] = Field("kelly_compressed", max_length=50)
+
+
+# ===== 健康检查（免认证） =====
+
+@router.get("/health")
+async def health_check():
+    """健康检查端点（永远免认证）"""
+    return {
+        "status": "ok",
+        "version": config.VERSION,
+        "auth_mode": config.AUTH_MODE,
+        "system": config.SYSTEM_NAME
+    }
 
 
 # ===== Fixtures 赛程模块 =====
 
 @router.get("/fixtures/today")
-async def get_today_fixtures():
+async def get_today_fixtures(request: Request, _=Depends(require_auth)):
     """获取今天所有比赛赛程"""
     from fixtures.espn_client import ESPNClient
     from fixtures.models import MatchFixtureResponse, FixturesResponse
@@ -49,12 +66,10 @@ async def get_today_fixtures():
         fixtures = await client.fetch_fixtures()
         await client.close()
         
-        # 转换为响应模型
         fixture_responses = []
         leagues_set = set()
         
         for f in fixtures:
-            # 确保联赛名不为空或 Unknown
             league = f.league if f.league and f.league != "Unknown" else "其他联赛"
             league_en = f.league_en if f.league_en and f.league_en != "Unknown" else "Other"
             
@@ -89,21 +104,13 @@ async def get_today_fixtures():
 
 
 @router.get("/fixtures/date/{query_date}")
-async def get_fixtures_by_date(query_date: str):
-    """
-    获取指定日期的比赛赛程
+async def get_fixtures_by_date(query_date: str, request: Request, _=Depends(require_auth)):
+    """获取指定日期的比赛赛程"""
+    # 输入验证
+    query_date = validator.validate_date(query_date)
     
-    Args:
-        query_date: 日期格式 YYYY-MM-DD (例如: 2026-05-05)
-    """
     from fixtures.espn_client import ESPNClient
     from fixtures.models import MatchFixtureResponse, FixturesResponse
-    
-    # 验证日期格式
-    try:
-        validated_date = date.fromisoformat(query_date)
-    except ValueError:
-        return {"error": "Invalid date format", "detail": "Use YYYY-MM-DD format"}
     
     client = ESPNClient()
     try:
@@ -114,7 +121,6 @@ async def get_fixtures_by_date(query_date: str):
         leagues_set = set()
         
         for f in fixtures:
-            # 确保联赛名不为空或 Unknown
             league = f.league if f.league and f.league != "Unknown" else "其他联赛"
             league_en = f.league_en if f.league_en and f.league_en != "Unknown" else "Other"
             
@@ -149,14 +155,14 @@ async def get_fixtures_by_date(query_date: str):
 # ===== 原有分析模块 =====
 
 @router.post("/analyze")
-async def analyze(match: MatchRequest):
+async def analyze(match: MatchRequest, request: Request, _=Depends(require_auth)):
     """分析单场比赛"""
     result = await run_match_task(match.dict())
     return result
 
 
 @router.post("/backtest")
-async def backtest(request: BacktestRequest):
+async def backtest(request: BacktestRequest, req: Request, _=Depends(require_auth)):
     """运行回测"""
     from backtest.engine import BacktestEngine
     engine = BacktestEngine(bankroll=request.bankroll)
@@ -165,7 +171,7 @@ async def backtest(request: BacktestRequest):
 
 
 @router.get("/matrix/108")
-async def get_matrix_108(strength_gap: str, first_scorer: Optional[str] = None):
+async def get_matrix_108(strength_gap: str, first_scorer: Optional[str] = None, request: Request = None, _=Depends(require_auth)):
     """查询108组合概率矩阵"""
     from models.matrix_108 import ProbabilityMatrix108
     matrix = ProbabilityMatrix108()
@@ -174,7 +180,7 @@ async def get_matrix_108(strength_gap: str, first_scorer: Optional[str] = None):
 
 
 @router.get("/agents")
-async def list_agents():
+async def list_agents(request: Request, _=Depends(require_auth)):
     """列出所有Agent"""
     return {
         "agents": [

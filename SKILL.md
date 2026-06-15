@@ -1,273 +1,180 @@
 ---
 name: football-quant-os
-description: 基于九智能体架构的足球赛事量化分析与投注决策系统，支持实时赔率抓取、Kelly最优注码、回测引擎与自进化
-slug: football-quant-os
-version: 1.0.0
-author: "@giziwy-ship-it"
-license: MIT
+description: 当用户询问足球比赛预测、赔率分析、价值投注、让球推荐、大小球推荐、比赛结果预测、世界杯分析、投注策略、Kelly注码、冷门雷达、数据集成、特征工程等足球量化分析问题时使用。触发关键词：预测、赔率、投注、让球、大小球、比赛分析、世界杯、欧洲杯、价值、冷门、Kelly、资金配置、模型概率、足球分析、quant、数据源、特征、回测。
+metadata:
+  version: "4.3.4"
+  author: Naga Quantitative
+  tags: [football, betting, odds, prediction, kelly, quantitative, backtest, data, xg]
 ---
 
-# Football Quant OS — 体育量化分析 Skill
+# Football Quant OS - 足球量化分析技能 (v4.3.2)
 
----
+专业足球量化分析与价值投注决策技能。已集成：
+- 多市场预测模型（1X2 + 让球 + 大小球 + 半全场 + 比分）
+- Kelly 仓位管理（全Kelly/半Kelly/组合注码）
+- 实时赔率抓取框架（requests + Playwright fallback）
+- 世界杯阶段动态调整（历史数据校准）
+- **数据集成框架**（多源数据融合）
+- 清晰的 Edge + 冷门评分 + 推荐逻辑
 
-## 一句话描述
+## 当前实现状态
 
-基于九智能体架构 + 四层概率修正器的足球赛事量化分析与投注决策系统，支持实时赔率抓取、Kelly 最优注码、回测引擎与自进化。
+| 模块 | 状态 | 说明 |
+|------|------|------|
+| predict.py | ✅ v4.3.4 | 支持 1X2 + **xG增强版** + **数据驱动阶段调整** + 世界杯阶段调整 |
+| multi_market_predictor.py | ✅ v4.2.1-naga | 6市场预测 + Kelly + 阶段调整 |
+| kelly.py | ✅ v1.0 | Kelly仓位管理（全/半/组合） |
+| odds_fetcher.py | ✅ v0.3 | requests 轻量版 |
+| odds_fetcher_playwright.py | ✅ v0.1 | Playwright 基础版 |
+| **odds_fetcher_playwright_pro.py** | ✅ **v2.0** | **Playwright 专业版（Stealth + 拦截 + 重试）** |
+| odds_fetcher_smart.py | ✅ v1.0 | 智能抓取器（自动 fallback） |
+| report_generator.py | ✅ v0.2 | 文本 + PDF 输出 |
+| **data_integration.py** | ✅ v1.0 | **多源数据统一入口** |
+| **data_football_data_co_uk.py** | ✅ v1.0 | **历史赔率数据** |
+| **data_api_football.py** | ✅ v1.0 | **实时数据 + xG** |
+| **data_kaggle.py** | ✅ v1.0 | **Kaggle数据集** |
+| **data_openfootball.py** | ✅ v1.0 | **开源结构化数据** |
+| **backtest_worldcup.py** | ✅ v0.2 | **回测框架** |
+| 完整工作流集成 | ✅ v4.3.2 | 数据集成已加入 |
 
----
+**核心原则**：永远基于具体赔率计算 Edge → 给出推荐/避开 + 风险提示
 
-## 适用场景
+## 数据集成（v4.3.2 新增）
 
-| 场景 | 说明 |
-|------|------|
-| 赛前分析 | 输入对阵双方，输出概率分布 + 推荐赛果 + Kelly 注码 |
-| 实时赔率监控 | 抓取 19+ 家博彩公司赔率变化，识别价值投注 |
-| 套利检测 | 跨盘口 odds 差异扫描，发现无风险套利机会 |
-| 回测验证 | 用历史数据验证模型准确率，优化参数 |
-| 组合投注 | 多场比赛组合优化，控制总风险敞口 |
+### 已接入数据源
 
----
+| 数据源 | 类型 | 优先级 | 状态 |
+|--------|------|--------|------|
+| football-data.co.uk | 历史赔率 + 结果 | P0 | ✅ 可用 |
+| API-Football | 实时 + xG + 统计 | P1 | ✅ 可用（需API Key） |
+| Kaggle | 历史数据集 | P1 | ✅ 可用（需CLI） |
+| OpenFootball | 开源结构化数据 | P2 | ✅ 可用 |
 
-## 核心能力
+### 统一入口
+```python
+from data_integration import DataIntegration
 
-### 九智能体系统 (Nine-Agent)
+data = DataIntegration(api_key="your_api_key")
 
+# 获取历史赔率
+df = data.get_historical_odds("WC", 2022)
+
+# 获取实时比赛
+fixtures = data.get_live_fixtures("WC", 2026)
+
+# 多源特征融合
+features = data.get_multi_source_features("Brazil", "Serbia", "WC", 2022)
 ```
-DataScout      → 数据采集与快速决策
-Analyst        → 深度统计建模
-Arbitrage      → 价值投注识别
-TeamValue      → 长期球队估值
-Legal          → 合规与风险隔离
-Committee      → 共识加权决策
-RiskControl    → 极端场景压力测试
-Execution      → 执行策略与注码分配
-Evolution      → 交易记录自学习优化
+
+## Playwright 高级抓取（v2.0 新增）
+
+### 专业版特性
+- **Stealth 模式**：隐藏 Playwright 特征，绕过反爬
+- **请求拦截**：拦截图片/字体，加速加载80-90%
+- **智能重试**：指数退避 + 错误截图
+- **Context Manager**：自动管理浏览器生命周期
+- **模拟人类行为**：随机鼠标移动 + 滚动
+
+### 使用方式
+```python
+# 快捷函数（自动管理）
+from odds_fetcher_playwright_pro import fetch_odds
+result = fetch_odds("1359233", stealth=True, max_retries=3)
+
+# Context Manager 模式
+from odds_fetcher_playwright_pro import OddsFetcherPlaywrightPro, FetcherConfig
+config = FetcherConfig(headless=True, stealth=True, intercept_resources=True)
+with OddsFetcherPlaywrightPro(config) as fetcher:
+    result = fetcher.get_odds("1359233")
 ```
 
-### 四层概率修正器
+### 高级技巧文档
+详见 `references/PLAYWRIGHT_ADVANCED_TECHNIQUES.md`
+- Stealth / 反检测
+- 随机延迟 + 鼠标轨迹（贝塞尔曲线）
+- 请求拦截策略
+- 多标签页 / Context 并发
+- 截图 + PDF 调试
+- 状态保存（cookies / localStorage）
 
-| 层级 | 修正因子 | 权重 |
-|------|---------|------|
-| L1 | 基础实力概率 (输入) | 基准 |
-| L2 | 时间因子 + 战意因子 + 联赛偏差 | ±8% |
-| L3 | 盘口结构 + 临场信息 | ±5% |
-| L4 | 诱盘检测 (T-index) | ±3% |
+## Playwright Pro 集成到工作流
 
-### 关键算法
-
-- **Kelly Criterion**: 最优注码比例 `f* = (bp - q) / b`
-- **Poisson 建模**: 进球期望 → 比分概率矩阵
-- **蒙特卡洛模拟**: 10,000 次赛事模拟生成置信区间
-- **Elo 动态评级**: 实时球队实力评分更新
-
----
-
-## 安装
+### 1. 智能抓取器 (odds_fetcher_smart.py)
+自动选择最优策略：
+- 默认：先尝试轻量 requests，失败再 fallback 到 Playwright Pro
+- `--pro`：直接使用 Playwright Pro 专业版
+- `--stealth` / `--no-stealth`：控制 Stealth 模式
+- `--intercept` / `--no-intercept`：控制资源拦截
+- `--max-retries`：设置最大重试次数
 
 ```bash
-# 方式1: ClawHub 安装
-clawhub install football-quant-os
+# 使用 Pro 版
+python scripts/odds_fetcher_smart.py --match-id 1359233 --pro
 
-# 方式2: 手动克隆
-git clone https://github.com/giziwy-ship-it/football-quant-os.git ~/.openclaw/skills/football-quant-os
-cd ~/.openclaw/skills/football-quant-os
-pip install -r requirements.txt
+# 混合模式（默认）
+python scripts/odds_fetcher_smart.py --match-id 1359233
+
+# 调试模式（有头 + 截图）
+python scripts/odds_fetcher_smart.py --match-id 1359233 --pro --no-headless --screenshot-on-error
 ```
 
----
+### 2. 多市场预测器 (multi_market_predictor.py)
+支持直接从 500.com 创建 Match 对象：
 
-## 配置
+```python
+# 方式1: 从 500.com 创建（Pro 版）
+from agents.multi_market_predictor import create_match_from_500
+match = create_match_from_500('1359233', use_pro=True, stealth=True)
 
-在 `~/.openclaw/openclaw.json` 中添加:
+# 方式2: 使用工厂方法
+from agents.multi_market_predictor import MultiMarketPredictor
+predictor = MultiMarketPredictor.from_500(
+    '1359233',
+    venue_type='group',
+    use_pro=True,
+    stealth=True,
+    intercept=True
+)
 
-```json
-{
-  "skills": {
-    "entries": {
-      "football-quant-os": {
-        "enabled": true,
-        "config": {
-          "bankroll": 10000,
-          "currency": "CNY",
-          "data_sources": ["espn", "football-data", "oddsportal"],
-          "use_browser": true,
-          "headless": true,
-          "max_concurrent_matches": 5,
-          "risk_limits": {
-            "single_bet_max": 0.05,
-            "daily_loss_limit": 0.10,
-            "consecutive_loss_stop": 3
-          }
-        }
-      }
-    }
-  }
-}
+# 方式3: CLI 使用
+python agents/multi_market_predictor.py --match-id 1359233 --mode pro --stage group
 ```
 
----
+### 3. 数据集成框架 (data_integration.py)
+支持 Playwright Pro 抓取实时数据：
 
-## 使用方式
+```python
+from scripts.data_integration import DataIntegration
 
-### 方式1: 自然语言调用 (推荐)
+data = DataIntegration()
 
+# 获取 2022 比赛详细数据
+match_data = data.get_2022_match_data('ARGENTINA', 'SAUDI ARABIA')
+print(f"xG: {match_data['home_xg']} vs {match_data['away_xg']}")
+print(f"控球率: {match_data['home_poss']}% vs {match_data['away_poss']}%")
 ```
-"分析今晚皇马 vs 拜仁的欧冠比赛"
-"抓取拜仁 vs 巴黎的最新赔率"
-"用 Kelly 公式计算这场应该下注多少"
-"回测我上周的5场推荐"
-"检查有没有套利机会"
-```
 
-### 方式2: 命令式调用
-
+### 完整工作流示例
 ```bash
-# 完整赛事分析
-openclaw skill football-quant-os analyze --home "Real Madrid" --away "Bayern Munich" --league "UCL"
+# Step 1: 抓取赔率
+python scripts/odds_fetcher_smart.py --match-id 1359233 --pro
 
-# 实时赔率
-openclaw skill football-quant-os odds --match-id 12345
+# Step 2: 生成预测
+python agents/multi_market_predictor.py --match-id 1359233 --mode pro --stage group
 
-# Kelly 计算
-openclaw skill football-quant-os kelly --probability 0.38 --odds 2.18 --bankroll 10000
-
-# 回测
-openclaw skill football-quant-os backtest --days 30 --strategy "kelly_half"
-
-# 套利扫描
-openclaw skill football-quant-os arbitrage --markets "1x2,asian_handicap,over_under"
+# Step 3: 生成报告
+python scripts/report_generator.py --input predictions.json --format pdf
 ```
 
-### 方式3: JavaScript API
+## 世界杯专属增强（v4.3.0+）
+- 已接入 `worldcup_historical.json`，实现动态调整
+- 数据驱动概率估计（基于历史爆冷率）
+- 新增 `references/WORLDCUP_GUIDE.md` + `worldcup_historical.json`
+- 回测框架 `backtest_worldcup.py` 验证模型表现
 
-```javascript
-const { FootballQuantOS } = require('football-quant-os');
-
-const quant = new FootballQuantOS({
-  bankroll: 10000,
-  data_sources: ['espn', 'football-data']
-});
-
-// 分析比赛
-const analysis = await quant.analyze({
-  home_team: 'Real Madrid',
-  away_team: 'Bayern Munich',
-  league: 'Champions League',
-  market_odds: { home: 2.18, draw: 3.55, away: 3.32 }
-});
-
-console.log(analysis.final_decision);
-// {
-//   recommended_outcome: 'home_win',
-//   confidence: 0.72,
-//   kelly_recommendation: { bet_amount: 380, fraction: 0.038 },
-//   risk_rating: 'medium',
-//   expected_value: 0.052
-// }
+**调用示例**：
+```bash
+python scripts/predict.py --home 法国 --away 阿根廷 \
+  --odds-home 2.10 --odds-draw 3.30 --odds-away 3.50 \
+  --stage knockout
 ```
-
----
-
-## 目录结构
-
-```
-football-quant-os/
-├── SKILL.md                    # 本文件
-├── README.md                   # 详细文档
-├── requirements.txt            # Python 依赖
-├── package.json                # Node.js 依赖 (可选)
-│
-├── core/                       # 核心引擎
-│   ├── config.py               # 配置管理
-│   ├── config_loader.py        # 配置加载器
-│   ├── event_bus.py            # 事件总线
-│   └── scheduler.py            # 任务调度
-│
-├── agents/                     # 九智能体
-│   ├── datascout.py            # 数据采集
-│   ├── datascout_v2.py         # 数据采集 v2
-│   ├── analyst.py              # 分析师
-│   ├── analyst_v2.py           # 分析师 v2
-│   ├── committee.py            # 委员会
-│   ├── committee_v2.py         # 委员会 v2
-│   ├── risk_control.py         # 风控
-│   ├── risk_control_v2.py      # 风控 v2
-│   └── gene_engine.py          # 进化引擎
-│
-├── models/                     # 量化模型
-│   ├── kelly.py                # Kelly 准则
-│   ├── matrix_108.py           # 108 矩阵模型
-│   └── historical_odds.py      # 历史赔率分析
-│
-├── data/                       # 数据目录
-│   ├── fixtures/               # 赛程数据
-│   └── odds/                   # 赔率数据
-│
-├── fixtures/                   # 数据源客户端
-│   ├── espn_client.py          # ESPN API 客户端
-│   └── models.py               # 数据模型
-│
-├── app/                        # Web 服务
-│   ├── api.py                  # REST API
-│   ├── tasks.py                # 异步任务
-│   └── main.py                 # 入口
-│
-├── backtest/                   # 回测引擎
-│   └── engine.py               # 回测框架
-│
-├── scripts/                    # 脚本工具
-│   ├── scrape_500.py           # 500 网抓取
-│   ├── scrape_oddsportal.py    # OddsPortal 抓取
-│   ├── full_prediction_v3.py    # 完整预测 v3
-│   └── workflow_demo.py        # 工作流演示
-│
-└── references/                 # 参考资料
-    ├── INTEGRATION_REPORT.md   # 集成报告
-    └── PROBABILITY_CHAIN.md    # 概率链文档
-```
-
----
-
-## 数据源
-
-| 数据源 | 类型 | 覆盖范围 | 更新频率 |
-|--------|------|---------|---------|
-| ESPN API | 官方 | 全球主要联赛 | 实时 |
-| Football-Data.co.uk | 历史 | 欧洲五大联赛 | 每日 |
-| OddsPortal | 赔率 | 50+ 博彩公司 | 15分钟 |
-| 500.com | 亚洲盘口 | 亚盘/大小球 | 实时 |
-
----
-
-## 风险声明
-
-⚠️ **本 Skill 仅供研究学习使用，不构成任何投注建议。**
-
-- 体育博彩存在极高风险，可能导致资金全部损失
-- 过往回测结果不代表未来表现
-- 请遵守当地法律法规，理性对待
-- 未成年人禁止使用
-
----
-
-## 更新日志
-
-### v1.0.0 (2026-05-16)
-- 九智能体架构完整实现
-- 四层概率修正器上线
-- 支持 19+ 博彩公司赔率抓取
-- Kelly 最优注码计算
-- 回测引擎 v1
-- 自进化基因引擎
-
----
-
-## 相关链接
-
-- **GitHub**: https://github.com/giziwy-ship-it/football-quant-os
-- **Issue 反馈**: https://github.com/giziwy-ship-it/football-quant-os/issues
-
----
-
-_"用数据说话，让概率成为你的朋友。"_ 🏎️⚽📊

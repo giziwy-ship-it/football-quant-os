@@ -1,0 +1,1041 @@
+{
+  "elo_only": {
+    "total": 48,
+    "bets": 33,
+    "wins": 16,
+    "losses": 17,
+    "profit": -190.00000000000006,
+    "bankroll": [
+      10400.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10560.0,
+      10360.0,
+      10360.0,
+      10160.0,
+      10160.0,
+      10160.0,
+      10250.0,
+      10420.0,
+      10220.0,
+      10300.0,
+      10300.0,
+      10100.0,
+      10300.0,
+      10100.0,
+      9900.0,
+      9700.0,
+      9700.0,
+      9700.0,
+      9700.0,
+      9500.0,
+      9300.0,
+      9420.0,
+      9220.0,
+      9020.0,
+      9020.0,
+      9120.0,
+      9120.0,
+      9120.0,
+      9480.0,
+      9620.0,
+      9820.0,
+      9620.0,
+      9420.0,
+      9550.0,
+      9750.0,
+      9550.0,
+      9910.0,
+      9710.0,
+      9710.0,
+      9510.0,
+      9650.0,
+      9450.0,
+      9810.0
+    ]
+  },
+  "hybrid": {
+    "total": 48,
+    "bets": 5,
+    "wins": 3,
+    "losses": 2,
+    "profit": 390.0,
+    "bankroll": [
+      10600.0,
+      10600.0,
+      10600.0,
+      10600.0,
+      10600.0,
+      10600.0,
+      10600.0,
+      10600.0,
+      10300.0,
+      10300.0,
+      10300.0,
+      10435.0,
+      10690.0,
+      10690.0,
+      10690.0,
+      10690.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0,
+      10390.0
+    ],
+    "executes": 5,
+    "abandons": 43,
+    "motivation_filter": 0
+  },
+  "matches": [
+    {
+      "match_id": "A1",
+      "match": "QAT 0-2 ECU",
+      "outcome": "away_win",
+      "action": "EXECUTE",
+      "bet_dir": "away",
+      "bet_amount": 300.0,
+      "motivation": 0.0,
+      "pd": 0.11672596283738873,
+      "model": {
+        "home": 0.3787417953157689,
+        "draw": 0.19630292092448157,
+        "away": 0.4249552837597496
+      },
+      "market": {
+        "home": 0.3934842394753543,
+        "draw": 0.29828643960228474,
+        "away": 0.3082293209223609
+      }
+    },
+    {
+      "match_id": "A2",
+      "match": "SEN 0-2 NED",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.10562467927205696,
+      "model": {
+        "home": 0.25480762689595254,
+        "draw": 0.17474915250364395,
+        "away": 0.5704432206004035
+      },
+      "market": {
+        "home": 0.20560747663551399,
+        "draw": 0.2803738317757009,
+        "away": 0.514018691588785
+      }
+    },
+    {
+      "match_id": "B1",
+      "match": "ENG 6-2 IRN",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.12803583248349426,
+      "model": {
+        "home": 0.6341526120388238,
+        "draw": 0.16531072414239648,
+        "away": 0.20053666381877977
+      },
+      "market": {
+        "home": 0.762188444522318,
+        "draw": 0.16032239695124623,
+        "away": 0.07748915852643566
+      }
+    },
+    {
+      "match_id": "B2",
+      "match": "USA 1-1 WAL",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.1441873940035764,
+      "model": {
+        "home": 0.42495528375974956,
+        "draw": 0.19630292092448154,
+        "away": 0.37874179531576885
+      },
+      "market": {
+        "home": 0.4811372334609076,
+        "draw": 0.2843083652268999,
+        "away": 0.23455440131219243
+      }
+    },
+    {
+      "match_id": "C1",
+      "match": "ARG 1-2 KSA",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.029355571847670917,
+      "model": {
+        "home": 0.7733956518211259,
+        "draw": 0.1446821256561295,
+        "away": 0.08192222252274459
+      },
+      "market": {
+        "home": 0.8018641628401069,
+        "draw": 0.1455691864848194,
+        "away": 0.05256665067507367
+      }
+    },
+    {
+      "match_id": "D1",
+      "match": "DEN 0-0 TUN",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09395547295706619,
+      "model": {
+        "home": 0.5926120196446937,
+        "draw": 0.17146488597856388,
+        "away": 0.2359230943767424
+      },
+      "market": {
+        "home": 0.6151930261519302,
+        "draw": 0.2428393524283935,
+        "away": 0.1419676214196762
+      }
+    },
+    {
+      "match_id": "C2",
+      "match": "MEX 0-0 POL",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.10255771067724714,
+      "model": {
+        "home": 0.5237903511103111,
+        "draw": 0.18166068872439836,
+        "away": 0.2945489601652906
+      },
+      "market": {
+        "home": 0.4689603590127151,
+        "draw": 0.2842183994016455,
+        "away": 0.2468212415856395
+      }
+    },
+    {
+      "match_id": "D2",
+      "match": "FRA 4-1 AUS",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.039561195094290874,
+      "model": {
+        "home": 0.7264070917430598,
+        "draw": 0.15164339381584296,
+        "away": 0.12194951444109713
+      },
+      "market": {
+        "home": 0.7170172084130019,
+        "draw": 0.19120458891013384,
+        "away": 0.09177820267686425
+      }
+    },
+    {
+      "match_id": "F1",
+      "match": "MAR 0-0 CRO",
+      "outcome": "draw",
+      "action": "EXECUTE",
+      "bet_dir": "away",
+      "bet_amount": 300.0,
+      "motivation": 0.0,
+      "pd": 0.12268564605711085,
+      "model": {
+        "home": 0.2743821717133953,
+        "draw": 0.178153421167547,
+        "away": 0.5474644071190577
+      },
+      "market": {
+        "home": 0.2831858407079646,
+        "draw": 0.2920353982300885,
+        "away": 0.4247787610619469
+      }
+    },
+    {
+      "match_id": "E1",
+      "match": "GER 1-2 JPN",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.1125304139146788,
+      "model": {
+        "home": 0.6033617521990364,
+        "draw": 0.16987233300755017,
+        "away": 0.22676591479341343
+      },
+      "market": {
+        "home": 0.70298769771529,
+        "draw": 0.18277680140597544,
+        "away": 0.11423550087873463
+      }
+    },
+    {
+      "match_id": "E2",
+      "match": "ESP 7-0 CRC",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.05709095783424156,
+      "model": {
+        "home": 0.7518653440798069,
+        "draw": 0.1478718008770657,
+        "away": 0.10026285504312754
+      },
+      "market": {
+        "home": 0.8089563019140484,
+        "draw": 0.13289996388587938,
+        "away": 0.058143734200072225
+      }
+    },
+    {
+      "match_id": "F2",
+      "match": "BEL 1-0 CAN",
+      "outcome": "home_win",
+      "action": "EXECUTE",
+      "bet_dir": "home",
+      "bet_amount": 300.0,
+      "motivation": 0.0,
+      "pd": 0.11485925730543578,
+      "model": {
+        "home": 0.7576016247398225,
+        "draw": 0.14702198152002627,
+        "away": 0.09537639374015108
+      },
+      "market": {
+        "home": 0.6427423674343867,
+        "draw": 0.2329941081949652,
+        "away": 0.1242635243706481
+      }
+    },
+    {
+      "match_id": "G1",
+      "match": "SUI 1-0 CMR",
+      "outcome": "home_win",
+      "action": "EXECUTE",
+      "bet_dir": "home",
+      "bet_amount": 300.0,
+      "motivation": 0.0,
+      "pd": 0.10429845033754515,
+      "model": {
+        "home": 0.6033617521990364,
+        "draw": 0.16987233300755017,
+        "away": 0.22676591479341343
+      },
+      "market": {
+        "home": 0.5038814396612561,
+        "draw": 0.2741707833450953,
+        "away": 0.22194777699364857
+      }
+    },
+    {
+      "match_id": "H1",
+      "match": "URU 0-0 KOR",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.10401094054967192,
+      "model": {
+        "home": 0.6033617521990364,
+        "draw": 0.16987233300755017,
+        "away": 0.22676591479341343
+      },
+      "market": {
+        "home": 0.5321160743397456,
+        "draw": 0.2738832735572221,
+        "away": 0.1940006521030323
+      }
+    },
+    {
+      "match_id": "H2",
+      "match": "POR 3-2 GHA",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.0703513666780737,
+      "model": {
+        "home": 0.7331590178946771,
+        "draw": 0.15064310846004783,
+        "away": 0.11619787364527502
+      },
+      "market": {
+        "home": 0.6629834254143647,
+        "draw": 0.22099447513812154,
+        "away": 0.11602209944751382
+      }
+    },
+    {
+      "match_id": "G2",
+      "match": "BRA 2-0 SRB",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.03760145919692143,
+      "model": {
+        "home": 0.712102293151349,
+        "draw": 0.15376262323683718,
+        "away": 0.13413508361181378
+      },
+      "market": {
+        "home": 0.7065750736015701,
+        "draw": 0.1913640824337586,
+        "away": 0.10206084396467124
+      }
+    },
+    {
+      "match_id": "B3",
+      "match": "WAL 0-2 IRN",
+      "outcome": "away_win",
+      "action": "EXECUTE",
+      "bet_dir": "home",
+      "bet_amount": 300.0,
+      "motivation": 0.0,
+      "pd": 0.11417834140385985,
+      "model": {
+        "home": 0.42495528375974956,
+        "draw": 0.19630292092448154,
+        "away": 0.37874179531576885
+      },
+      "market": {
+        "home": 0.3107769423558897,
+        "draw": 0.3007518796992481,
+        "away": 0.3884711779448622
+      }
+    },
+    {
+      "match_id": "A4",
+      "match": "NED 1-1 ECU",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.16020954248498087,
+      "model": {
+        "home": 0.719389412009678,
+        "draw": 0.1526830500726403,
+        "away": 0.12792753791768174
+      },
+      "market": {
+        "home": 0.5591798695246971,
+        "draw": 0.25629077353215285,
+        "away": 0.18452935694315006
+      }
+    },
+    {
+      "match_id": "B4",
+      "match": "ENG 0-0 USA",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.10027424445621877,
+      "model": {
+        "home": 0.5926120196446937,
+        "draw": 0.17146488597856388,
+        "away": 0.2359230943767424
+      },
+      "market": {
+        "home": 0.5434782608695653,
+        "draw": 0.27173913043478265,
+        "away": 0.1847826086956522
+      }
+    },
+    {
+      "match_id": "D3",
+      "match": "TUN 0-1 AUS",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.1110142520280133,
+      "model": {
+        "home": 0.4124592075856785,
+        "draw": 0.19815419146878838,
+        "away": 0.3893866009455332
+      },
+      "market": {
+        "home": 0.371002132196162,
+        "draw": 0.30916844349680167,
+        "away": 0.31982942430703626
+      }
+    },
+    {
+      "match_id": "C3",
+      "match": "POL 2-0 KSA",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.12393284642121477,
+      "model": {
+        "home": 0.5237903511103111,
+        "draw": 0.18166068872439836,
+        "away": 0.2945489601652906
+      },
+      "market": {
+        "home": 0.5687203791469194,
+        "draw": 0.2606635071090047,
+        "away": 0.17061611374407581
+      }
+    },
+    {
+      "match_id": "D4",
+      "match": "FRA 2-1 DEN",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": -0.08,
+      "pd": 0.08088699140582212,
+      "model": {
+        "home": 0.5499028302738674,
+        "draw": 0.1831052441166625,
+        "away": 0.2669919256094701
+      },
+      "market": {
+        "home": 0.5435134260757037,
+        "draw": 0.26399223552248463,
+        "away": 0.19249433840181174
+      }
+    },
+    {
+      "match_id": "C4",
+      "match": "ARG 2-0 MEX",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.07709735199606577,
+      "model": {
+        "home": 0.6241405027985049,
+        "draw": 0.16679399958540672,
+        "away": 0.2090654976160885
+      },
+      "market": {
+        "home": 0.6370875995449374,
+        "draw": 0.23094425483503983,
+        "away": 0.13196814562002274
+      }
+    },
+    {
+      "match_id": "E3",
+      "match": "JPN 0-1 CRC",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09913412105357813,
+      "model": {
+        "home": 0.5704432206004035,
+        "draw": 0.17474915250364395,
+        "away": 0.25480762689595254
+      },
+      "market": {
+        "home": 0.5321160743397456,
+        "draw": 0.2738832735572221,
+        "away": 0.1940006521030323
+      }
+    },
+    {
+      "match_id": "F3",
+      "match": "BEL 0-2 MAR",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.14315907566904262,
+      "model": {
+        "home": 0.7045426878040015,
+        "draw": 0.15488256476977755,
+        "away": 0.14057474742622086
+      },
+      "market": {
+        "home": 0.5613836121349589,
+        "draw": 0.26509781684150835,
+        "away": 0.17351857102353274
+      }
+    },
+    {
+      "match_id": "F4",
+      "match": "CRO 4-1 CAN",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09080103371557793,
+      "model": {
+        "home": 0.6341526120388238,
+        "draw": 0.16531072414239648,
+        "away": 0.20053666381877977
+      },
+      "market": {
+        "home": 0.5762514551804424,
+        "draw": 0.2561117578579744,
+        "away": 0.16763678696158324
+      }
+    },
+    {
+      "match_id": "E4",
+      "match": "ESP 1-1 GER",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": "home",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.08971243823053504,
+      "model": {
+        "home": 0.44997552016401615,
+        "draw": 0.19259621923496056,
+        "away": 0.35742826060102323
+      },
+      "market": {
+        "home": 0.37264742785445426,
+        "draw": 0.2823086574654956,
+        "away": 0.3450439146800502
+      }
+    },
+    {
+      "match_id": "G3",
+      "match": "CMR 3-3 SRB",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09153322943214051,
+      "model": {
+        "home": 0.2843982164794777,
+        "draw": 0.1798953419964309,
+        "away": 0.5357064415240914
+      },
+      "market": {
+        "home": 0.24285714285714283,
+        "draw": 0.2714285714285714,
+        "away": 0.48571428571428565
+      }
+    },
+    {
+      "match_id": "H3",
+      "match": "KOR 2-3 GHA",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09398793156079119,
+      "model": {
+        "home": 0.5357064415240914,
+        "draw": 0.1798953419964309,
+        "away": 0.28439821647947766
+      },
+      "market": {
+        "home": 0.5321160743397456,
+        "draw": 0.2738832735572221,
+        "away": 0.1940006521030323
+      }
+    },
+    {
+      "match_id": "G4",
+      "match": "BRA 1-0 SUI",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": -0.08,
+      "pd": 0.07272618617444698,
+      "model": {
+        "home": 0.6437177180965024,
+        "draw": 0.1701131662539465,
+        "away": 0.18616911564955105
+      },
+      "market": {
+        "home": 0.6151930261519302,
+        "draw": 0.2428393524283935,
+        "away": 0.1419676214196762
+      }
+    },
+    {
+      "match_id": "H4",
+      "match": "POR 2-0 URU",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09500281328491988,
+      "model": {
+        "home": 0.44997552016401615,
+        "draw": 0.19259621923496056,
+        "away": 0.35742826060102323
+      },
+      "market": {
+        "home": 0.4592445328031809,
+        "draw": 0.2783300198807157,
+        "away": 0.26242544731610334
+      }
+    },
+    {
+      "match_id": "A5",
+      "match": "NED 2-0 QAT",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.08003225523303348,
+      "model": {
+        "home": 0.728924046681015,
+        "draw": 0.14977294358136045,
+        "away": 0.12130300973762458
+      },
+      "market": {
+        "home": 0.8089563019140484,
+        "draw": 0.13289996388587938,
+        "away": 0.058143734200072225
+      }
+    },
+    {
+      "match_id": "A6",
+      "match": "ECU 1-2 SEN",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.2569358534244427,
+      "model": {
+        "home": 0.2448311825858016,
+        "draw": 0.1694658407020843,
+        "away": 0.5857029767121139
+      },
+      "market": {
+        "home": 0.3835616438356164,
+        "draw": 0.2876712328767123,
+        "away": 0.3287671232876712
+      }
+    },
+    {
+      "match_id": "B5",
+      "match": "WAL 0-3 ENG",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.09567731215866784,
+      "model": {
+        "home": 0.21781080934194616,
+        "draw": 0.16831492336381673,
+        "away": 0.6138742672942372
+      },
+      "market": {
+        "home": 0.19249433840181168,
+        "draw": 0.2639922355224846,
+        "away": 0.5435134260757036
+      }
+    },
+    {
+      "match_id": "D5",
+      "match": "TUN 1-0 FRA",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": -0.08,
+      "pd": 0.07949928235988946,
+      "model": {
+        "home": 0.13573950280651917,
+        "draw": 0.16200672381562736,
+        "away": 0.7022537733778536
+      },
+      "market": {
+        "home": 0.14371257485029942,
+        "draw": 0.23353293413173654,
+        "away": 0.6227544910179641
+      }
+    },
+    {
+      "match_id": "D6",
+      "match": "AUS 1-0 DEN",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.09602437182826024,
+      "model": {
+        "home": 0.23543478135467993,
+        "draw": 0.16796786369422434,
+        "away": 0.5965973549510957
+      },
+      "market": {
+        "home": 0.19249433840181168,
+        "draw": 0.2639922355224846,
+        "away": 0.5435134260757036
+      }
+    },
+    {
+      "match_id": "C5",
+      "match": "POL 0-2 ARG",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.15292242362665198,
+      "model": {
+        "home": 0.13413508361181378,
+        "draw": 0.1537626232368372,
+        "away": 0.7121022931513491
+      },
+      "market": {
+        "home": 0.18452935694315006,
+        "draw": 0.25629077353215285,
+        "away": 0.5591798695246971
+      }
+    },
+    {
+      "match_id": "C6",
+      "match": "KSA 1-2 MEX",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.16524037026998423,
+      "model": {
+        "home": 0.20847317129634418,
+        "draw": 0.163669636003765,
+        "away": 0.6278571926998907
+      },
+      "market": {
+        "home": 0.2570093457943925,
+        "draw": 0.2803738317757009,
+        "away": 0.4626168224299065
+      }
+    },
+    {
+      "match_id": "F5",
+      "match": "CRO 0-0 BEL",
+      "outcome": "draw",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.23391636747078054,
+      "model": {
+        "home": 0.23592309437674247,
+        "draw": 0.1714648859785639,
+        "away": 0.5926120196446936
+      },
+      "market": {
+        "home": 0.358695652173913,
+        "draw": 0.28260869565217395,
+        "away": 0.358695652173913
+      }
+    },
+    {
+      "match_id": "F6",
+      "match": "CAN 1-2 MAR",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.1707851741846375,
+      "model": {
+        "home": 0.31519619104210744,
+        "draw": 0.18525151148558391,
+        "away": 0.4995522974723087
+      },
+      "market": {
+        "home": 0.3835616438356164,
+        "draw": 0.2876712328767123,
+        "away": 0.3287671232876712
+      }
+    },
+    {
+      "match_id": "E5",
+      "match": "JPN 2-1 ESP",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.0,
+      "pd": 0.14408663390698778,
+      "model": {
+        "home": 0.19222996669672424,
+        "draw": 0.1638660811646477,
+        "away": 0.6439039521386282
+      },
+      "market": {
+        "home": 0.24333211545487757,
+        "draw": 0.2568505663134819,
+        "away": 0.4998173182316404
+      }
+    },
+    {
+      "match_id": "E6",
+      "match": "CRC 2-4 GER",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.05932357233787633,
+      "model": {
+        "home": 0.12727095858306917,
+        "draw": 0.15072435571614146,
+        "away": 0.7220046857007895
+      },
+      "market": {
+        "home": 0.07683061204046879,
+        "draw": 0.14184112992086548,
+        "away": 0.7813282580386658
+      }
+    },
+    {
+      "match_id": "H5",
+      "match": "KOR 2-1 POR",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.16885746985997296,
+      "model": {
+        "home": 0.1999199349100717,
+        "draw": 0.1623060765798665,
+        "away": 0.6377739885100618
+      },
+      "market": {
+        "home": 0.25399644760213147,
+        "draw": 0.27708703374777977,
+        "away": 0.4689165186500889
+      }
+    },
+    {
+      "match_id": "H6",
+      "match": "GHA 0-2 URU",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.15611177989716518,
+      "model": {
+        "home": 0.14657325984840058,
+        "draw": 0.15380153417873052,
+        "away": 0.6996252059728688
+      },
+      "market": {
+        "home": 0.19249433840181168,
+        "draw": 0.2639922355224846,
+        "away": 0.5435134260757036
+      }
+    },
+    {
+      "match_id": "G5",
+      "match": "CMR 1-0 BRA",
+      "outcome": "home_win",
+      "action": "ABANDON",
+      "bet_dir": null,
+      "bet_amount": 0,
+      "motivation": -0.1,
+      "pd": 0.040069210454421356,
+      "model": {
+        "home": 0.08438818565400845,
+        "draw": 0.15611814345991562,
+        "away": 0.759493670886076
+      },
+      "market": {
+        "home": 0.09352517985611511,
+        "draw": 0.18705035971223022,
+        "away": 0.7194244604316546
+      }
+    },
+    {
+      "match_id": "G6",
+      "match": "SRB 2-3 SUI",
+      "outcome": "away_win",
+      "action": "ABANDON",
+      "bet_dir": "away",
+      "bet_amount": 0,
+      "motivation": 0.05,
+      "pd": 0.13315457441979944,
+      "model": {
+        "home": 0.3471742129519046,
+        "draw": 0.1857813962676949,
+        "away": 0.46704439078040044
+      },
+      "market": {
+        "home": 0.3739565943238731,
+        "draw": 0.2921535893155259,
+        "away": 0.333889816360601
+      }
+    }
+  ]
+}

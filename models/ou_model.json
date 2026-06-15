@@ -1,0 +1,18 @@
+{
+  "accuracy": 0.576,
+  "samples": 1437,
+  "features": 19,
+  "over_rate": 0.541,
+  "feature_importance": {
+    "home_avg_scored": 0.119,
+    "away_avg_scored": 0.119,
+    "away_disadvantage": 0.106,
+    "home_advantage": 0.103,
+    "away_avg_conceded": 0.098,
+    "home_avg_conceded": 0.094,
+    "away_xg_diff": 0.094,
+    "home_xg_diff": 0.089,
+    "away_form": 0.085,
+    "home_form": 0.072
+  }
+}

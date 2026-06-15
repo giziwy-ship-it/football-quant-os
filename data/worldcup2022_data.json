@@ -1,0 +1,108 @@
+{
+  "tournament": "2022 FIFA World Cup Qatar",
+  "dates": "2022-11-20 to 2022-12-18",
+  "format": "32 teams, 8 groups, top 2 advance to Round of 16",
+  "champion": "Argentina",
+  "runner_up": "France",
+  "third_place": "Croatia",
+  "fourth_place": "Morocco",
+  
+  "teams": {
+    "A": ["QAT", "ECU", "SEN", "NED"],
+    "B": ["ENG", "IRN", "USA", "WAL"],
+    "C": ["ARG", "KSA", "MEX", "POL"],
+    "D": ["FRA", "AUS", "DEN", "TUN"],
+    "E": ["ESP", "CRC", "GER", "JPN"],
+    "F": ["BEL", "CAN", "MAR", "CRO"],
+    "G": ["BRA", "SRB", "SUI", "CMR"],
+    "H": ["POR", "GHA", "URU", "KOR"]
+  },
+  
+  "group_stage": [
+    {"match_id": "A1", "group": "A", "date": "2022-11-20", "home": "QAT", "away": "ECU", "home_score": 0, "away_score": 2},
+    {"match_id": "A2", "group": "A", "date": "2022-11-21", "home": "SEN", "away": "NED", "home_score": 0, "away_score": 2},
+    {"match_id": "B1", "group": "B", "date": "2022-11-21", "home": "ENG", "away": "IRN", "home_score": 6, "away_score": 2},
+    {"match_id": "B2", "group": "B", "date": "2022-11-21", "home": "USA", "away": "WAL", "home_score": 1, "away_score": 1},
+    {"match_id": "C1", "group": "C", "date": "2022-11-22", "home": "ARG", "away": "KSA", "home_score": 1, "away_score": 2},
+    {"match_id": "D1", "group": "D", "date": "2022-11-22", "home": "DEN", "away": "TUN", "home_score": 0, "away_score": 0},
+    {"match_id": "C2", "group": "C", "date": "2022-11-22", "home": "MEX", "away": "POL", "home_score": 0, "away_score": 0},
+    {"match_id": "D2", "group": "D", "date": "2022-11-22", "home": "FRA", "away": "AUS", "home_score": 4, "away_score": 1},
+    {"match_id": "F1", "group": "F", "date": "2022-11-23", "home": "MAR", "away": "CRO", "home_score": 0, "away_score": 0},
+    {"match_id": "E1", "group": "E", "date": "2022-11-23", "home": "GER", "away": "JPN", "home_score": 1, "away_score": 2},
+    {"match_id": "E2", "group": "E", "date": "2022-11-23", "home": "ESP", "away": "CRC", "home_score": 7, "away_score": 0},
+    {"match_id": "F2", "group": "F", "date": "2022-11-23", "home": "BEL", "away": "CAN", "home_score": 1, "away_score": 0},
+    {"match_id": "G1", "group": "G", "date": "2022-11-24", "home": "SUI", "away": "CMR", "home_score": 1, "away_score": 0},
+    {"match_id": "H1", "group": "H", "date": "2022-11-24", "home": "URU", "away": "KOR", "home_score": 0, "away_score": 0},
+    {"match_id": "H2", "group": "H", "date": "2022-11-24", "home": "POR", "away": "GHA", "home_score": 3, "away_score": 2},
+    {"match_id": "G2", "group": "G", "date": "2022-11-24", "home": "BRA", "away": "SRB", "home_score": 2, "away_score": 0},
+    {"match_id": "B3", "group": "B", "date": "2022-11-25", "home": "WAL", "away": "IRN", "home_score": 0, "away_score": 2},
+    {"match_id": "A3", "group": "A", "date": "2022-11-25", "home": "QAT", "away": "SEN", "home_score": 1, "away_score": 3},
+    {"match_id": "A4", "group": "A", "date": "2022-11-25", "home": "NED", "away": "ECU", "home_score": 1, "away_score": 1},
+    {"match_id": "B4", "group": "B", "date": "2022-11-25", "home": "ENG", "away": "USA", "home_score": 0, "away_score": 0},
+    {"match_id": "D3", "group": "D", "date": "2022-11-26", "home": "TUN", "away": "AUS", "home_score": 0, "away_score": 1},
+    {"match_id": "C3", "group": "C", "date": "2022-11-26", "home": "POL", "away": "KSA", "home_score": 2, "away_score": 0},
+    {"match_id": "D4", "group": "D", "date": "2022-11-26", "home": "FRA", "away": "DEN", "home_score": 2, "away_score": 1},
+    {"match_id": "C4", "group": "C", "date": "2022-11-26", "home": "ARG", "away": "MEX", "home_score": 2, "away_score": 0},
+    {"match_id": "E3", "group": "E", "date": "2022-11-27", "home": "JPN", "away": "CRC", "home_score": 0, "away_score": 1},
+    {"match_id": "F3", "group": "F", "date": "2022-11-27", "home": "BEL", "away": "MAR", "home_score": 0, "away_score": 2},
+    {"match_id": "F4", "group": "F", "date": "2022-11-27", "home": "CRO", "away": "CAN", "home_score": 4, "away_score": 1},
+    {"match_id": "E4", "group": "E", "date": "2022-11-27", "home": "ESP", "away": "GER", "home_score": 1, "away_score": 1},
+    {"match_id": "G3", "group": "G", "date": "2022-11-28", "home": "CMR", "away": "SRB", "home_score": 3, "away_score": 3},
+    {"match_id": "H3", "group": "H", "date": "2022-11-28", "home": "KOR", "away": "GHA", "home_score": 2, "away_score": 3},
+    {"match_id": "G4", "group": "G", "date": "2022-11-28", "home": "BRA", "away": "SUI", "home_score": 1, "away_score": 0},
+    {"match_id": "H4", "group": "H", "date": "2022-11-28", "home": "POR", "away": "URU", "home_score": 2, "away_score": 0},
+    {"match_id": "A5", "group": "A", "date": "2022-11-29", "home": "NED", "away": "QAT", "home_score": 2, "away_score": 0},
+    {"match_id": "A6", "group": "A", "date": "2022-11-29", "home": "ECU", "away": "SEN", "home_score": 1, "away_score": 2},
+    {"match_id": "B5", "group": "B", "date": "2022-11-29", "home": "WAL", "away": "ENG", "home_score": 0, "away_score": 3},
+    {"match_id": "B6", "group": "B", "date": "2022-11-29", "home": "IRN", "away": "USA", "home_score": 0, "away_score": 1},
+    {"match_id": "D5", "group": "D", "date": "2022-11-30", "home": "TUN", "away": "FRA", "home_score": 1, "away_score": 0},
+    {"match_id": "D6", "group": "D", "date": "2022-11-30", "home": "AUS", "away": "DEN", "home_score": 1, "away_score": 0},
+    {"match_id": "C5", "group": "C", "date": "2022-11-30", "home": "POL", "away": "ARG", "home_score": 0, "away_score": 2},
+    {"match_id": "C6", "group": "C", "date": "2022-11-30", "home": "KSA", "away": "MEX", "home_score": 1, "away_score": 2},
+    {"match_id": "F5", "group": "F", "date": "2022-12-01", "home": "CRO", "away": "BEL", "home_score": 0, "away_score": 0},
+    {"match_id": "F6", "group": "F", "date": "2022-12-01", "home": "CAN", "away": "MAR", "home_score": 1, "away_score": 2},
+    {"match_id": "E5", "group": "E", "date": "2022-12-01", "home": "JPN", "away": "ESP", "home_score": 2, "away_score": 1},
+    {"match_id": "E6", "group": "E", "date": "2022-12-01", "home": "CRC", "away": "GER", "home_score": 2, "away_score": 4},
+    {"match_id": "H5", "group": "H", "date": "2022-12-02", "home": "KOR", "away": "POR", "home_score": 2, "away_score": 1},
+    {"match_id": "H6", "group": "H", "date": "2022-12-02", "home": "GHA", "away": "URU", "home_score": 0, "away_score": 2},
+    {"match_id": "G5", "group": "G", "date": "2022-12-02", "home": "CMR", "away": "BRA", "home_score": 1, "away_score": 0},
+    {"match_id": "G6", "group": "G", "date": "2022-12-02", "home": "SRB", "away": "SUI", "home_score": 2, "away_score": 3}
+  ],
+  
+  "knockout": {
+    "round_of_16": [
+      {"match_id": "R16-1", "date": "2022-12-03", "home": "NED", "away": "USA", "home_score": 3, "away_score": 1},
+      {"match_id": "R16-2", "date": "2022-12-03", "home": "ARG", "away": "AUS", "home_score": 2, "away_score": 1},
+      {"match_id": "R16-3", "date": "2022-12-04", "home": "FRA", "away": "POL", "home_score": 3, "away_score": 1},
+      {"match_id": "R16-4", "date": "2022-12-04", "home": "ENG", "away": "SEN", "home_score": 3, "away_score": 0},
+      {"match_id": "R16-5", "date": "2022-12-05", "home": "JPN", "away": "CRO", "home_score": 1, "away_score": 1, "home_pen": 1, "away_pen": 3},
+      {"match_id": "R16-6", "date": "2022-12-05", "home": "BRA", "away": "KOR", "home_score": 4, "away_score": 1},
+      {"match_id": "R16-7", "date": "2022-12-06", "home": "MAR", "away": "ESP", "home_score": 0, "away_score": 0, "home_pen": 3, "away_pen": 0},
+      {"match_id": "R16-8", "date": "2022-12-06", "home": "POR", "away": "SUI", "home_score": 6, "away_score": 1}
+    ],
+    "quarterfinals": [
+      {"match_id": "QF-1", "date": "2022-12-09", "home": "CRO", "away": "BRA", "home_score": 1, "away_score": 1, "home_pen": 4, "away_pen": 2},
+      {"match_id": "QF-2", "date": "2022-12-09", "home": "NED", "away": "ARG", "home_score": 2, "away_score": 2, "home_pen": 3, "away_pen": 4},
+      {"match_id": "QF-3", "date": "2022-12-10", "home": "MAR", "away": "POR", "home_score": 1, "away_score": 0},
+      {"match_id": "QF-4", "date": "2022-12-10", "home": "ENG", "away": "FRA", "home_score": 1, "away_score": 2}
+    ],
+    "semifinals": [
+      {"match_id": "SF-1", "date": "2022-12-13", "home": "ARG", "away": "CRO", "home_score": 3, "away_score": 0},
+      {"match_id": "SF-2", "date": "2022-12-14", "home": "FRA", "away": "MAR", "home_score": 2, "away_score": 0}
+    ],
+    "third_place": {
+      "match_id": "3P", "date": "2022-12-17", "home": "CRO", "away": "MAR", "home_score": 2, "away_score": 1
+    },
+    "final": {
+      "match_id": "F", "date": "2022-12-18", "home": "ARG", "away": "FRA", "home_score": 3, "away_score": 3, "home_pen": 4, "away_pen": 2
+    }
+  },
+  
+  "fifa_rankings_2022": {
+    "BRA": 1, "BEL": 2, "ARG": 3, "FRA": 4, "ENG": 5, "ESP": 7, "NED": 8, "POR": 9, 
+    "MEX": 13, "GER": 11, "URU": 14, "USA": 16, "CRO": 12, "DEN": 10, "SUI": 15, 
+    "SEN": 18, "WAL": 19, "IRN": 20, "SRB": 21, "MAR": 22, "JPN": 24, "POL": 26, 
+    "KOR": 28, "TUN": 30, "CMR": 43, "CAN": 41, "ECU": 44, "KSA": 51, "QAT": 50, 
+    "GHA": 61, "AUS": 38, "CRC": 31
+  }
+}

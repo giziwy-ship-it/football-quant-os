@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "description": "历史世界杯关键比赛数据（用于模型校准和规则验证）",
+    "version": "1.0",
+    "last_updated": "2026-06-14",
+    "source": "公开整理 + football-data.co.uk 参考",
+    "note": "仅收录具有代表性的冷门/强队被淘汰比赛，用于阶段调整系数校准"
+  },
+  "tournaments": {
+    "2022": {
+      "name": "卡塔尔世界杯",
+      "upset_rate_group": 0.26,
+      "upset_rate_knockout": 0.34,
+      "notable_upsets": [
+        {"stage": "group", "match": "沙特阿拉伯 vs 阿根廷", "odds_home": 28.0, "result": "沙特胜", "is_upset": true, "upset_severity": "extreme"},
+        {"stage": "group", "match": "日本 vs 德国", "odds_home": 6.5, "result": "日本胜", "is_upset": true, "upset_severity": "high"},
+        {"stage": "knockout", "match": "摩洛哥 vs 西班牙", "stage_detail": "1/8决赛", "odds_home": 4.8, "result": "摩洛哥胜（点球）", "is_upset": true, "upset_severity": "high"}
+      ]
+    },
+    "2018": {
+      "name": "俄罗斯世界杯",
+      "upset_rate_group": 0.28,
+      "upset_rate_knockout": 0.35,
+      "notable_upsets": [
+        {"stage": "group", "match": "德国 vs 墨西哥", "odds_home": 1.35, "result": "墨西哥胜", "is_upset": true, "upset_severity": "high"},
+        {"stage": "group", "match": "德国 vs 韩国", "odds_home": 1.22, "result": "韩国胜", "is_upset": true, "upset_severity": "extreme"},
+        {"stage": "knockout", "match": "比利时 vs 日本", "stage_detail": "1/8决赛", "odds_home": 1.45, "result": "日本胜", "is_upset": true, "upset_severity": "high"}
+      ]
+    },
+    "2014": {
+      "name": "巴西世界杯",
+      "upset_rate_group": 0.25,
+      "upset_rate_knockout": 0.32,
+      "notable_upsets": [
+        {"stage": "group", "match": "西班牙 vs 荷兰", "odds_home": 2.8, "result": "荷兰胜", "is_upset": true, "upset_severity": "high"},
+        {"stage": "knockout", "match": "哥斯达黎加 vs 希腊", "stage_detail": "1/8决赛", "odds_home": 3.2, "result": "哥斯达黎加胜（点球）", "is_upset": true, "upset_severity": "medium"}
+      ]
+    }
+  },
+  "summary_stats": {
+    "average_upset_rate": {
+      "group_stage": 0.26,
+      "knockout_stage": 0.34
+    },
+    "strong_team_elimination_rate_knockout": 0.36,
+    "notes": "淘汰赛阶段爆冷率明显高于小组赛。数据来源于公开整理，实际使用时建议用 football-data.co.uk 原始数据进一步验证。"
+  }
+}

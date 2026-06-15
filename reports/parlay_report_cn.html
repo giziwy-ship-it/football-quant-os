@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>世界杯小组赛投资组合 - 2串1/3串1分析</title>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Roboto+Mono:wght@400;500;600&display=swap");
+:root{--gb:#1a73e8;--gg:#34a853;--gr:#ea4335;--gy:#fbbc04;--ggr:#5f6368;--bbg:#0a0a0a;--bg:#00ff00;--br:#ff3333;--bt:#e6e6e6;--gsb:#003087;--gsl:#e8f0fe;--gsg:#c9a227;--gsn:#001a4d}
+body{font-family:"Noto Sans SC",sans-serif;color:#202124;background:#fff;line-height:1.6}
+.cover{height:100vh;background:linear-gradient(135deg,#001a4d 0%,#003087 50%,#005eb8 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:white;position:relative}
+.cover h1{font-size:56px;font-weight:900;letter-spacing:-2px;margin-bottom:16px;text-shadow:0 2px 40px rgba(0,0,0,0.3)}
+.cs{font-size:20px;font-weight:300;opacity:0.9;margin-bottom:48px;letter-spacing:1px}
+.cm{display:flex;gap:48px;font-size:14px;opacity:0.7}
+.cmi{text-align:center}
+.cmi .l{font-size:11px;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.cmi .v{font-size:18px;font-weight:600;font-family:"Roboto Mono",monospace}
+.cf{position:absolute;bottom:40px;font-size:12px;opacity:0.5;letter-spacing:1px}
+.page{padding:48px 64px;max-width:900px;margin:0 auto;min-height:100vh}
+.sh{display:flex;align-items:center;margin-bottom:32px;padding-bottom:16px;border-bottom:3px solid var(--gsb)}
+.sn{background:var(--gsb);color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;margin-right:16px;font-family:"Roboto Mono",monospace}
+.st{font-size:28px;font-weight:700;color:var(--gsn);letter-spacing:-0.5px}
+.card{background:white;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,0.08),0 4px 12px rgba(0,0,0,0.05);padding:24px;margin-bottom:24px;border:1px solid #e8eaed}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.ct{font-size:16px;font-weight:600;color:#3c4043;display:flex;align-items:center;gap:8px}
+.cbd{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.bdg{background:#e6f4ea;color:var(--gg)}
+.bdr{background:#fce8e8;color:var(--gr)}
+.bdb{background:var(--gsl);color:var(--gsb)}
+.bdgd{background:rgba(201,162,39,0.15);color:var(--gsg)}
+.bdw{background:#fce8e8;color:var(--gr)}
+.bt{width:100%;border-collapse:collapse;font-family:"Roboto Mono",monospace;font-size:13px;background:var(--bbg);color:var(--bt);border-radius:8px;overflow:hidden}
+.bt th{background:#1a1a1a;padding:12px 16px;text-align:left;font-weight:600;color:#888;text-transform:uppercase;font-size:11px;letter-spacing:1px;border-bottom:2px solid #333}
+.bt td{padding:12px 16px;border-bottom:1px solid #1a1a1a}
+.btr{font-family:"Roboto Mono",monospace;font-size:14px;font-weight:600;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-radius:8px 8px 0 0;background:var(--bbg);color:var(--bt)}
+.btr .tk{color:var(--bg);font-weight:700}
+.up{color:var(--bg)}
+.dn{color:var(--br)}
+.nt{color:#888}
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.mcd{background:white;border-radius:12px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e8eaed;text-align:center}
+.mv{font-size:36px;font-weight:700;font-family:"Roboto Mono",monospace;color:var(--gsn);margin-bottom:4px}
+.mv.up{color:var(--gg)}
+.mv.dn{color:var(--gr)}
+.mv.warn{color:#ff9800}
+.ml{font-size:12px;color:var(--ggr);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.ms{font-size:13px;color:#9aa0a6;margin-top:4px}
+.ib{background:linear-gradient(135deg,var(--gsl) 0%,#fff 100%);border:2px solid var(--gsb);border-radius:12px;padding:32px;margin-bottom:24px;position:relative}
+.ib::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gsg);border-radius:12px 12px 0 0}
+.it{font-size:18px;font-weight:700;color:var(--gsn);margin-bottom:20px}
+.ig{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.ii{background:white;border-radius:8px;padding:16px;border:1px solid #e8eaed}
+.ii .p{font-size:14px;font-weight:600;color:var(--gsn);margin-bottom:8px}
+.ii .d{font-family:"Roboto Mono",monospace;font-size:13px;color:#5f6368;line-height:1.6}
+.ii .sk{font-size:24px;font-weight:700;color:var(--gsb);font-family:"Roboto Mono",monospace;margin-top:8px}
+.ii .ev{font-size:14px;font-weight:600;color:var(--gg)}
+.ii .warn{font-size:14px;font-weight:600;color:#ff9800}
+.rm{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
+.ri{padding:16px;border-radius:8px;border-left:4px solid}
+.ri.lw{background:#e6f4ea;border-left-color:var(--gg)}
+.ri.md{background:#fff8e6;border-left-color:var(--gy)}
+.ri.hg{background:#fce8e8;border-left-color:var(--gr)}
+.ri .rt{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.ri .rd{font-size:13px;color:#5f6368}
+.bc{margin:16px 0}
+.br{display:flex;align-items:center;margin-bottom:12px}
+.bl{width:140px;font-size:13px;font-weight:600;color:#3c4043;text-align:right;padding-right:12px}
+.btk{flex:1;height:28px;background:#f1f3f4;border-radius:4px;overflow:hidden;position:relative}
+.bf{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:12px;font-weight:600;font-family:"Roboto Mono",monospace;color:white}
+.bf.b{background:var(--gb)}
+.bf.g{background:var(--gg)}
+.bf.r{background:var(--gr)}
+.bf.gd{background:var(--gsg);color:var(--gsn)}
+.bv{width:60px;font-size:13px;font-weight:600;font-family:"Roboto Mono",monospace;padding-left:8px;color:#3c4043}
+.pf{margin-top:48px;padding-top:24px;border-top:1px solid #e8eaed;font-size:11px;color:#9aa0a6;display:flex;justify-content:space-between}
+.dc{background:#f8f9fa;border-radius:8px;padding:16px;font-size:11px;color:#5f6368;line-height:1.6;margin-top:24px;border-left:3px solid var(--gy)}
+.tcb{border:2px solid var(--gsb);border-radius:12px;padding:24px;margin-bottom:24px;background:linear-gradient(135deg,var(--gsl) 0%,#fff 100%)}
+.tct{font-size:20px;font-weight:700;color:var(--gsn);margin-bottom:16px}
+.tcd{font-size:14px;color:#5f6368;line-height:1.7}
+.tcl{font-size:18px;font-weight:600;color:var(--gsb);margin-top:12px}
+@media print{.page{padding:32px 48px}.cover{height:100vh;page-break-after:always}}
+</style></head><body>
+<div class="cover">
+  <div style="position:absolute;top:40px;right:40px;background:rgba(201,162,39,0.15);border:1px solid var(--gsg);color:var(--gsg);padding:8px 20px;border-radius:4px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase">机密 | 客户专供</div>
+  <h1>世界杯小组赛<br>投资组合分析</h1>
+  <div class="cs">2串1 / 3串1 策略配置建议</div>
+  <div class="cm">
+    <div class="cmi"><div class="l">资金池</div><div class="v">$100,000</div></div>
+    <div class="cmi"><div class="l">Kelly分数</div><div class="v">0.25</div></div>
+    <div class="cmi"><div class="l">比赛数</div><div class="v">4场</div></div>
+    <div class="cmi"><div class="l">模型版本</div><div class="v">FQOS v5.2.0</div></div>
+  </div>
+  <div class="cf">FOOTBALL QUANT OS - NAGA CORE v5.0 - 2026-06-16 01:14 CST</div>
+</div>
+<div class="page">
+  <div class="sh"><div class="sn">1</div><div class="st">四场比赛价值方向汇总</div></div>
+  <div class="btr"><span class="tk">模型 vs 市场</span><span>基于FQOS v5.2.0</span></div>
+  <table class="bt">
+    <thead><tr><th>#</th><th>比赛</th><th>最佳投注</th><th>赔率</th><th>模型概率</th><th>Edge</th><th>信心</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>西班牙vs佛得角</td><td>佛得角+2.5/小2.5球</td><td>~2.0/2.30</td><td>75%/62%</td><td class="up">+25%/+12.5%</td><td>⚠️ 中</td></tr>
+      <tr><td>2</td><td>比利时vs埃及</td><td>埃及胜/平局</td><td>6.00/3.85</td><td>27.7%/31.8%</td><td class="up">+14.6%/+11.3%</td><td>⭐⭐ 高</td></tr>
+      <tr><td>3</td><td>沙特vs乌拉圭</td><td>沙特胜/平局</td><td>6.50/4.30</td><td>29.2%/32.7%</td><td class="up">+17.1%/+14.4%</td><td>⭐⭐ 高</td></tr>
+      <tr><td>4</td><td>伊朗vs新西兰</td><td>新西兰胜/平局</td><td>5.40/3.30</td><td>36.6%/24.3%</td><td class="up">+24.0%/+3.6%</td><td>⭐⭐⭐ 最高</td></tr>
+    </tbody>
+  </table>
+  <div class="card" style="margin-top:20px">
+    <div class="ch"><div class="ct">⚠️ 关键说明</div><div class="cbd bdr">风险提示</div></div>
+    <p style="font-size:14px;color:#5f6368;line-height:1.7">
+      西班牙那场<strong>1X2价值极弱</strong>（西班牙1.08无价值），串关建议用<strong>让球</strong>或<strong>大小球</strong>市场替代。
+      连续4场热门被高估可能反映2026扩军至48队后的<strong>系统性定价偏差</strong>，但也可能是模型对新赛制的<strong>外推误差</strong>。
+    </p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sh"><div class="sn">2</div><div class="st">2串1 组合分析</div></div>
+
+  <div class="tcb">
+    <div class="tct">🥇 组合A：沙特胜 × 新西兰胜（最强推荐）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">6.50 × 5.40 = 35.1</td></tr>
+        <tr><td>串关概率</td><td>29.2% × 36.6% = 10.7%</td></tr>
+        <tr><td>期望回报</td><td class="up">+276%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$2,025 (2.0%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$71,078</td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">逻辑：两场都是"市场严重低估冷门"，模型信心最高的两个方向</div>
+  </div>
+
+  <div class="tcb" style="border-color:#34a853">
+    <div class="tct">🥈 组合B：埃及胜 × 沙特胜</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">6.00 × 6.50 = 39.0</td></tr>
+        <tr><td>串关概率</td><td>27.7% × 29.2% = 8.1%</td></tr>
+        <tr><td>期望回报</td><td class="up">+216%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$1,425 (1.4%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$55,575</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tcb" style="border-color:#fbbc04">
+    <div class="tct">🥉 组合C：埃及平局 × 沙特平局（稳健型）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">3.85 × 4.30 = 16.6</td></tr>
+        <tr><td>串关概率</td><td>31.8% × 32.7% = 10.4%</td></tr>
+        <tr><td>期望回报</td><td class="up">+72%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$1,150 (1.2%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$19,090</td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">逻辑：两场都是"平局被低估"，概率更高（10.4%），赔率较低但更稳健</div>
+  </div>
+
+  <div class="tcb" style="border-color:#1a73e8">
+    <div class="tct">组合D：新西兰胜 × 西班牙小2.5球（跨市场）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">5.40 × 2.30 = 12.4</td></tr>
+        <tr><td>串关概率</td><td>36.6% × 62% = 22.7%</td></tr>
+        <tr><td>期望回报</td><td class="up">+181%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$2,800 (2.8%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$34,720</td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">⚠️ 注意：部分博彩公司不允许跨市场串关，需确认</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sh"><div class="sn">3</div><div class="st">3串1 组合分析</div></div>
+
+  <div class="tcb" style="border-color:#ea4335">
+    <div class="tct">🔥 组合E：埃及胜 × 沙特胜 × 新西兰胜（高赔高波动）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">6.00 × 6.50 × 5.40 = 210.6</td></tr>
+        <tr><td>串关概率</td><td>27.7% × 29.2% × 36.6% = 3.0%</td></tr>
+        <tr><td>期望回报</td><td class="up">+524%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$625 (0.6%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$131,625</td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">⚠️ 平均33次才中1次，适合极小资金博高赔</div>
+  </div>
+
+  <div class="tcb" style="border-color:#fbbc04">
+    <div class="tct">组合F：埃及平局 × 沙特平局 × 新西兰胜（平衡型）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">3.85 × 4.30 × 5.40 = 89.4</td></tr>
+        <tr><td>串关概率</td><td>31.8% × 32.7% × 36.6% = 3.8%</td></tr>
+        <tr><td>期望回报</td><td class="up">+240%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$675 (0.7%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$60,345</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tcb" style="border-color:#34a853">
+    <div class="tct">组合G：比利时平局 × 沙特平局 × 西班牙小2.5（最稳健3串1）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>指标</th><th>数值</th></tr></thead>
+      <tbody>
+        <tr><td>串关赔率</td><td class="up">3.85 × 4.30 × 2.30 = 38.1</td></tr>
+        <tr><td>串关概率</td><td>31.8% × 32.7% × 62% = 6.4%</td></tr>
+        <tr><td>期望回报</td><td class="up">+144%</td></tr>
+        <tr><td>Kelly注码</td><td class="up">$1,200 (1.2%资金)</td></tr>
+        <tr><td>中奖回报</td><td class="up">$45,720</td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">✅ 概率最高的3串1（6.4%），虽然赔率"只有"38倍</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sh"><div class="sn">4</div><div class="st">投资组合建议 ($100K资金池)</div></div>
+
+  <div class="tcb" style="border-color:#ea4335">
+    <div class="tct">🔥 方案A：进取型（总注码5.5%）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>组合</th><th>注码</th><th>赔率</th><th>概率</th><th>预期回报</th></tr></thead>
+      <tbody>
+        <tr><td>2串1: 沙特胜 × 新西兰胜</td><td>$2,000</td><td class="up">35.1</td><td>10.7%</td><td>+$5,500</td></tr>
+        <tr><td>2串1: 埃及平局 × 沙特平局</td><td>$1,000</td><td class="up">16.6</td><td>10.4%</td><td>+$726</td></tr>
+        <tr><td>3串1: 埃及平×沙特平×新西兰胜</td><td>$500</td><td class="up">89.4</td><td>3.8%</td><td>+$1,200</td></tr>
+        <tr><td>3串1: 比利时平×沙特平×西班牙小</td><td>$800</td><td class="up">38.1</td><td>6.4%</td><td>+$952</td></tr>
+        <tr style="background:#1a1a1a"><td><strong>总计</strong></td><td class="up"><strong>$4,300</strong></td><td>-</td><td>-</td><td class="up"><strong>+$8,378</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tcb" style="border-color:#fbbc04">
+    <div class="tct">⚖️ 方案B：稳健型（总注码3.5%）</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>组合</th><th>注码</th><th>赔率</th><th>概率</th><th>预期回报</th></tr></thead>
+      <tbody>
+        <tr><td>2串1: 沙特胜 × 新西兰胜</td><td>$1,500</td><td class="up">35.1</td><td>10.7%</td><td>+$4,125</td></tr>
+        <tr><td>2串1: 埃及平局 × 沙特平局</td><td>$800</td><td class="up">16.6</td><td>10.4%</td><td>+$581</td></tr>
+        <tr><td>3串1: 比利时平×沙特平×西班牙小</td><td>$500</td><td class="up">38.1</td><td>6.4%</td><td>+$595</td></tr>
+        <tr style="background:#1a1a1a"><td><strong>总计</strong></td><td class="up"><strong>$2,800</strong></td><td>-</td><td>-</td><td class="up"><strong>+$5,301</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tcb" style="border-color:#34a853">
+    <div class="tct">✅ 方案C：验证型（总注码1.5%）— 推荐</div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>组合</th><th>注码</th><th>赔率</th><th>概率</th><th>预期回报</th></tr></thead>
+      <tbody>
+        <tr><td>2串1: 沙特胜 × 新西兰胜</td><td>$1,000</td><td class="up">35.1</td><td>10.7%</td><td>+$2,750</td></tr>
+        <tr><td>2串1: 埃及平局 × 沙特平局</td><td>$500</td><td class="up">16.6</td><td>10.4%</td><td>+$363</td></tr>
+        <tr style="background:#1a1a1a"><td><strong>总计</strong></td><td class="up"><strong>$1,500</strong></td><td>-</td><td>-</td><td class="up"><strong>+$3,113</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="tcl">✅ 够小（即使全错只损失1.5%）✅ 够代表（覆盖3场最有价值比赛）✅ 可验证（第一轮后复盘模型价值）</div>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sh"><div class="sn">5</div><div class="st">关键风险警告</div></div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">⚠️ 1. 独立性假设可能不成立</div><div class="cbd bdr">相关性风险</div></div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>相关性来源</th><th>影响</th><th>概率</th></tr></thead>
+      <tbody>
+        <tr><td>小组赛第一轮"慢热效应"</td><td>所有热门球队同时状态差</td><td>中</td></tr>
+        <tr><td>同一天比赛场地条件相似</td><td>影响战术执行</td><td>低</td></tr>
+        <tr><td>心理传染</td><td>一个冷门发生后球员心态变化</td><td>中</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#5f6368;margin-top:12px">如果热门球队真的集体慢热，4场冷门同时发生概率会高于模型估计。</p>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">⚠️ 2. 串关的方差灾难</div><div class="cbd bdr">数学现实</div></div>
+    <table class="bt" style="margin-top:16px">
+      <thead><tr><th>串关类型</th><th>中奖概率</th><th>失败概率</th><th>平均多少次中1次</th></tr></thead>
+      <tbody>
+        <tr><td>2串1</td><td class="up">10-22%</td><td class="dn">78-90%</td><td>5-10次</td></tr>
+        <tr><td>3串1</td><td class="up">3-6%</td><td class="dn">94-97%</td><td>16-33次</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#5f6368;margin-top:12px"><strong>3串1平均16-33次才中1次</strong>，即使期望值正，连续10次不中很正常。</p>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">⚠️ 3. 模型偏差风险</div><div class="cbd bdr">系统性问题</div></div>
+    <p style="font-size:14px;color:#5f6368;line-height:1.7">
+      • 训练数据主要是<strong>32强时代</strong>（1930-2022），对48强新赛制的外推可能有系统性偏差<br>
+      • 新参赛球队（佛得角、新西兰、约旦、库拉索）在历史上<strong>完全没有样本</strong><br>
+      • 连续4场热门被高估，概率仅6.25%——<strong>可能是模式，也可能是巧合</strong><br>
+      • 模型未经过48强赛制实战验证，需要至少10-15场比赛才能校准
+    </p>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#fce8e8 0%,#fff 100%);border:2px solid var(--gr)">
+    <div class="ch"><div class="ct">🛑 最终建议</div><div class="cbd bdr">风险管理</div></div>
+    <p style="font-size:16px;color:var(--gsn);line-height:1.7;font-weight:600">
+      选<strong>方案C（验证型，$1,500 = 1.5%资金）</strong><br>
+      • 够小：即使全错，只损失1.5%资金，不伤筋动骨<br>
+      • 够代表：2串1覆盖了3场最有价值的比赛<br>
+      • 可验证：小组赛第一轮结束后复盘模型是否真有价值<br>
+      • 可扩展：如果2串1中了，第二轮可以增加注码<br>
+    </p>
+    <div class="tct" style="margin-top:16px">具体执行</div>
+    <table class="bt" style="margin-top:12px">
+      <thead><tr><th>组合</th><th>注码</th><th>赔率</th><th>中奖回报</th></tr></thead>
+      <tbody>
+        <tr><td>沙特胜@6.50 × 新西兰胜@5.40</td><td class="up">$1,000</td><td class="up">35.1</td><td class="up">$35,100</td></tr>
+        <tr><td>埃及平局@3.85 × 沙特平局@4.30</td><td class="up">$500</td><td class="up">16.6</td><td class="up">$8,300</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:#5f6368;margin-top:12px">两场都中的概率仅1.1%，但即使只中一场也有不错回报。</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="sh"><div class="sn">6</div><div class="st">附录 & 方法论</div></div>
+  <div class="card">
+    <div class="ch"><div class="ct">模型版本</div><div class="cbd bdb">技术规格</div></div>
+    <table class="bt" style="background:#f8f9fa;color:#202124">
+      <thead><tr><th>模型</th><th>数据</th><th>特征</th><th>OU准确率</th><th>1X2准确率</th></tr></thead>
+      <tbody>
+        <tr><td>XGBoost 2026 CRI v4</td><td>192场 (2014-2022)</td><td>34 (CRI+FIFA+xG)</td><td class="up">70.3%</td><td class="up">53.1%</td></tr>
+        <tr><td>XGBoost 2022专项</td><td>64场 (2022卡塔尔)</td><td>22 (xG丰富)</td><td class="up">71.9%</td><td>45.3%</td></tr>
+        <tr><td>XGBoost 三届世界杯 v3</td><td>192场 (FIFA+位置)</td><td>30</td><td>65.6%</td><td>48.4%</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dc">
+    <strong>免责声明:</strong> 本报告由 Football Quant OS (FQOS) v5.2.0-P1 生成。所有预测基于历史数据和统计模型。过往表现不代表未来结果。博彩涉及资本损失风险。Kelly Criterion 仅供信息参考；实际注码应根据个人风险承受能力和法规调整。本报告不构成财务建议。<br><br>
+    <strong>串关数学:</strong> 串关的期望值等于各场期望值相乘，但方差呈指数级增长。即使单场期望值为正，串关的破产风险也远高于单场投注。Kelly Criterion 在串关场景下需要特别保守的分数调整。
+  </div>
+  <div class="pf">
+    <span>Football Quant OS - Naga Core v5.0</span>
+    <span>生成时间: 2026-06-16 01:14 CST</span>
+    <span>第6页 共6页</span>
+  </div>
+</div>
+
+</body></html>

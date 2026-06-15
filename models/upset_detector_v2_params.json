@@ -1,0 +1,36 @@
+{
+  "version": "v2.0-trained-20260615",
+  "training_matches": 12,
+  "training_date": "2026-06-15",
+  "thresholds": {
+    "normal": 45,
+    "watch": 65,
+    "candidate": 80
+  },
+  "stage_probs": {
+    "group_round_1": 0.35,
+    "group_round_2": 0.20,
+    "group_round_3": 0.25,
+    "round_of_16": 0.12,
+    "quarter_final": 0.10,
+    "semi_final": 0.08,
+    "final": 0.05
+  },
+  "region_boost": {
+    "africa": 0.15,
+    "asia": 0.10,
+    "concacaf": 0.12,
+    "south_america": 0.05,
+    "europe": 0.0
+  },
+  "big_team_flow_threshold": 0.60,
+  "odds_reverse_threshold": 0.60,
+  "abnormal_flow_threshold": 0.70,
+  "notes": [
+    "基于2026世界杯12场小组赛结果训练",
+    "小组赛首轮实际冷门率37.5%（3/8场）",
+    "原模型冷门评分均低于30/100，严重低估",
+    "主要冷门：澳大利亚2-0土耳其、科特迪瓦1-0厄瓜多尔、瑞典3-1突尼斯",
+    "非洲/亚洲/北美球队对阵欧洲热门时冷门率高"
+  ]
+}

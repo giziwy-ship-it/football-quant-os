@@ -1,0 +1,31 @@
+{
+  "1x2": {
+    "accuracy": 0.427,
+    "samples": 1437,
+    "distribution": {
+      "home": 0.459,
+      "draw": 0.234,
+      "away": 0.308
+    }
+  },
+  "asian_handicap": {
+    "accuracy": 0.281,
+    "samples": 1437
+  },
+  "ht_ft": {
+    "accuracy": 0.479,
+    "samples": 1437
+  },
+  "correct_score": {
+    "accuracy": 0.212,
+    "samples": 1437
+  },
+  "total_goals": {
+    "accuracy": 0.243,
+    "samples": 1437
+  },
+  "over_under": {
+    "accuracy": 0.552,
+    "samples": 1437
+  }
+}

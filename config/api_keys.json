@@ -1,0 +1,9 @@
+{
+  "api_football_key": null,
+  "football_data_org_key": "364ec8f6bfc34bf0bd5b33cb1316b4cb",
+  "api_football_base_url": "https://v3.football.api-sports.io",
+  "football_data_org_base_url": "https://api.football-data.org/v4",
+  "request_timeout": 30,
+  "cache_ttl": 3600,
+  "rate_limit_delay": 1.0
+}

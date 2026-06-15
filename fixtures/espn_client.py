@@ -489,7 +489,7 @@ class ESPNClient:
             # 转换为北京时间 (UTC+8)
             dt_local = dt + timedelta(hours=8)
             return dt_local.strftime("%Y-%m-%d %H:%M")
-        except:
+        except Exception:
             return iso_time
 
 

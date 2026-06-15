@@ -1,0 +1,12 @@
+{
+  "api_football_key": "YOUR_API_FOOTBALL_KEY_HERE",
+  "football_data_org_key": "YOUR_FOOTBALL_DATA_ORG_KEY_HERE",
+  "request_timeout": 30,
+  "cache_ttl": 3600,
+  "rate_limit_delay": 1.0,
+  "notes": {
+    "api_football": "Get free key at https://www.api-football.com/ (100 calls/day)",
+    "football_data_org": "Get free key at https://www.football-data.org/ (register required)",
+    "rate_limit": "100 calls/day for API-Football free tier"
+  }
+}

@@ -11,7 +11,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # 获取项目根目录
-PROJECT_ROOT = Path(__file__).parent.parent.parent
+PROJECT_ROOT = Path(__file__).parent.parent
 
 # 加载 .env 文件（从多个可能的位置）
 def load_config():

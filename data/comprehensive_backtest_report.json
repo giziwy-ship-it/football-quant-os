@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "source": "Kaggle + Football Quant OS",
+    "calibration": {
+      "group_adjustment": 0.95,
+      "knockout_adjustment": 1.2,
+      "group_upset_rate": 0.342,
+      "knockout_upset_rate": 0.373
+    },
+    "model_version": "4.3.4_xg_enhanced",
+    "data_sources": {
+      "2022": "shrikrishnaparab/fifa-world-cup-2022-qatar-match-data",
+      "2018": "evangower/fifa-world-cup",
+      "2014": "evangower/fifa-world-cup"
+    }
+  },
+  "summary": {
+    "2022": {
+      "total": 64,
+      "correct": 31,
+      "accuracy": 48.4,
+      "group_accuracy": 47.9,
+      "knockout_accuracy": 53.3,
+      "features": [
+        "xG",
+        "possession",
+        "stage_calibration"
+      ]
+    },
+    "2018": {
+      "total": 64,
+      "correct": 27,
+      "accuracy": 42.2,
+      "group_accuracy": 33.3,
+      "knockout_accuracy": 66.7,
+      "features": [
+        "stage_calibration"
+      ]
+    },
+    "2014": {
+      "total": 64,
+      "correct": 32,
+      "accuracy": 50.0,
+      "group_accuracy": 41.7,
+      "knockout_accuracy": 80.0,
+      "features": [
+        "stage_calibration"
+      ]
+    },
+    "average": {
+      "accuracy": 46.9,
+      "group_accuracy": 41.0,
+      "knockout_accuracy": 66.7
+    }
+  },
+  "famous_upsets": {
+    "2022": [
+      {
+        "match": "ARGENTINA 1-2 SAUDI ARABIA",
+        "stage": "Group C",
+        "predicted": "home",
+        "actual": "away",
+        "confidence": 0.775,
+        "home_xg": 2.2,
+        "away_xg": 0.1
+      },
+      {
+        "match": "GERMANY 1-2 JAPAN",
+        "stage": "Group E",
+        "predicted": "home",
+        "actual": "away",
+        "confidence": 0.544,
+        "home_xg": 3.1,
+        "away_xg": 1.5
+      },
+      {
+        "match": "MOROCCO 0-0 SPAIN",
+        "stage": "Round of 16",
+        "predicted": "away",
+        "actual": "draw",
+        "confidence": 0.568,
+        "home_xg": 0.7,
+        "away_xg": 1.0
+      },
+      {
+        "match": "CROATIA 1-1 BRAZIL",
+        "stage": "Quarter-final",
+        "predicted": "away",
+        "actual": "draw",
+        "confidence": 0.702,
+        "home_xg": 0.6,
+        "away_xg": 2.5
+      }
+    ],
+    "2018": [],
+    "2014": []
+  },
+  "xG_analysis": {
+    "2022_matches_with_xg": 64,
+    "avg_home_xg": 1.38,
+    "avg_away_xg": 1.27
+  },
+  "recommendations": [
+    "2022 xG增强模型准确率: 48.4%",
+    "2018基准模型准确率: 42.2%",
+    "2014基准模型准确率: 50.0%",
+    "三届平均准确率: 46.9%",
+    "建议：xG特征未显著提升，需优化模型",
+    "小组赛平均准确率: 41.0%",
+    "淘汰赛平均准确率: 66.7%"
+  ]
+}

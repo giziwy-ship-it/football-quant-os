@@ -1,0 +1,62 @@
+Found 788 unique news items
+
+1. {{value.title}}
+   Link: {{value.url}}
+
+2. {{value.comment_count_show}}
+   Link: {{value.commentUrl}}
+
+3. 世界杯开门红 韩国赢得让人心服口服
+   Link: https://sports.sina.com.cn/china/2026-06-12/doc-iniccspn5035462.shtml
+
+4. 不只看球，预判巅峰！美加墨世界杯最全攻略
+   Link: https://sports.sina.com.cn/l/2026-05-28/doc-inhzmihu0220777.shtml
+
+5. 巴拉圭核心缺阵难作为 数据:美国小胜迎开门红
+   Link: https://sports.sina.com.cn/l/2026-06-12/doc-iniazyem3937011.shtml
+
+6. 16年轮回！世界杯揭幕战墨西哥或1-0小胜南非
+   Link: https://sports.sina.com.cn/l/2026-06-11/doc-iniaysmc0937302.shtml
+
+7. 穆里尼奥回归皇马获官宣！1.5亿神秘新援浮现
+   Link: https://sports.sina.com.cn/china/2026-06-10/doc-iniawttw2720557.shtml
+
+8. 世界杯鱼腩球队大盘点 4支新军搅局者盼奇迹
+   Link: https://sports.sina.com.cn/l/2026-06-10/doc-iniavshm4919454.shtml
+
+9. 世界杯球星盘点:梅罗内最后一舞 00后全面接班
+   Link: https://sports.sina.com.cn/l/2026-06-09/doc-iniauefa3398030.shtml
+
+10. 竞彩入门：看懂玩法规则 科学理性投注
+   Link: https://sports.sina.com.cn/l/2026-06-08/doc-iniarzfy7251693.shtml
+
+11. 盘点近3届世界杯大冷门 巴西1-7德国比分500倍
+   Link: https://sports.sina.com.cn/l/2026-06-05/doc-iniaicva8713259.shtml
+
+12. 近3届世界杯赢指情况盘点：强队输盘成常态？
+   Link: https://sports.sina.com.cn/l/2026-06-05/doc-iniaicva8712852.shtml
+
+13. 世界杯夺冠赔率：西法并列第1 葡萄牙压阿根廷
+   Link: https://sports.sina.com.cn/l/2026-06-04/doc-iniaeuqa0586719.shtml
+
+14. 世界杯金靴赔率：姆巴佩领衔 梅西第3&amp;C罗第7
+   Link: https://sports.sina.com.cn/l/2026-06-04/doc-iniaeuqa0587866.shtml
+
+15. 世界杯金手套赔率：马丁内斯第1 前4数据胶着
+   Link: https://sports.sina.com.cn/l/2026-06-04/doc-iniaeuqa0587324.shtml
+
+16. 世界杯来了！2026美加墨世界杯高清赛程长图！
+   Link: https://sports.sina.com.cn/l/2026-06-01/doc-inhzwcky4120678.shtml
+
+17. 世界杯冠军&amp;冠亚军开售 西法英葡力压卫冕冠军
+   Link: https://sports.sina.com.cn/l/2026-06-02/doc-inhzysxp7849362.shtml
+
+18. 世界杯L组巡礼:英格兰黄金一代 格子老将谢幕礼
+   Link: https://sports.sina.com.cn/l/2026-06-03/doc-iniaarqw2595009.shtml
+
+19. 世界杯K组巡礼：葡萄牙一骑绝尘 中超旧将聚首
+   Link: https://sports.sina.com.cn/l/2026-06-03/doc-iniaarqw2594924.shtml
+
+20. 世界杯J组巡礼：卫冕冠军领衔 奥地利终进正赛
+   Link: https://sports.sina.com.cn/l/2026-06-03/doc-iniaarqx1062267.shtml
+

@@ -1,0 +1,38 @@
+{
+  "1x2": {
+    "accuracy": 0.485,
+    "cv_mean": 0.48,
+    "cv_std": 0.051,
+    "samples": 1501
+  },
+  "over_under_25": {
+    "accuracy": 0.561,
+    "cv_mean": 0.572,
+    "cv_std": 0.036,
+    "samples": 1501
+  },
+  "over_under_15": {
+    "accuracy": 0.711,
+    "cv_mean": 0.707,
+    "cv_std": 0.049,
+    "samples": 1501
+  },
+  "asian_handicap": {
+    "accuracy": 0.289,
+    "cv_mean": 0.262,
+    "cv_std": 0.036,
+    "samples": 1501
+  },
+  "total_goals": {
+    "accuracy": 0.209,
+    "cv_mean": 0.193,
+    "cv_std": 0.011,
+    "samples": 1501
+  },
+  "correct_score": {
+    "accuracy": 0.233,
+    "cv_mean": 0.209,
+    "cv_std": 0.025,
+    "samples": 1501
+  }
+}
