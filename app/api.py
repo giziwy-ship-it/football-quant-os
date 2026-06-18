@@ -32,6 +32,16 @@ class MatchRequest(BaseModel):
     away_team_genes: Optional[Dict[str, float]] = None
     market_odds: Dict[str, float]
     bankroll: Optional[float] = Field(10000, ge=100)
+    # v5.2.0 Group Stage Context
+    stage: Optional[str] = Field('group', description='比赛阶段: group/knockout/final')
+    is_first_match: Optional[bool] = Field(False, description='是否首战')
+    home_region: Optional[str] = Field('europe', description='主队区域')
+    away_region: Optional[str] = Field('europe', description='客队区域')
+    home_experience: Optional[str] = Field('experienced', description='主队经验')
+    away_experience: Optional[str] = Field('experienced', description='客队经验')
+    group_standings: Optional[Dict[str, Any]] = Field(None, description='小组赛积分榜')
+    enable_v5: Optional[bool] = Field(True, description='优先使用 v5.2.0')
+    agents: Optional[List[str]] = Field(None, description='v4.0智能体列表')
 
 
 class BacktestRequest(BaseModel):

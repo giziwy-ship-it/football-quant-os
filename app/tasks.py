@@ -1,364 +1,227 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-任务执行入口 - Football Quant OS (修复版)
-整合所有 Agent、模型和调度器
-修复: 资金信号映射、GeneEngine变量名、冗余运行、数据传递
+任务执行入口 - Football Quant OS v5.2.0 整合版
+支持 v5.2.0 run_prediction() + v4.0 PipelineScheduler fallback
+Group Stage Context 已整合
 """
 
-import asyncio
 import sys
+import os
+import json
+import asyncio
 sys.stdout.reconfigure(encoding='utf-8')
 
-from typing import Dict, Any
+# Add project root to path for v5.2.0 imports
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if project_root not in sys.path:
+    sys.path.insert(0, project_root)
 
-from core.scheduler import PipelineScheduler, AsyncScheduler
-from core.event_bus import event_bus, CHANNELS
 from core.config import config
+from core.logger import logger
+from core.config_loader import load_config
 
-from agents.datascout_v2 import DataScout
-from agents.gene_engine import TeamEvaluator, GeneEngine
-from agents.analyst_v2 import Analyst
-from agents.committee_v2 import Committee
-from agents.risk_control_v2 import RiskControl
+# v5.2.0 imports
+from scripts.predict import run_prediction as v5_predict
+from models.kelly_integration import get_kelly_recommendations
 
-from models.matrix_108 import ProbabilityMatrix108
-from models.kelly import Kelly
-from models.historical_odds import HistoricalOddsFactor
-
-# 世界杯 Agent（可选）
-try:
-    from agents.worldcup_analyst import WorldCupAnalyst
-    _WORLD_CUP_AGENT_AVAILABLE = True
-except ImportError:
-    _WORLD_CUP_AGENT_AVAILABLE = False
-    WorldCupAnalyst = None
+# v4.0 fallback imports
+from core.scheduler import PipelineScheduler
+from core.config_loader import load_config
 
 
-# 资金信号映射（中文 → 英文）
-SIGNAL_MAP = {
-    "强烈看好主胜": "strong_home",
-    "看好主胜": "home_win",
-    "看好平局": "draw",
-    "看好客胜": "away_win",
-    "强烈看好客胜": "strong_away",
-    "中性": "neutral"
-}
-
-
-async def run_match_task(match: Dict[str, Any]) -> Dict[str, Any]:
-    """
-    执行完整比赛分析任务
-    
-    支持两种模式:
-    - 普通模式: 108矩阵 + 9 Agent 流水线
-    - 世界杯模式: 9 Agent + WorldCupAnalyst 六维预测
-    
-    三阶段流水线:
-    Phase 1: DataScout + GeneEngine + Analyst + WorldCupAnalyst(世界杯) (并行)
-    Phase 2: Committee (综合)
-    Phase 3: RiskControl (风控)
-    """
-    
-    # ===== 模式检测 =====
-    league = match.get('league', 'Unknown')
-    is_worldcup = league.lower() in ['world cup', 'worldcup', 'fifa world cup', '2026 world cup']
-    
-    bankroll = match.get('bankroll', config.DEFAULT_BANKROLL)
-    home_team = match.get('home_team', '')
-    away_team = match.get('away_team', '')
-    
-    # ===== 预处理：实力评定 + 108矩阵 + 基因 + 历史赔率（两种模式共用）=====
-    
-    # 1. 实力评定
-    evaluator = TeamEvaluator()
-    evaluator.evaluate(
-        home_team, league,
-        match.get('home_team_rank', 8),
-        match.get('home_recent_5')
-    )
-    evaluator.evaluate(
-        away_team, league,
-        match.get('away_team_rank', 8),
-        match.get('away_recent_5')
-    )
-    strength_matchup = evaluator.matchup(home_team, away_team)
-    
-    # 2. 108矩阵
-    matrix = ProbabilityMatrix108()
-    matrix_gap = strength_matchup.get('matrix_gap', 'even')
-    matrix_result = matrix.apply_to_match(matrix_gap)
-    
-    # 3. 基因分析
-    gene_engine = GeneEngine()
-    gene_engine.evaluate(home_team, manual_scores=match.get('home_team_genes'))
-    gene_engine.evaluate(away_team, manual_scores=match.get('away_team_genes'))
-    gene_matchup = gene_engine.analyze_matchup(home_team, away_team)
-    
-    # 4. 历史赔率因素分析
-    historical_odds = HistoricalOddsFactor()
-    odds = match.get('market_odds', {})
-    historical_result = historical_odds.run({
-        "home_team": home_team,
-        "away_team": away_team,
-        "market_odds": odds,
-        "league": league,
-        "base_probs": matrix_result.get('probabilities', {"home_win": 40, "draw": 30, "away_win": 30}),
-        "money_flow_signal": "neutral"
-    })
-    
-    # 将矩阵概率注入 match_data
-    if 'probabilities' in matrix_result:
-        probs = matrix_result['probabilities']
-        match['home_win'] = probs.get('home_win', 40)
-        match['draw'] = probs.get('draw', 30)
-        match['away_win'] = probs.get('away_win', 30)
-    
-    # ===== 优先级: 真实赔率概率 =====
-    market_odds = match.get('market_odds', {})
-    if market_odds and all(k in market_odds for k in ['home', 'draw', 'away']):
-        home_odds = market_odds['home']
-        draw_odds = market_odds['draw']
-        away_odds = market_odds['away']
-        
-        home_prob = (1 / home_odds) * 100
-        draw_prob = (1 / draw_odds) * 100
-        away_prob = (1 / away_odds) * 100
-        
-        total = home_prob + draw_prob + away_prob
-        match['home_win'] = round(home_prob / total * 100, 2)
-        match['draw'] = round(draw_prob / total * 100, 2)
-        match['away_win'] = round(away_prob / total * 100, 2)
-        
-        print(f"[Tasks] 优先级1 - 真实赔率概率: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
-    
-    elif historical_result.get('probability_adjustment', {}).get('adjusted'):
-        adj_probs = historical_result['probability_adjustment']['adjusted_probs']
-        match['home_win'] = adj_probs.get('home_win', match.get('home_win', 40))
-        match['draw'] = adj_probs.get('draw', match.get('draw', 30))
-        match['away_win'] = adj_probs.get('away_win', match.get('away_win', 30))
-        print(f"[Tasks] 优先级2 - 历史赔率调整: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
-    
-    else:
-        print(f"[Tasks] 优先级3 - 108矩阵概率: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
-    
-    # ===== Phase 1: Agent 并行分析 =====
-    scheduler = PipelineScheduler()
-    
-    # 基础 Agent（两种模式都有）
-    phase1_agents = [DataScout(), Analyst()]
-    
-    # 世界杯模式额外加入 WorldCupAnalyst
-    if is_worldcup and _WORLD_CUP_AGENT_AVAILABLE and WorldCupAnalyst:
-        print(f"[Tasks] 世界杯模式: 加入 WorldCupAnalyst")
-        phase1_agents.append(WorldCupAnalyst())
-    
-    scheduler.add_phase1(phase1_agents)
-    scheduler.add_phase2(Committee())
-    scheduler.add_phase3([RiskControl()])
-    
-    print(f"[Tasks] Phase 1 Agents: {[getattr(a, 'name', a.__class__.__name__) for a in phase1_agents]}")
-    print(f"[Tasks] 传入 Agents 的概率: 主{match.get('home_win', 40)}% 平{match.get('draw', 30)}% 客{match.get('away_win', 30)}%")
-    
-    pipeline_result = await scheduler.run(match)
-    
-    # ===== 后续处理（与普通模式一致）=====
-    phase1_results = pipeline_result.get('phase1', {})
-    datascout_result = phase1_results.get('DataScout', {})
-    
-    if datascout_result and 'market_odds' in datascout_result:
-        # DataScout 自动获取到了真实赔率
-        ds_odds = datascout_result['market_odds']
-        if ds_odds and all(k in ds_odds for k in ['home_win', 'draw', 'away_win']):
-            home_odds = ds_odds['home_win']
-            draw_odds = ds_odds['draw']
-            away_odds = ds_odds['away_win']
-            
-            home_prob = (1 / home_odds) * 100
-            draw_prob = (1 / draw_odds) * 100
-            away_prob = (1 / away_odds) * 100
-            
-            total = home_prob + draw_prob + away_prob
-            match['home_win'] = round(home_prob / total * 100, 2)
-            match['draw'] = round(draw_prob / total * 100, 2)
-            match['away_win'] = round(away_prob / total * 100, 2)
-            
-            print(f"[Tasks] 优先级0 - DataScout 自动获取: 主{match['home_win']}% 平{match['draw']}% 客{match['away_win']}%")
-            print(f"[Tasks] 来源: {datascout_result.get('key_factors', [''])[-1] if datascout_result.get('key_factors') else 'auto'}")
-    
-    # 提取资金信号传递给Committee（修复：使用正确的变量名和信号映射）
-    analyst_result = phase1_results.get('Analyst', {})
-    
-    # 收集所有Agent观点（修复：使用正确的变量名 gene_matchup）
-    opinions = []
-    for agent_name, agent_result in phase1_results.items():
-        if isinstance(agent_result, dict) and 'prediction' in agent_result:
-            opinions.append(agent_result)
-    
-    # 添加基因引擎观点（修复：使用 gene_matchup 而非 gene_analysis）
-    if 'gene_matchup' in locals() and gene_matchup:
-        opinions.append({
-            "agent": "GeneEngine",
-            "prediction": {
-                "home_win": gene_matchup.get('home_advantage', 50),
-                "draw": 30,
-                "away_win": 70 - gene_matchup.get('home_advantage', 50)
-            },
-            "confidence": 0.75
-        })
-    
-    # 添加108矩阵观点
-    if 'matrix_result' in locals() and 'probabilities' in matrix_result:
-        opinions.append({
-            "agent": "Matrix108",
-            "prediction": matrix_result['probabilities'],
-            "confidence": 0.8
-        })
-    
-    # 添加历史赔率因素观点
-    if 'historical_result' in locals() and historical_result:
-        hist_adj = historical_result.get('probability_adjustment', {})
-        if hist_adj.get('adjusted'):
-            opinions.append({
-                "agent": "HistoricalOdds",
-                "prediction": hist_adj['adjusted_probs'],
-                "confidence": historical_result.get('pattern', {}).get('confidence', 0.7),
-                "key_factors": historical_result.get('key_factors', [])
-            })
-    
-    # 如果有资金流向分析，传递给Committee（修复：使用信号映射）
-    if 'money_flow_analysis' in analyst_result:
-        money_flow = analyst_result['money_flow_analysis']
-        
-        # 创建新的 Committee 对象（带资金信号）
-        committee_obj = Committee()
-        committee_obj.receive_other_opinions(opinions)
-        
-        # 转换资金信号格式（修复：使用 SIGNAL_MAP）
-        raw_signal = money_flow.get('signal', 'NEUTRAL')
-        signal_type = SIGNAL_MAP.get(raw_signal, raw_signal.lower().replace(' ', '_'))
-        
-        committee_obj.receive_fund_signals([{
-            "signal_type": signal_type,
-            "confidence": money_flow.get('confidence', 0.5),
-            "direction": money_flow.get('direction', 'neutral'),
-            "strength": money_flow.get('strength', 'neutral'),
-            "source": "money_flow",
-            "weight": 1.0
-        }])
-        
-        # 重新运行 Committee 决策（带资金信号）
-        committee_result = committee_obj.run(match)
-        pipeline_result['phase2']['Committee'] = committee_result
-    
-    # ===== 决策与执行 =====
-    committee_result = pipeline_result['phase2'].get('Committee', {})
-    
-    # 组装完整数据给 RiskControl
-    risk_input = {
-        **match,
-        "committee_prediction": committee_result.get('prediction', {}),
-        "recommended_outcome": committee_result.get('recommended_outcome', 'home_win')
+def _map_team_name(team_name: str) -> str:
+    """Map Chinese team names to English for v5.2.0 model"""
+    name_map = {
+        '捷克': 'Czechia', '南非': 'South Africa',
+        '墨西哥': 'Mexico', '韩国': 'Korea Republic',
+        '加拿大': 'Canada', '卡塔尔': 'Qatar',
+        '瑞士': 'Switzerland', '波黑': 'Bosnia & Herzegovina',
+        '法国': 'France', '塞内加尔': 'Senegal',
+        '伊拉克': 'Iraq', '挪威': 'Norway',
+        '阿根廷': 'Argentina', '阿尔及利亚': 'Algeria',
+        '奥地利': 'Austria', '约旦': 'Jordan',
+        '葡萄牙': 'Portugal', '刚果(金)': 'Congo DR',
+        '英格兰': 'England', '克罗地亚': 'Croatia',
+        '加纳': 'Ghana', '巴拿马': 'Panama',
+        '乌兹别克斯坦': 'Uzbekistan', '哥伦比亚': 'Colombia',
     }
+    return name_map.get(team_name, team_name)
+
+
+def _extract_odds(market_odds: dict) -> tuple:
+    """Extract 1X2 and OU odds from market_odds dict"""
+    home_odds = market_odds.get('home', market_odds.get('1', 2.0))
+    draw_odds = market_odds.get('draw', market_odds.get('X', 3.0))
+    away_odds = market_odds.get('away', market_odds.get('2', 3.0))
+    over_odds = market_odds.get('over', 1.80)
+    under_odds = market_odds.get('under', 2.05)
+    ou_line = market_odds.get('ou_line', 2.5)
+    return home_odds, draw_odds, away_odds, ou_line, over_odds, under_odds
+
+
+def _run_v5_prediction(match_data: dict) -> dict:
+    """Run v5.2.0 prediction with group_stage_context support"""
+    home = _map_team_name(match_data.get('home_team', ''))
+    away = _map_team_name(match_data.get('away_team', ''))
     
-    # 如果有资金流向分析，传递给 RiskControl
-    if 'money_flow_analysis' in analyst_result:
-        risk_input["money_flow_analysis"] = analyst_result['money_flow_analysis']
+    home_odds, draw_odds, away_odds, ou_line, over_odds, under_odds = _extract_odds(
+        match_data.get('market_odds', {})
+    )
     
-    # 运行 RiskControl
-    risk_control = RiskControl()
-    risk_result = risk_control.run(risk_input)
-    pipeline_result['phase3']['RiskControl'] = risk_result
+    # Extract xG if available, else estimate from rank
+    home_rank = match_data.get('home_team_rank', 50)
+    away_rank = match_data.get('away_team_rank', 50)
+    home_xg = match_data.get('home_xg', max(0.8, 2.0 - home_rank/50))
+    away_xg = match_data.get('away_xg', max(0.5, 1.5 - away_rank/50))
     
-    if not risk_result.get('allow', True):
-        event_bus.publish(CHANNELS['RISK_ALERT'], {
-            'match': f"{home_team} vs {away_team}",
-            'reason': risk_result.get('warnings', [])
-        })
-        return {
-            "status": "blocked",
-            "reason": "risk control",
-            "risk_level": risk_result.get('risk_level', 'HIGH'),
-            "warnings": risk_result.get('warnings', []),
-            "match": {
-                "home_team": home_team,
-                "away_team": away_team,
-                "league": league
-            },
-            "team_strengths": strength_matchup,
-            "matrix_108": matrix_result,
-            "gene_analysis": gene_matchup,
-            "historical_odds": historical_result,
-            "agent_results": pipeline_result,
-            "decision": committee_result,
-            "risk_control": risk_result
-        }
+    # Extract region/experience
+    home_region = match_data.get('home_region', 'europe')
+    away_region = match_data.get('away_region', 'europe')
+    home_exp = match_data.get('home_experience', 'experienced')
+    away_exp = match_data.get('away_experience', 'experienced')
     
-    # 凯利计算（使用市场概率或 Committee 概率）
-    recommended = committee_result.get('recommended_outcome', 'home_win')
+    # Stage and group standings
+    stage = match_data.get('stage', 'group')
+    is_first = match_data.get('is_first_match', False)
+    group_standings = match_data.get('group_standings', None)
     
-    # 优先使用市场概率（如果有真实赔率）
-    if market_odds and all(k in market_odds for k in ['home_win', 'draw', 'away_win']):
-        # 计算市场概率
-        home_odds = market_odds['home_win']
-        draw_odds = market_odds['draw']
-        away_odds = market_odds['away_win']
-        
-        home_prob = (1 / home_odds) * 100
-        draw_prob = (1 / draw_odds) * 100
-        away_prob = (1 / away_odds) * 100
-        
-        total = home_prob + draw_prob + away_prob
-        market_probs = {
-            'home_win': round(home_prob / total * 100, 2),
-            'draw': round(draw_prob / total * 100, 2),
-            'away_win': round(away_prob / total * 100, 2)
-        }
-        
-        probability = market_probs.get(recommended, 50) / 100
-        print(f"[Tasks] 使用市场概率计算凯利: {recommended} = {probability*100:.1f}%")
+    # Run v5.2.0 prediction
+    result = v5_predict(
+        home=home, away=away,
+        odds_home=home_odds, odds_draw=draw_odds, odds_away=away_odds,
+        stage=stage, ou_line=ou_line,
+        odds_over=over_odds, odds_under=under_odds,
+        home_xg=home_xg, away_xg=away_xg,
+        home_poss=match_data.get('home_possession', 50),
+        away_poss=match_data.get('away_possession', 50),
+        is_first_match=is_first,
+        home_region=home_region, away_region=away_region,
+        home_experience=home_exp, away_experience=away_exp,
+        group_standings=group_standings,
+        bankroll=match_data.get('bankroll', 100000),
+        kelly_fraction=match_data.get('kelly_fraction', 0.25)
+    )
+    
+    # Extract simplified recommendations for API response
+    markets = result.get('markets', {})
+    m1x2 = markets.get('1x2', {})
+    ou = markets.get('over_under', {})
+    
+    model_probs = m1x2.get('model', {}) if isinstance(m1x2.get('model'), dict) else {}
+    home_prob = model_probs.get('home', 0.33)
+    draw_prob = model_probs.get('draw', 0.33)
+    away_prob = model_probs.get('away', 0.33)
+    
+    if home_prob >= draw_prob and home_prob >= away_prob:
+        pred_1x2 = '主胜'
+    elif away_prob >= home_prob and away_prob >= draw_prob:
+        pred_1x2 = '客胜'
     else:
-        # 使用 Committee 预测概率
-        probability = committee_result.get('prediction', {}).get(recommended, 50) / 100
-        print(f"[Tasks] 使用Committee概率计算凯利: {recommended} = {probability*100:.1f}%")
+        pred_1x2 = '平局'
     
-    odds = match.get('market_odds', {}).get(recommended, 2.0)
+    ou_rec = ou.get('recommendation', 'N/A')
     
-    # 基础凯利计算
-    kelly = Kelly(bankroll=bankroll)
-    base_stake = kelly.calculate(probability, odds)
-    
-    # 应用 RiskControl 的资金流调整
-    final_stake = base_stake.copy()
-    if 'kelly_adjustment' in risk_result:
-        ka = risk_result['kelly_adjustment']
-        adjusted_fraction = ka.get('adjusted_kelly', base_stake['safe_fraction'])
-        final_stake['safe_fraction'] = adjusted_fraction
-        final_stake['stake'] = bankroll * adjusted_fraction
-        final_stake['adjustment_reason'] = ka.get('adjustment_reason', '')
-    
-    stake_result = final_stake
-    
-    # 发布事件
-    event_bus.publish(CHANNELS['MATCH_ANALYZED'], {
-        'match': f"{home_team} vs {away_team}",
-        'decision': recommended,
-        'stake': stake_result['stake']
-    })
+    # Kelly
+    kelly = result.get('kelly', {})
+    kelly_recs = kelly.get('recommendations', [])
     
     return {
-        "status": "success",
-        "match": {
-            "home_team": home_team,
-            "away_team": away_team,
-            "league": league
+        'version': '5.2.0',
+        'system': 'Football Quant OS v5.2.0 (XGBoost Ensemble + Poisson + Heuristic)',
+        'match': f"{home} vs {away}",
+        'prediction': {
+            '1x2': {
+                'probabilities': {
+                    'home': round(home_prob, 4),
+                    'draw': round(draw_prob, 4),
+                    'away': round(away_prob, 4)
+                },
+                'recommendation': pred_1x2,
+                'confidence': result.get('confidence', 0)
+            },
+            'over_under': {
+                'line': ou_line,
+                'recommendation': ou_rec,
+                'lambda': ou.get('lambda', 'N/A')
+            },
+            'kelly': kelly_recs
         },
-        "team_strengths": strength_matchup,
-        "matrix_108": matrix_result,
-        "gene_analysis": gene_matchup,
-        "historical_odds": historical_result,
-        "agent_results": pipeline_result,
-        "decision": committee_result,
-        "risk_control": risk_result,
-        "stake": stake_result
+        'group_context': result.get('group_context', {}),
+        'group_context_display': result.get('group_context_display', ''),
+        'upset_score': result.get('upset_score', 0),
+        'recommendations': result.get('recommendations', []),
+        'raw_result': result  # Full result for advanced users
     }
+
+
+async def _run_v4_fallback(match_data: dict) -> dict:
+    """v4.0 fallback using PipelineScheduler"""
+    scheduler = PipelineScheduler(
+        bankroll=match_data.get('bankroll', 10000)
+    )
+    
+    # Build pipeline config
+    pipeline_config = load_config()
+    
+    # Run pipeline
+    result = await scheduler.execute(
+        match_data=match_data,
+        config=pipeline_config,
+        agents=match_data.get('agents', None)
+    )
+    
+    return {
+        'version': '4.0',
+        'system': 'Football Quant OS v4.0 (PipelineScheduler)',
+        'result': result
+    }
+
+
+async def run_match_task(match_data: dict) -> dict:
+    """
+    主执行入口 - 优先使用 v5.2.0，失败时 fallback 到 v4.0
+    """
+    task_id = match_data.get('task_id', 'unknown')
+    logger.info(f"[Task {task_id}] Starting prediction task")
+    
+    # Try v5.2.0 first
+    try:
+        logger.info(f"[Task {task_id}] Trying v5.2.0 prediction with group_stage_context")
+        result = _run_v5_prediction(match_data)
+        logger.info(f"[Task {task_id}] v5.2.0 prediction succeeded")
+        return result
+    except Exception as e:
+        logger.warning(f"[Task {task_id}] v5.2.0 failed: {e}, falling back to v4.0")
+    
+    # Fallback to v4.0
+    try:
+        result = await _run_v4_fallback(match_data)
+        logger.info(f"[Task {task_id}] v4.0 fallback succeeded")
+        return result
+    except Exception as e:
+        logger.error(f"[Task {task_id}] v4.0 fallback also failed: {e}")
+        return {
+            'error': 'Both v5.2.0 and v4.0 failed',
+            'v5_error': str(e) if 'e' in dir() else 'unknown',
+            'v4_error': str(e)
+        }
+
+
+# For direct testing
+if __name__ == '__main__':
+    # Test v5.2.0 integration
+    test_data = {
+        'home_team': '捷克',
+        'away_team': '南非',
+        'market_odds': {'home': 1.80, 'draw': 3.30, 'away': 4.10, 'over': 1.00, 'under': 0.80, 'ou_line': 2.25},
+        'home_team_rank': 45,
+        'away_team_rank': 60,
+        'stage': 'group',
+        'group_standings': {
+            'Czechia': {'points': 0, 'played': 1, 'goal_diff': -1},
+            'South Africa': {'points': 0, 'played': 1, 'goal_diff': -2}
+        }
+    }
+    result = asyncio.run(run_match_task(test_data))
+    print(json.dumps(result, ensure_ascii=False, indent=2))
