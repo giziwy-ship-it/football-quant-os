@@ -86,6 +86,13 @@ def _run_v5_prediction(match_data: dict) -> dict:
     is_first = match_data.get('is_first_match', False)
     group_standings = match_data.get('group_standings', None)
     
+    # Map standings keys from Chinese to English
+    if group_standings:
+        mapped_standings = {}
+        for team_key, stats in group_standings.items():
+            mapped_standings[_map_team_name(team_key)] = stats
+        group_standings = mapped_standings
+    
     # Run v5.2.0 prediction
     result = v5_predict(
         home=home, away=away,
