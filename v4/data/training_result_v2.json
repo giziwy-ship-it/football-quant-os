@@ -1,0 +1,59 @@
+{
+  "weights": {
+    "mechanics": 2.0,
+    "field": 0.0,
+    "entropy": 2.0,
+    "coach": 0.0,
+    "market": 0.0
+  },
+  "draw_boost": 0.8,
+  "train_metrics": {
+    "accuracy": 0.44019138755980863,
+    "brier": 0.21858567130382778,
+    "total": 836,
+    "correct": 368,
+    "pred_dist": {
+      "home": 325,
+      "draw": 312,
+      "away": 199
+    },
+    "actual_dist": {
+      "home": 386,
+      "draw": 186,
+      "away": 264
+    }
+  },
+  "val_metrics": {
+    "accuracy": 0.453125,
+    "brier": 0.21365087958333334,
+    "total": 64,
+    "correct": 29,
+    "pred_dist": {
+      "home": 21,
+      "draw": 23,
+      "away": 20
+    },
+    "actual_dist": {
+      "home": 25,
+      "draw": 13,
+      "away": 26
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.453125,
+    "brier": 0.20742464885416667,
+    "total": 64,
+    "correct": 29,
+    "pred_dist": {
+      "home": 27,
+      "draw": 20,
+      "away": 17
+    },
+    "actual_dist": {
+      "home": 29,
+      "draw": 15,
+      "away": 20
+    }
+  },
+  "training_date": "2026-06-16T22:27:04.453513"
+}

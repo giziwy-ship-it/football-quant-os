@@ -1,0 +1,234 @@
+{
+  "summary": {
+    "total_bets": 8,
+    "wins": 3,
+    "win_rate": "37.5%",
+    "total_stake": 3258.89,
+    "total_pnl": 6002.17,
+    "roi": "184.2%",
+    "final_bankroll": 16002.17,
+    "total_return": "60.0%",
+    "max_drawdown": "12.6%"
+  },
+  "by_signal": {
+    "strong_value": {
+      "count": 7,
+      "pnl": 49.04,
+      "avg_pnl": 7.01
+    },
+    "sharp_fade": {
+      "count": 1,
+      "pnl": 5953.13,
+      "avg_pnl": 5953.13
+    }
+  },
+  "trap_detection": {
+    "trap_bets": 1,
+    "trap_wins": 1,
+    "trap_win_rate": "100.0%",
+    "trap_pnl": 5953.13
+  },
+  "evolution": {
+    "weights": {
+      "mechanics": 0.2,
+      "field": 0.2,
+      "entropy": 0.2,
+      "coach": 0.2,
+      "market": 0.2
+    },
+    "logits": {
+      "mechanics": 0.0,
+      "field": 0.0,
+      "entropy": 0.0,
+      "coach": 0.0,
+      "market": 0.0
+    },
+    "ranking": [
+      {
+        "name": "mechanics",
+        "weight": 0.2,
+        "accuracy": 0.0,
+        "roi": 0.0
+      },
+      {
+        "name": "field",
+        "weight": 0.2,
+        "accuracy": 0.0,
+        "roi": 0.0
+      },
+      {
+        "name": "entropy",
+        "weight": 0.2,
+        "accuracy": 0.0,
+        "roi": 0.0
+      },
+      {
+        "name": "coach",
+        "weight": 0.2,
+        "accuracy": 0.0,
+        "roi": 0.0
+      },
+      {
+        "name": "market",
+        "weight": 0.2,
+        "accuracy": 0.0,
+        "roi": 0.0
+      }
+    ],
+    "performance_summary": {
+      "mechanics": {
+        "accuracy": 0.0,
+        "roi": 0.0,
+        "brier_score": 1.0,
+        "samples": 0
+      },
+      "field": {
+        "accuracy": 0.0,
+        "roi": 0.0,
+        "brier_score": 1.0,
+        "samples": 0
+      },
+      "entropy": {
+        "accuracy": 0.0,
+        "roi": 0.0,
+        "brier_score": 1.0,
+        "samples": 0
+      },
+      "coach": {
+        "accuracy": 0.0,
+        "roi": 0.0,
+        "brier_score": 1.0,
+        "samples": 0
+      },
+      "market": {
+        "accuracy": 0.0,
+        "roi": 0.0,
+        "brier_score": 1.0,
+        "samples": 0
+      },
+      "combined": {
+        "accuracy": 0.625,
+        "roi": 2.075,
+        "brier_score": 0.2095,
+        "samples": 8
+      }
+    },
+    "diagnosis": {
+      "is_imbalanced": false,
+      "failing_models": [],
+      "recommendations": [
+        "系统运行正常"
+      ]
+    },
+    "overall": {
+      "accuracy": 0.5,
+      "roi": 0.0
+    }
+  },
+  "bet_details": [
+    {
+      "match_id": "A1",
+      "home": "QAT",
+      "away": "ECU",
+      "direction": "draw",
+      "odds": 3.1,
+      "stake": 483.89,
+      "won": false,
+      "pnl": -483.89,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 9516.11
+    },
+    {
+      "match_id": "A2",
+      "home": "SEN",
+      "away": "NED",
+      "direction": "draw",
+      "odds": 3.3,
+      "stake": 355.23,
+      "won": false,
+      "pnl": -355.23,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 9160.88
+    },
+    {
+      "match_id": "B1",
+      "home": "ENG",
+      "away": "IRN",
+      "direction": "away",
+      "odds": 12.0,
+      "stake": 418.4,
+      "won": false,
+      "pnl": -418.4,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 8742.47
+    },
+    {
+      "match_id": "B2",
+      "home": "USA",
+      "away": "WAL",
+      "direction": "draw",
+      "odds": 3.3,
+      "stake": 260.71,
+      "won": true,
+      "pnl": 599.64,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 9342.12
+    },
+    {
+      "match_id": "C1",
+      "home": "ARG",
+      "away": "KSA",
+      "direction": "away",
+      "odds": 18.0,
+      "stake": 350.18,
+      "won": true,
+      "pnl": 5953.13,
+      "signal": "sharp_fade",
+      "market_bias": "trap_home",
+      "bankroll_after": 15295.25
+    },
+    {
+      "match_id": "D1",
+      "home": "DEN",
+      "away": "TUN",
+      "direction": "away",
+      "odds": 6.5,
+      "stake": 462.54,
+      "won": false,
+      "pnl": -462.54,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 14832.71
+    },
+    {
+      "match_id": "C2",
+      "home": "MEX",
+      "away": "POL",
+      "direction": "draw",
+      "odds": 3.3,
+      "stake": 635.58,
+      "won": true,
+      "pnl": 1461.82,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 16294.53
+    },
+    {
+      "match_id": "D2",
+      "home": "FRA",
+      "away": "AUS",
+      "direction": "away",
+      "odds": 10.0,
+      "stake": 292.36,
+      "won": false,
+      "pnl": -292.36,
+      "signal": "strong_value",
+      "market_bias": "balanced",
+      "bankroll_after": 16002.17
+    }
+  ]
+}

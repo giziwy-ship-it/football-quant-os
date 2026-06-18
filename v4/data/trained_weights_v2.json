@@ -1,0 +1,10 @@
+{
+  "layer_weights": {
+    "mechanics": 2.0,
+    "field": 0.0,
+    "entropy": 2.0,
+    "coach": 0.0,
+    "market": 0.0
+  },
+  "draw_boost": 0.8
+}

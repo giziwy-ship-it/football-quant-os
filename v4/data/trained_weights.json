@@ -1,0 +1,26 @@
+{
+  "layer_weights": {
+    "mechanics": 2.0,
+    "field": 0.0,
+    "entropy": 2.0,
+    "coach": 0.0,
+    "market": 0.0
+  },
+  "draw_boost": 0.8,
+  "source": "Full World Cup 1930-2022 + xG hybrid calibration",
+  "accuracy_train": 0.440,
+  "accuracy_val_2018": 0.453,
+  "accuracy_test_2022": 0.458,
+  "draw_pred_2022": 16,
+  "draw_actual_2022": 10,
+  "training_date": "2026-06-17",
+  "xg_adjustments": {
+    "GER": "+0.05 attack (xG+2.24)",
+    "BEL": "-0.05 attack (xG-1.00)",
+    "NED": "-0.05 attack (xGA high)",
+    "ECU": "+0.05 attack/+0.05 defense (xG+1.33)",
+    "MEX": "+0.05 attack/+0.05 defense (xG+1.00)",
+    "BRA": "+0.05 attack/+0.05 defense (xG+1.98)",
+    "ARG": "+0.05 attack/+0.05 defense (xG+1.22)"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "weights": {
+    "mechanics": 1.0,
+    "field": 0.6,
+    "entropy": 1.5,
+    "coach": 0.5,
+    "market": 0.0
+  },
+  "val_metrics": {
+    "brier": 0.2040885430729168,
+    "log_loss": 1.0234530813146523,
+    "accuracy": 0.53125,
+    "samples": 64
+  },
+  "test_metrics_2022": {
+    "brier": 0.21703949888888882,
+    "log_loss": 1.0742058725555739,
+    "accuracy": 0.3958333333333333,
+    "samples": 48
+  },
+  "training_date": "2026-06-16T18:57:50.706283"
+}
