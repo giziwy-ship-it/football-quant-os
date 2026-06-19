@@ -1,33 +1,83 @@
-# Football Quant OS — 足球量化投注决策系统
+# Football Quant OS — 机构级足球量化预测系统 **v6.3**
 
-> **"用数据说话，让概率成为你的朋友。"**
+> **"我们不预测比赛，我们计算概率。我们不赌博，我们投资期望值。"** 🏎️⚽📊
 
-一款基于**九智能体架构**的足球赛事量化分析与投注决策系统，采用**四层概率修正器**、**Kelly 最优注码算法**和**自进化基因引擎**，覆盖全球主流联赛，为理性投注者提供数据驱动的决策支持。
+一款融合 **12 家顶级量化机构方法论** 的足球赛事量化分析与投注决策系统，采用 **六层 Agent 架构**、**Kelly 最优注码**、**无偏差回测框架** 和 **实时合规监控**，覆盖全球主流联赛与杯赛。
 
-## 核心能力
+## 版本亮点 (v6.3)
 
-### 九智能体并行架构 (Nine-Agent)
+v6.3 在 v6.0 基础上完成了 **P1 高级引擎整合** 和 **组合投注系统扩展**：
 
-| 智能体 | 角色 | 核心能力 |
-|--------|------|----------|
-| **DataScout** | 数据采集 | 实时赔率抓取、多源数据融合、异常检测 |
-| **Analyst** | 深度建模 | Poisson 分布、Elo 动态评级、108 矩阵模型 |
-| **Arbitrage** | 套利识别 | 跨盘口 odds 差异扫描、无风险套利机会 |
-| **TeamValue** | 球队估值 | 长期实力评估、市场偏差识别 |
-| **Legal** | 合规风控 | 法律边界检查、风险隔离 |
-| **Committee** | 共识决策 | 多模型加权投票、置信度评估 |
-| **RiskControl** | 极端场景 | 压力测试、黑天鹅防护、资金保护 |
-| **Execution** | 注码执行 | Kelly 最优注码、资金分配、组合优化 |
-| **Evolution** | 自进化 | 交易记录学习、偏差修正、策略迭代 |
+| 维度 | v6.0 | v6.3 | 提升 |
+|------|------|------|------|
+| 自进化能力 | N/A | ✅ | **新增** |
+| 市场微结构 | N/A | ✅ | **新增** |
+| 组合投注 | 基础 | 完整 | +100% |
+| 投资系统 | N/A | ✅ | **新增** |
+| 体能AI | N/A | ✅ | **新增** |
+| HT/FT预测 | N/A | ✅ | **新增** |
 
-### 四层概率修正器
+### v6.3 新增模块
 
-| 层级 | 修正因子 | 权重 | 说明 |
-|------|---------|------|------|
-| **L1** | 基础实力概率 | 基准 | Elo 评级 + 历史交锋 + 近期状态 |
-| **L2** | 时间/战意/联赛偏差 | ±8% | 赛程密度、保级/争冠战意、联赛特性 |
-| **L3** | 盘口结构/临场信息 | ±5% | 赔率变动、资金流向、伤病/停赛 |
-| **L4** | 诱盘检测 (T-index) | ±3% | 识别庄家诱盘、反向信号过滤 |
+| 模块 | 版本 | 核心能力 | 文件 |
+|------|------|----------|------|
+| **SelfEvolution** | v4.0 | 贝叶斯在线学习 + 滚动窗口回测 + 梯度下降更新 | `v4/core/evolution.py` |
+| **MarketMicrostructure** | v4.0 | 赔率变动深层解读 + 诱盘识别 + 市场偏差检测 | `v4/core/market_micro.py` |
+| **CombinationBetting** | v5.1 | 单场多市场2串1/3串1 + 多场比赛2串1/3串1/4串1 | `scripts/combination_betting.py` |
+| **InvestmentSystem** | v2.0 | 4模块集成(DataScout/Analyst/Committee/RiskControl) | `scripts/investment_system.py` |
+| **PhysicalAI** | v4.0 | 力学/场域/熵/量子四层物理模型 | `v4/core/physical_ai.py` |
+| **HT/FT Data** | v1.0 | 半全场数据框架 + 双维度预测 | `features/htft_data_framework.py` |
+
+### v6.0 新增 12 个融合模块
+
+| 模块 | 注入机构 | 核心能力 | 文件 |
+|------|----------|----------|------|
+| **DataFetcher v3.0** | 00 数据清洗 | 数据清洗管道 + 质量验证 + 异常检测 | `data/data_fetcher_v3.py` |
+| **BacktestEngine v2.0** | 02 文艺复兴 | BiasChecker + WalkForward + MonteCarlo | `backtest/engine_v2.py` |
+| **RiskGuardian v2.0** | 03 Two Sigma | 压力测试(5场景) + VaR + 回撤控制 | `agents/risk_guardian_v2.py` |
+| **FactorMonitor v1.0** | 05.5 因子监控 | 8因子健康巡检 + 衰减预警 + 自动降级 | `agents/factor_monitor.py` |
+| **UpsetDetector v3.0** | 04 Citadel | 信号IC + 拥挤度 + 制度检测 | `agents/upset_detector_v3.py` |
+| **ModelEnsemble v2.0** | 06 AQR | 风险平价 + IC加权 + 动态再平衡 | `models/ensemble_v2.py` |
+| **HeuristicModel v2.0** | 08 Bridgewater | 四象限制度分类 + 动态校准 | `models/heuristic_model_v2.py` |
+| **WorldCupDataEngineer v2.0** | 11 Point72 | SHAP解释 + 时序CV + 漂移监控 | `agents/worldcup_data_engineer_v2.py` |
+| **TradingAgent v2.0** | 10 Virtu | 订单拆分 + 滑点监控 + 对账引擎 | `agents/trading_v2.py` |
+| **AttributionAgent v1.0** | 13.5 归因 | 因子/策略/成本归因 + 运气vs技能 | `agents/attribution_agent.py` |
+| **TreasuryAgent v2.0** | 12 Man Group | Black-Litterman + 风险平价 + 约束 | `agents/treasury_v2.py` |
+| **ComplianceAgent v1.0** | 15 高盛合规 | 交易前检查 + 异常检测 + 审计追踪 | `agents/compliance_agent.py` |
+
+## 六层 Agent 架构 (v6.0)
+
+```
+┌─────────────────────────────────────────────────────┐
+│  P0 定价与资金层                                      │
+│  ├── OddsPricingAgent v1.1  (7种盘口 + 套利检测)      │
+│  ├── TreasuryAgent v2.0     (Black-Litterman)         │
+│  └── IntelligenceAgent v1.0 (5级情报源 + NLP)         │
+├─────────────────────────────────────────────────────┤
+│  P1 执行与风控层                                      │
+│  ├── TradingAgent v2.0      (订单拆分 + 滑点控制)      │
+│  ├── RiskGuardian v2.0      (压力测试 + VaR)          │
+│  └── ComplianceAgent v1.0   (合规 + 审计)             │
+├─────────────────────────────────────────────────────┤
+│  P2 绩效与归因层 (NEW v6.0)                           │
+│  └── AttributionAgent v1.0  (因子/策略/成本归因)       │
+├─────────────────────────────────────────────────────┤
+│  P3 冷门雷达层                                        │
+│  ├── UpsetDetector v3.0     (信号IC + 拥挤度)          │
+│  ├── CoachFactor v1.0       (48强教练因子)             │
+│  └── FactorMonitor v1.0     (因子健康监控)             │
+├─────────────────────────────────────────────────────┤
+│  P4 数据与模型层                                      │
+│  ├── WorldCupDataEngineer v2.0 (SHAP + 时序CV)       │
+│  ├── ModelEnsemble v2.0     (风险平价权重)              │
+│  ├── HeuristicModel v2.0    (四象限制度)              │
+│  ├── PoissonModel v2.2      (5因子优化)               │
+│  └── BacktestEngine v2.0    (无偏差回测)              │
+├─────────────────────────────────────────────────────┤
+│  P5 数据基础设施层                                     │
+│  └── DataFetcher v3.0       (清洗 + 验证)              │
+└─────────────────────────────────────────────────────┘
+```
 
 ### 关键算法
 
@@ -51,12 +101,21 @@
 - **动态权重调整**: 根据历史表现调整各模型权重
 - **基因引擎优化**: 基于交易记录的遗传算法策略进化
 
-## 快速入门
+## 快速入门 (v6.0)
 
-### 单场比赛分析
+### 单场比赛预测 (新入口)
 ```bash
-"分析今晚欧冠皇马 vs 拜仁的比赛"
-"用 Kelly 公式计算这场应该下注多少"
+# 基础预测 (兼容 v5)
+python scripts/predict_v6.py --home Germany --away Japan --odds 1.8 3.4 4.2
+
+# 完整 v6 流水线 (全模块启用)
+python scripts/predict_v6.py --home Germany --away Japan --odds 1.8 3.4 4.2 --full-pipeline
+
+# 合规检查模式
+python scripts/predict_v6.py --home Germany --away Japan --odds 1.8 3.4 4.2 --compliance-check
+
+# 批量预测
+python scripts/predict_v6.py --batch matches.json --output results.json
 ```
 
 ### 实时赔率监控
@@ -65,10 +124,13 @@
 "检查有没有套利机会"
 ```
 
-### 回测验证
+### 回测验证 (v6 增强)
 ```bash
-"回测我上周的5场推荐"
-"用历史数据验证模型准确率"
+# 无偏差回测
+python backtest/engine_v2.py --data matches.json --walk-forward
+
+# 蒙特卡洛模拟
+python backtest/engine_v2.py --data matches.json --monte-carlo 10000
 ```
 
 ### 组合投注优化
@@ -115,17 +177,51 @@
 - **SQLite** - 数据存储
 - **WebSocket** - 实时数据推送
 
-## 项目结构
+## 项目结构 (v6.0)
 
 ```
 football_quant_os/
-├── agents/          # 智能体模块
-├── app/             # Web 应用
-├── backtest/        # 回测系统
-├── core/            # 核心引擎
-├── data/            # 数据存储
-├── fixtures/        # 测试数据
-└── models/          # 预测模型
+├── agents/              # 智能体模块 (P0-P3)
+│   ├── odds_pricing.py
+│   ├── treasury.py              # v1.0 (保留兼容)
+│   ├── treasury_v2.py           # v2.0 Man Group 组合优化
+│   ├── intelligence.py
+│   ├── trading.py               # v1.0 (保留兼容)
+│   ├── trading_v2.py            # v2.0 Virtu 执行优化
+│   ├── risk_guardian.py         # v1.0 (保留兼容)
+│   ├── risk_guardian_v2.py      # v2.0 Two Sigma 风控
+│   ├── upset_detector.py        # v2.0 (保留兼容)
+│   ├── upset_detector_v3.py     # v3.0 Citadel 信号
+│   ├── coach_factor.py
+│   ├── factor_monitor.py        # v1.0 NEW
+│   ├── attribution_agent.py     # v1.0 NEW
+│   ├── compliance_agent.py      # v1.0 NEW
+│   └── worldcup_data_engineer_v2.py  # v2.0 NEW
+├── models/              # 预测模型
+│   ├── base_model.py
+│   ├── heuristic_model.py       # v4.3 (保留兼容)
+│   ├── heuristic_model_v2.py    # v2.0 Bridgewater 制度
+│   ├── poisson_model.py         # v2.2
+│   ├── ensemble.py              # v1.0 (保留兼容)
+│   ├── ensemble_v2.py           # v2.0 AQR 因子模型
+│   ├── xgboost_*.pkl            # 6 XGBoost ensemble
+│   └── kelly_integration.py
+├── data/                # 数据层
+│   ├── data_fetcher.py          # v2.0 (保留兼容)
+│   └── data_fetcher_v3.py       # v3.0 清洗+验证 NEW
+├── backtest/            # 回测系统
+│   ├── engine.py                # v1.0 (保留兼容)
+│   └── engine_v2.py             # v2.0 文艺复兴 NEW
+├── features/            # 特征工程
+│   ├── feature_engineer.py
+│   └── group_stage_context.py
+├── scripts/             # 执行脚本
+│   ├── predict.py               # v5.0 (保留兼容)
+│   ├── predict_pipeline.py      # v5.0 (保留兼容)
+│   └── predict_v6.py            # v6.0 统一入口 NEW
+├── reports/             # 报告生成
+├── references/          # 知识库
+└── tests/               # 测试套件
 ```
 
 ## 安装
@@ -169,6 +265,19 @@ pip install -r requirements.txt
 }
 ```
 
+## 版本历史
+
+| 版本 | 日期 | 核心变更 |
+|------|------|----------|
+| **v6.3** | **2026-06-19** | **P1高级引擎整合(SelfEvolution+MarketMicrostructure)，组合投注系统(单场多市场+多场2/3/4串1)，InvestmentSystem/PhysicalAI/HTFT整合** |
+| v6.0 | 2026-06-19 | 机构级量化方法论融合，12模块落地，predict_v6.py |
+| v5.2 | 2026-06-16 | 小组赛上下文特征模块，xG增强，48强赛制适配 |
+| v5.0 | 2026-06-14 | P0-P4层Agent架构，Kelly集成，DataFetcher抽象层 |
+| v4.3 | 2026-06-12 | 九智能体架构，四层概率修正器，XGBoost模型 |
+| v3.0 | 2026-05 | Poisson大小球模型，回测引擎 |
+| v2.0 | 2026-04 | 基础预测引擎，Kelly注码 |
+| v1.0 | 2026-03 | 项目启动，核心框架 |
+
 ## 许可证
 
 MIT License
@@ -176,8 +285,7 @@ MIT License
 ## 作者
 
 GitHub: [@giziwy-ship-it](https://github.com/giziwy-ship-it)
-SkillHQ: https://skillhq.dev/skills/giziwy-xiaonajia/football-quant-os
 
 ---
 
-**"我们不预测比赛，我们计算概率。我们不赌博，我们投资期望值。"** 🏎️⚽📊
+**"用数据说话，让概率成为你的朋友。"** ⚽📊

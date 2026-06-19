@@ -432,49 +432,44 @@ class InvestmentSystemIntegration:
             # 2. 市场分析观点
             signals = market_analysis.get('signals', [])
             for signal in signals:
-                if signal.get('type') in ['value_home', 'value_away']:
-                    direction = 'home_win' if 'home' in signal['type'] else 'away_win'
-                    opinions.append({
-                        'agent': f"Analyst_{signal['source']}",
-                        'prediction': {
-                            'home_win': 60 if direction == 'home_win' else 20,
-                            'draw': 20,
-                            'away_win': 60 if direction == 'away_win' else 20
-                        },
-                        'confidence': signal.get('confidence', 0.5),
-                        'weight': 0.8
-                    })
+                # 修复: 兼容字符串和dict格式的signal
+                if isinstance(signal, dict):
+                    conf = signal.get('confidence', 0)
+                    stype = signal.get('type', '')
+                    if stype in ['value_home', 'value_away']:
+                        direction = 'home_win' if 'home' in stype else 'away_win'
+                        opinions.append({
+                            'agent': f"Analyst_{signal.get('source', 'unknown')}",
+                            'prediction': {
+                                'home_win': 60 if direction == 'home_win' else 20,
+                                'draw': 20,
+                                'away_win': 60 if direction == 'away_win' else 20
+                            },
+                            'confidence': conf,
+                            'weight': 0.8
+                        })
+                elif isinstance(signal, str):
+                    # 字符串格式signal，跳过或简单处理
+                    pass
             
-            # 资金信号 - 使用 FundSignal 对象
+            # 资金信号 - 使用 dict 格式（Committee 期望 dict）
             fund_signals = []
             heat = money_flow.get('heat_index', {})
             if heat.get('home', 0) > 1.2:
-                from agents.committee_v2 import FundSignal, FundSignalType
-                try:
-                    fs = FundSignal(
-                        signal_type=FundSignalType.STRONG_HOME,
-                        confidence=min(heat['home'] / 2, 1.0),
-                        direction='home',
-                        strength='strong' if heat['home'] > 1.5 else 'moderate',
-                        source='money_flow',
-                        weight=0.6
-                    )
-                    fund_signals = [fs]
-                except Exception:
-                    fund_signals = [{
-                        'signal_type': FundSignalType.STRONG_HOME,
-                        'confidence': min(heat['home'] / 2, 1.0),
-                        'direction': 'home',
-                        'strength': 'strong' if heat['home'] > 1.5 else 'moderate',
-                        'source': 'money_flow',
-                        'weight': 0.6
-                    }]
+                fund_signals.append({
+                    'signal_type': 'strong_home',
+                    'confidence': min(heat['home'] / 2, 1.0),
+                    'direction': 'home',
+                    'strength': 'strong' if heat['home'] > 1.5 else 'moderate',
+                    'source': 'money_flow',
+                    'weight': 0.6
+                })
             
             # 运行委员会
             self.committee.receive_other_opinions(opinions)
             self.committee.receive_fund_signals(fund_signals)
             
-            result = self.committee.make_final_decision({
+            result = self.committee.run({
                 'market_odds': {
                     'home_win': odds.get('home', 2.0),
                     'draw': odds.get('draw', 3.5),
